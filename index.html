@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Norna. Борлуулалтын Сургалт</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --off-white:   #FBFAF7;
+    --navy:        #0C1E3A;
+    --navy-mid:    #163056;
+    --gold:        #D8A15E;
+    --gold-light:  #E8C99B;
+    --red:         #B92626;
+    --red-muted:   #8F1E1E;
+    --ink:         #171717;
+    --muted:       rgba(23,23,23,0.55);
+  }
+
+  html {
+    font-size: 93.75%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #F6F1E8;
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 22px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: transparent;
+    transition: background 0.4s ease, padding 0.3s ease;
+  }
+  nav.scrolled {
+    background: rgba(12, 30, 58, 0.96);
+    backdrop-filter: blur(16px);
+    padding: 14px 48px;
+    border-bottom: 1px solid rgba(216,161,94,0.18);
+  }
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--off-white);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .logo-mark {
+    width: 28px; height: 28px;
+    border: 1.5px solid var(--gold);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .logo-mark svg { width: 14px; height: 14px; }
+  .nav-links {
+    display: flex; align-items: center; gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(251,250,247,0.78);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.1em !important;
+    color: var(--navy) !important;
+    background: var(--gold);
+    padding: 9px 22px;
+    border-radius: 4px;
+    transition: background 0.2s, transform 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ─── HERO ────────────────────────────── */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    padding: 120px 48px 80px;
+  }
+
+  .hero-bg-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(216,161,94,0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(216,161,94,0.055) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+  }
+  .hero-glow {
+    position: absolute;
+    width: 800px; height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(185,38,38,0.13) 0%, transparent 65%);
+    top: -200px; right: -200px;
+    pointer-events: none;
+  }
+  .hero-glow-2 {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(216,161,94,0.11) 0%, transparent 65%);
+    bottom: -100px; left: -100px;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative; z-index: 2;
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 28px;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.7s 0.2s ease forwards;
+  }
+  .eyebrow-line {
+    width: 32px; height: 1px; background: var(--gold-light);
+  }
+
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.35rem, 4.2vw, 4.1rem);
+    font-weight: 600; line-height: 1.02;
+    color: var(--off-white);
+    margin-bottom: 24px;
+    opacity: 0; transform: translateY(24px);
+    animation: fadeUp 0.8s 0.35s ease forwards;
+  }
+  .headline-accent { color: var(--gold); }
+
+  .hero-sub {
+    font-size: 1.05rem; line-height: 1.7; font-weight: 300;
+    color: rgba(243,243,243,0.62);
+    max-width: 500px;
+    margin-bottom: 48px;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.8s 0.5s ease forwards;
+  }
+
+  .hero-actions {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.8s 0.65s ease forwards;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem; font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 14px 30px; border-radius: 4px;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(216,161,94,0.26);
+  }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent;
+    color: var(--off-white);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem; font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 13px 28px; border-radius: 4px;
+    text-decoration: none; border: 1px solid rgba(251,250,247,0.2); cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-secondary:hover {
+    border-color: rgba(216,161,94,0.5);
+    background: rgba(216,161,94,0.06);
+  }
+
+  .hero-right {
+    display: grid; gap: 16px;
+    align-items: end;
+    opacity: 0; transform: translateX(30px);
+    animation: fadeLeft 0.9s 0.7s ease forwards;
+  }
+  .hero-stage {
+    position: relative;
+    border-radius: 28px;
+    overflow: hidden;
+    min-height: 620px;
+    border: 1px solid rgba(216,161,94,0.14);
+    background:
+      radial-gradient(circle at 50% 82%, rgba(216,161,94,0.18) 0%, rgba(216,161,94,0.04) 34%, transparent 62%),
+      linear-gradient(180deg, rgba(12,30,58,0.98), rgba(12,30,58,0.92));
+    box-shadow: 0 28px 84px rgba(12,30,58,0.22);
+    padding: 26px 22px 0;
+  }
+  .hero-stage img {
+    display: block;
+    width: min(100%, 540px);
+    max-height: 720px;
+    margin: 0 auto;
+    object-fit: contain;
+    object-position: center top;
+    filter: drop-shadow(0 16px 24px rgba(0,0,0,0.18));
+  }
+  .hero-book-chip {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    z-index: 2;
+    background: rgba(255,255,255,0.9);
+    color: var(--navy);
+    border: 1px solid rgba(216,161,94,0.22);
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  }
+  .hero-caption {
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    bottom: 20px;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--off-white);
+  }
+  .hero-caption strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.05;
+  }
+  .hero-caption span {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(251,250,247,0.7);
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(12,30,58,0.08);
+    border-radius: 8px;
+    padding: 24px 28px;
+    display: flex; align-items: center; gap: 20px;
+    backdrop-filter: blur(8px);
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .stat-card:hover {
+    border-color: rgba(216,161,94,0.28);
+    background: rgba(255,255,255,0.82);
+  }
+  .stat-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    border-radius: 10px;
+    background: rgba(216,161,94,0.12);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .stat-icon svg { width: 20px; height: 20px; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 700; line-height: 1;
+    color: var(--gold);
+  }
+  .stat-label {
+    font-size: 0.78rem; font-weight: 400; color: rgba(243,243,243,0.5);
+    letter-spacing: 0.04em; margin-top: 3px;
+  }
+  .stat-badge {
+    margin-left: auto;
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--navy);
+    background: rgba(216,161,94,0.16);
+    padding: 4px 10px; border-radius: 20px;
+    border: 1px solid rgba(216,161,94,0.24);
+  }
+
+  .hero-scroll {
+    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    opacity: 0; animation: fadeUp 0.8s 1.2s ease forwards;
+    text-decoration: none;
+  }
+  .scroll-text {
+    font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(251,250,247,0.48); font-weight: 500;
+  }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, rgba(216,161,94,0.75), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+
+  /* ─── CATEGORIES ──────────────────────── */
+  #categories {
+    padding: 0;
+  }
+  .categories-header {
+    padding: 100px 48px 72px;
+    max-width: 1200px; margin: 0 auto; width: 100%;
+  }
+  .section-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 20px;
+  }
+  .section-eyebrow .eyebrow-line { background: var(--red); }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    font-weight: 600; line-height: 1.15;
+    color: var(--navy);
+  }
+
+  .cat-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cat-card {
+    position: relative; overflow: hidden;
+    padding: 72px 52px;
+    min-height: 520px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    cursor: default;
+    transition: transform 0.4s ease;
+  }
+  .cat-card:hover { transform: scale(1.01); }
+
+  .cat-card--white { background: linear-gradient(145deg, #5C1718, #7A2122); }
+  .cat-card--navy  { background: linear-gradient(145deg, #0C1E3A, #132A4D); }
+  .cat-card--gold  { background: linear-gradient(145deg, #D8A15E, #D3A86A); }
+
+  .cat-num {
+    position: absolute; top: 48px; left: 52px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; font-weight: 700; line-height: 1;
+    opacity: 0.07;
+    transition: opacity 0.3s;
+  }
+  .cat-card:hover .cat-num { opacity: 0.12; }
+  .cat-card--white .cat-num,
+  .cat-card--gold .cat-num  { color: var(--navy); }
+  .cat-card--navy .cat-num  { color: var(--off-white); }
+
+  .cat-tag {
+    font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .cat-card--white .cat-tag { color: rgba(251,250,247,0.82); }
+  .cat-card--navy .cat-tag  { color: var(--gold-light); }
+  .cat-card--gold .cat-tag  { color: rgba(255,255,255,0.92); }
+
+  .cat-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 2.5vw, 2.3rem);
+    font-weight: 600; line-height: 1.2;
+    margin-bottom: 18px;
+  }
+  .cat-card--white .cat-title { color: var(--off-white); }
+  .cat-card--navy .cat-title  { color: var(--off-white); }
+  .cat-card--gold .cat-title  { color: var(--off-white); }
+
+  .cat-desc {
+    font-size: 0.9rem; line-height: 1.65; font-weight: 300;
+    margin-bottom: 32px;
+  }
+  .cat-card--white .cat-desc { color: rgba(251,250,247,0.74); }
+  .cat-card--navy .cat-desc  { color: rgba(251,250,247,0.72); }
+  .cat-card--gold .cat-desc  { color: rgba(251,250,247,0.88); }
+
+  .cat-arrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none;
+    transition: gap 0.2s;
+  }
+  .cat-card--white .cat-arrow { color: var(--off-white); }
+  .cat-card--navy .cat-arrow  { color: var(--gold-light); }
+  .cat-card--gold .cat-arrow  { color: var(--off-white); }
+  .cat-arrow:hover { gap: 14px; }
+  .cat-arrow svg { width: 16px; height: 16px; }
+
+  /* ─── ABOUT ───────────────────────────── */
+  #about {
+    background: var(--off-white);
+    padding: 120px 48px;
+    position: relative; overflow: hidden;
+  }
+  .about-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center;
+  }
+  .about-left .section-eyebrow { color: var(--gold); }
+  .about-left .section-eyebrow .eyebrow-line { background: var(--gold); }
+  .about-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.8vw, 3.2rem);
+    font-weight: 600; line-height: 1.15;
+    color: var(--navy);
+    margin-bottom: 24px;
+  }
+  .about-body {
+    font-size: 1rem; line-height: 1.78; font-weight: 300;
+    color: rgba(84,23,24,0.72);
+    margin-bottom: 48px;
+  }
+  .about-features {
+    display: flex; flex-direction: column; gap: 0;
+    border-top: 1px solid rgba(84,23,24,0.12);
+  }
+  .about-feat {
+    display: flex; align-items: flex-start; gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(84,23,24,0.08);
+    transition: padding-left 0.3s;
+  }
+  .about-feat:hover { padding-left: 6px; }
+  .feat-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0; margin-top: 6px;
+  }
+  .feat-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem; font-weight: 600;
+    color: var(--navy); margin-bottom: 4px;
+  }
+  .feat-sub {
+    font-size: 0.82rem; color: rgba(84,23,24,0.56); line-height: 1.6;
+  }
+
+  .about-right {
+    position: relative;
+  }
+  .about-visual {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 48px;
+    position: relative; overflow: hidden;
+  }
+  .about-visual::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(216,161,94,0.08) 0%, transparent 60%);
+  }
+  .vis-quote {
+    position: relative; z-index: 1;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 500; line-height: 1.5;
+    color: var(--off-white);
+    margin-bottom: 32px;
+  }
+  .vis-quote::before {
+    content: '"';
+    font-size: 4rem; line-height: 0.5;
+    color: var(--gold); opacity: 0.4;
+    display: block; margin-bottom: 12px;
+  }
+  .vis-tags {
+    display: flex; flex-wrap: wrap; gap: 8px; position: relative; z-index: 1;
+  }
+  .vis-tag {
+    font-size: 0.73rem; font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+    border: 1px solid rgba(216,161,94,0.25);
+    border-radius: 3px;
+    padding: 6px 14px;
+    background: rgba(216,161,94,0.07);
+  }
+  .about-accent-line {
+    position: absolute;
+    left: -24px; top: 50%;
+    width: 4px; height: 80px;
+    background: linear-gradient(to bottom, var(--red), transparent);
+    transform: translateY(-50%);
+    border-radius: 2px;
+  }
+
+  /* ─── ROADMAP ─────────────────────────── */
+  #roadmap {
+    background: var(--navy);
+    padding: 120px 48px;
+    position: relative; overflow: hidden;
+  }
+  .roadmap-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(216,161,94,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(216,161,94,0.03) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+  .roadmap-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+  .roadmap-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 72px; flex-wrap: wrap; gap: 24px;
+  }
+  .roadmap-header .section-eyebrow { color: var(--red); }
+  .roadmap-header .section-eyebrow .eyebrow-line { background: var(--red); }
+  .roadmap-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.8vw, 3.2rem);
+    font-weight: 600; line-height: 1.15;
+    color: var(--off-white); max-width: 480px;
+  }
+  .roadmap-sub {
+    font-size: 0.9rem; color: rgba(251,250,247,0.45); max-width: 320px;
+    line-height: 1.65; font-weight: 300;
+  }
+
+  .roadmap-line {
+    position: relative;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  }
+  .roadmap-track {
+    position: absolute; top: 36px; left: 0; right: 0;
+    height: 1px; background: rgba(216,161,94,0.12);
+  }
+  .roadmap-track-fill {
+    height: 100%; width: 25%; background: var(--gold);
+    position: relative;
+  }
+  .roadmap-track-fill::after {
+    content: '';
+    position: absolute; right: -5px; top: 50%;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--gold);
+    transform: translateY(-50%);
+  }
+
+  .phase-card {
+    padding: 56px 32px 36px;
+    position: relative;
+    border: 1px solid rgba(216,161,94,0.08);
+    background: transparent;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .phase-card:hover {
+    background: rgba(255,255,255,0.03);
+    border-color: rgba(216,161,94,0.18);
+  }
+  .phase-card.active {
+    background: rgba(216,161,94,0.05);
+    border-color: rgba(216,161,94,0.2);
+  }
+  .phase-dot {
+    position: absolute; top: 28px; left: 32px;
+    width: 16px; height: 16px; border-radius: 50%;
+    border: 2px solid rgba(216,161,94,0.3);
+    background: var(--navy);
+    z-index: 1;
+  }
+  .phase-card.active .phase-dot {
+    border-color: var(--gold);
+    background: var(--gold);
+    box-shadow: 0 0 0 6px rgba(216,161,94,0.12);
+  }
+  .phase-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px;
+  }
+  .phase-card:not(.active) .phase-label { color: rgba(216,161,94,0.45); }
+  .phase-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600; line-height: 1.25;
+    color: var(--off-white); margin-bottom: 14px;
+  }
+  .phase-card:not(.active) .phase-title { color: rgba(243,243,243,0.45); }
+  .phase-desc {
+    font-size: 0.82rem; line-height: 1.65; font-weight: 300;
+    color: rgba(243,243,243,0.35);
+  }
+  .phase-card.active .phase-desc { color: rgba(243,243,243,0.55); }
+  .phase-status {
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 20px;
+  }
+  .status-active {
+    color: var(--gold);
+    background: rgba(216,161,94,0.1);
+    border: 1px solid rgba(216,161,94,0.2);
+  }
+  .status-coming {
+    color: rgba(243,243,243,0.3);
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+
+  /* ─── FOOTER ──────────────────────────── */
+  footer {
+    background: #04112b;
+    padding: 64px 48px 40px;
+    border-top: 1px solid rgba(216,161,94,0.1);
+  }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: flex-start; justify-content: space-between;
+    flex-wrap: wrap; gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-brand .nav-logo { margin-bottom: 16px; display: flex; }
+  .footer-tagline {
+    font-size: 0.82rem; color: rgba(243,243,243,0.35);
+    line-height: 1.6; max-width: 260px; font-weight: 300;
+  }
+  .footer-col-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .footer-links a {
+    font-size: 0.85rem; color: rgba(243,243,243,0.45);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--off-white); }
+  .footer-social {
+    display: flex; gap: 12px;
+  }
+  .social-link {
+    width: 38px; height: 38px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(243,243,243,0.5);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .social-link:hover {
+    border-color: rgba(216,161,94,0.4);
+    color: var(--gold);
+    background: rgba(216,161,94,0.05);
+  }
+  .social-link svg { width: 16px; height: 16px; }
+  .footer-bottom {
+    max-width: 1200px; margin: 32px auto 0;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-copy {
+    font-size: 0.75rem; color: rgba(243,243,243,0.25);
+    letter-spacing: 0.04em;
+  }
+  .footer-domain {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem; font-weight: 600;
+    color: rgba(216,161,94,0.5); letter-spacing: 0.08em;
+  }
+
+  /* ─── ANIMATIONS ──────────────────────── */
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeLeft {
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); transform-origin: top; }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ─── MOBILE ──────────────────────────── */
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    nav.scrolled { padding: 14px 24px; }
+    .nav-links { display: none; }
+
+    #hero { padding: 100px 24px 80px; min-height: 100svh; }
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+    .hero-stage { min-height: 520px; padding: 20px 16px 0; }
+    .hero-stage img { width: min(100%, 460px); }
+    .hero-book-chip { top: 14px; right: 14px; }
+    .stat-badge { display: none; }
+
+    .categories-header { padding: 80px 24px 56px; }
+    .cat-grid { grid-template-columns: 1fr; }
+    .cat-card { min-height: 380px; padding: 52px 32px; }
+
+    #about { padding: 80px 24px; }
+    .about-inner { grid-template-columns: 1fr; gap: 56px; }
+    .about-accent-line { display: none; }
+
+    #roadmap { padding: 80px 24px; }
+    .roadmap-header { flex-direction: column; align-items: flex-start; }
+    .roadmap-line { grid-template-columns: 1fr; gap: 0; }
+    .roadmap-track { display: none; }
+    .phase-card { border-left: 2px solid rgba(216,161,94,0.1); border-right: none; border-top: none; border-bottom: none; padding: 28px 24px 28px 40px; margin-bottom: 8px; }
+    .phase-card.active { border-left-color: var(--gold); background: rgba(216,161,94,0.05); }
+    .phase-dot { left: -9px; top: 32px; }
+
+    footer { padding: 48px 24px 32px; }
+    .footer-inner { gap: 36px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-stage { min-height: 420px; }
+    .hero-caption { left: 16px; right: 16px; bottom: 16px; }
+    .hero-caption strong { font-size: 1.2rem; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" stroke="#D8A15E" stroke-width="1.2" fill="none"/>
+        <circle cx="7" cy="7" r="2" fill="#D8A15E"/>
+      </svg>
+    </div>
+    Norna.
+  </a>
+  <ul class="nav-links">
+    <li><a href="#categories">Сургалт</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="eyebrow-line"></span>
+        Монгол дахь анхны платформ
+      </div>
+      <h1 class="hero-headline">
+        Өндөр үнэ цэнтэй бүтээгдэхүүн, үйлчилгээ борлуулдаг байгууллагуудад
+        зориулсан стратегийн борлуулалтын зөвлөх үйлчилгээ.
+      </h1>
+      <p class="hero-sub">
+        Борлуулалт, харилцаа, сэтгэл зүй болон бизнесийн ур чадварыг бодит жишээ, сургалт, практик аргаар суралц.
+      </p>
+      <div class="hero-actions">
+        <a href="#categories" class="btn-primary">
+          Сургалтууд
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#roadmap" class="btn-secondary">
+          Удахгүй Нээлттэй
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-stage">
+        <div class="hero-book-chip">Coming soon</div>
+        <img src="Model pic_cutout.png" alt="Norna author portrait" loading="eager">
+        <div class="hero-caption">
+          <div>
+            <strong>Sales Advisory</strong>
+            <span>Training platform</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="#categories" class="hero-scroll">
+    <span class="scroll-text">Дэлгэрэнгүй</span>
+    <div class="scroll-line"></div>
+  </a>
+</section>
+
+<!-- CATEGORIES -->
+<section id="categories">
+  <div class="categories-header reveal">
+    <div class="section-eyebrow">
+      <span class="eyebrow-line"></span>
+      Сургалтын Чиглэлүүд
+    </div>
+    <h2 class="section-title">Юу Сурах Вэ?</h2>
+  </div>
+
+  <div class="cat-grid">
+    <!-- Card 1 -->
+    <div class="cat-card cat-card--white reveal">
+      <div class="cat-num">01</div>
+      <span class="cat-tag">Модуль I</span>
+      <h3 class="cat-title">Борлуулалт ба Хэлэлцээр</h3>
+      <p class="cat-desc">Бодит борлуулалтын техник, хэлэлцээрийн стратеги, хэрэглэгчтэй зөв харилцах арт.</p>
+      <a href="#" class="cat-arrow">
+        Дэлгэрэнгүй
+        <svg viewBox="0 0 16 16" fill="none"><path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="cat-card cat-card--navy reveal reveal-delay-1">
+      <div class="cat-num">02</div>
+      <span class="cat-tag">Модуль II</span>
+      <h3 class="cat-title">Харилцаа ба Нөлөөллийн Сэтгэл Зүй</h3>
+      <p class="cat-desc">Хүмүүстэй нөлөөтэй харилцах, итгэл үзүүлэх, сэтгэл зүйн зөв арга хэрэгслийг эзэмших.</p>
+      <a href="#" class="cat-arrow">
+        Дэлгэрэнгүй
+        <svg viewBox="0 0 16 16" fill="none"><path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="cat-card cat-card--gold reveal reveal-delay-2">
+      <div class="cat-num">03</div>
+      <span class="cat-tag">Модуль III</span>
+      <h3 class="cat-title">Киноноос Суралцах Сэтгэлгээ ба Зан Хандлага</h3>
+      <p class="cat-desc">Дэлхийн алдарт кинонуудаас амьдрал, бизнес, харилцааны гүн ойлголтуудыг задлан сурах.</p>
+      <a href="#" class="cat-arrow">
+        Дэлгэрэнгүй
+        <svg viewBox="0 0 16 16" fill="none"><path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-left reveal">
+      <div class="section-eyebrow">
+        <span class="eyebrow-line"></span>
+        Платформын тухай
+      </div>
+      <h2 class="about-title">Яагаад Энэхүү Платформыг Бүтээж Байна Вэ?</h2>
+      <p class="about-body">
+        Энэ платформ нь практик боловсрол, бизнесийн ур чадвар, харилцааны сэтгэл зүй, болон ирээдүйн AI-д суурилсан суралцахуйн хэрэгслийг нэг газар нэгтгэдэг. Монгол хэрэглэгчдэд зориулсан, бодит амьдралд хэрэгжих мэдлэг.
+      </p>
+      <div class="about-features">
+        <div class="about-feat">
+          <div class="feat-dot"></div>
+          <div>
+            <div class="feat-title">Ирээдүйн AI Туслагч</div>
+            <div class="feat-sub">Хувийн суралцах замыг AI тодорхойлно</div>
+          </div>
+        </div>
+        <div class="about-feat">
+          <div class="feat-dot"></div>
+          <div>
+            <div class="feat-title">Бүтэцтэй Суралцах Зам</div>
+            <div class="feat-sub">Алхам алхмаар, тодорхой агуулга</div>
+          </div>
+        </div>
+        <div class="about-feat">
+          <div class="feat-dot"></div>
+          <div>
+            <div class="feat-title">Видео Сургалтууд</div>
+            <div class="feat-sub">Бодит жишээ, дадлага бүхий хичээлүүд</div>
+          </div>
+        </div>
+        <div class="about-feat">
+          <div class="feat-dot"></div>
+          <div>
+            <div class="feat-title">Нийгэмлэгийн Суралцахуй</div>
+            <div class="feat-sub">Адилхан зорилготой хүмүүстэй холбогдох</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-right reveal reveal-delay-2">
+      <div class="about-accent-line"></div>
+      <div class="about-visual">
+        <p class="vis-quote">
+          Амжилт бол санамсаргүй зүйл биш — энэ бол суралцаж, дадлагажсаны үр дүн.
+        </p>
+        <div class="vis-tags">
+          <span class="vis-tag">Борлуулалт</span>
+          <span class="vis-tag">Харилцаа</span>
+          <span class="vis-tag">Сэтгэл зүй</span>
+          <span class="vis-tag">Кино судлал</span>
+          <span class="vis-tag">Бизнес</span>
+          <span class="vis-tag">AI</span>
+          <span class="vis-tag">Практик</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="roadmap-bg"></div>
+  <div class="roadmap-inner">
+    <div class="roadmap-header reveal">
+      <div>
+        <div class="section-eyebrow">
+          <span class="eyebrow-line"></span>
+          Хөгжлийн Зам
+        </div>
+        <h2 class="roadmap-title">Удахгүй Илүү Их Болно</h2>
+      </div>
+      <p class="roadmap-sub">Платформ нь үе шат бүрт шинэ боломжуудаар тэлж өргөжинө.</p>
+    </div>
+
+    <div class="roadmap-line">
+      <div class="roadmap-track">
+        <div class="roadmap-track-fill"></div>
+      </div>
+
+      <div class="phase-card active reveal">
+        <div class="phase-dot"></div>
+        <div class="phase-label">Фаз 01</div>
+        <h3 class="phase-title">Платформын Танилцуулга</h3>
+        <p class="phase-desc">Үндсэн агуулга, суралцах чиглэлүүд болон нийгэмлэг байгуулагдана.</p>
+        <span class="phase-status status-active">Одоо</span>
+      </div>
+
+      <div class="phase-card reveal reveal-delay-1">
+        <div class="phase-dot"></div>
+        <div class="phase-label">Фаз 02</div>
+        <h3 class="phase-title">Видео Сургалтууд</h3>
+        <p class="phase-desc">Бодит кейсүүд дээр суурилсан бүрэн видео хичээлүүд нэмэгдэнэ.</p>
+        <span class="phase-status status-coming">Удахгүй</span>
+      </div>
+
+      <div class="phase-card reveal reveal-delay-2">
+        <div class="phase-dot"></div>
+        <div class="phase-label">Фаз 03</div>
+        <h3 class="phase-title">Гишүүн Дашбоард</h3>
+        <p class="phase-desc">Хувийн суралцах явц, гэрчилгээ, болон нийгэмлэгийн нэвтрэлт.</p>
+        <span class="phase-status status-coming">Удахгүй</span>
+      </div>
+
+      <div class="phase-card reveal reveal-delay-3">
+        <div class="phase-dot"></div>
+        <div class="phase-label">Фаз 04</div>
+        <h3 class="phase-title">AI Сурах Туслагч</h3>
+        <p class="phase-desc">Хувийн AI туслагч — таны зорилго, хурдад тохируулсан суралцахуй.</p>
+        <span class="phase-status status-coming">2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">
+        <div class="logo-mark">
+          <svg viewBox="0 0 14 14" fill="none">
+            <path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" stroke="#D8A15E" stroke-width="1.2" fill="none"/>
+            <circle cx="7" cy="7" r="2" fill="#D8A15E"/>
+          </svg>
+        </div>
+        Norna
+      </a>
+      <p class="footer-tagline">Борлуулалтын сургалтын платформ. Шинэ ном удахгүй гарна.</p>
+    </div>
+
+    <div>
+      <p class="footer-col-title">Холбоо барих</p>
+      <ul class="footer-links">
+        <li><a href="#">norna.mn</a></li>
+        <li><a href="#">hello@norna.mn</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Instagram</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="footer-col-title">Нийгэмлэг</p>
+      <div class="footer-social">
+        <a href="#" class="social-link" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58a2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Norna. Бүх эрх хуулиар хамгаалагдсан.</p>
+    <p class="footer-domain">norna.mn — Since 2026</p>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Smooth anchor scrolling
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>

@@ -127,22 +127,37 @@ h1.hh em{font-style:normal;color:var(--gold)}
 .step-body{font-size:.78rem;color:var(--body-c);line-height:1.65}
 
 /* ── ABOUT — dark ── */
-#about{background:var(--navy);padding:5.5rem 0}
-.ab{display:grid;grid-template-columns:1fr;gap:2rem;align-items:start}
+#about{position:relative;background:var(--navy);padding:5.5rem 0;overflow:hidden}
+#about::before{content:'';position:absolute;inset:0;background:url('about-bg.png') center center/cover no-repeat;opacity:.09;filter:brightness(1.12) contrast(1.08) saturate(.95);transform:scale(1.02);pointer-events:none}
+#about::after{content:'';position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(4,18,45,.50),rgba(4,18,45,.56)),
+  radial-gradient(ellipse 70% 55% at 50% 28%,rgba(255,255,255,.02),transparent 60%);
+  pointer-events:none}
+#about .w{position:relative;z-index:1}
+.sh-dk{width:min(35vw,390px);margin-right:auto}
+.ab{display:grid;grid-template-columns:1fr;gap:2rem;align-items:start;width:min(35vw,390px);margin-right:auto}
 .ab-desc{font-size:.875rem;color:rgba(255,255,255,.42);line-height:1.85;margin-bottom:1.4rem}
 .ab-bullets{display:flex;flex-direction:column;gap:.45rem;margin-bottom:1.8rem}
 .ab-bullet{display:flex;gap:.6rem;font-size:.8rem;color:rgba(255,255,255,.48);line-height:1.55}
 .ab-bullet::before{content:'—';color:var(--gold);flex-shrink:0;margin-top:.05rem}
-.cli-lbl{font-size:.55rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:1rem}
-.cg{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,.05);border-radius:20px;overflow:hidden}
-.ci{background:rgba(255,255,255,.03);display:flex;align-items:center;justify-content:center;padding:.8rem .4rem;font-size:.58rem;font-weight:700;color:rgba(255,255,255,.2);letter-spacing:.04em;text-transform:uppercase;text-align:center;min-height:50px;line-height:1.3;transition:color .2s,background .2s}
-.ci:hover{color:var(--gold);background:var(--ga)}
-.ab-name{margin-top:.9rem;padding:.85rem 1.1rem;background:rgba(255,255,255,.04);border-radius:18px;border:1px solid rgba(255,255,255,.05)}
-.ab-name p:first-child{font-size:.82rem;font-weight:700;color:rgba(255,255,255,.85)}
-.ab-name p:last-child{font-size:.7rem;color:var(--gold);margin-top:.15rem}
+.about-name{display:block}
+.about-role{display:block;color:var(--gold);font-size:.6em;font-weight:700;line-height:1.08;margin-top:.2rem}
+.cli-lbl{display:inline-flex;align-items:center;font-size:.55rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,168,76,.9);margin-bottom:.9rem;padding:.42rem .72rem;border-radius:999px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.16)}
+@keyframes logo-marquee{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
 
-/* ── CTA — white ── */
+#partner-logos{background:#fff;padding:24px 0;border-top:1px solid #E5E7EB;border-bottom:1px solid #E5E7EB;overflow:hidden}
+#partner-logos .logo-marquee{overflow:hidden}
+#partner-logos .logo-track{display:flex;align-items:center;gap:1.15rem;width:max-content;animation:logo-marquee 26s linear infinite}
+#partner-logos .logo-item{display:inline-flex;align-items:center;gap:.7rem;min-height:44px;padding:.48rem .95rem .48rem .48rem;border-radius:999px;background:#fff;border:1px solid #E5E7EB;white-space:nowrap}
+#partner-logos .logo-mark{width:1.95rem;height:1.95rem;border-radius:50%;display:grid;place-items:center;background:linear-gradient(180deg,rgba(201,168,76,.95),rgba(201,168,76,.75));color:var(--navy);font-size:.56rem;font-weight:800;letter-spacing:.04em;flex:0 0 auto}
+#partner-logos .logo-text{font-size:.62rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--navy)}
+#partner-logos .logo-item:hover{border-color:rgba(201,168,76,.36)}
+
 #cta{background:var(--white);padding:6rem 0;text-align:center}
+/* ── CTA — white ── */
 .cta-h{font-size:clamp(2.6rem,7vw,5rem);font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--navy);margin:.9rem 0}
 .cta-sub{font-size:.875rem;color:var(--body-c);max-width:380px;margin:0 auto 1.8rem;line-height:1.75}
 .cons{display:flex;gap:1.6rem;justify-content:center;flex-wrap:wrap;margin-top:1.8rem}
@@ -160,13 +175,34 @@ footer .fi{display:flex;justify-content:space-between;font-size:.66rem;color:rgb
   .sg{grid-template-columns:1fr}
   .proc-steps{grid-template-columns:1fr 1fr;gap:2rem}
   .proc-steps::before{display:none}
-  .cg{grid-template-columns:repeat(2,1fr)}
+  #about{padding:4.5rem 0}
+  #about::before{opacity:.14;background-position:center top}
+  .sh-dk h2{font-size:clamp(1.6rem,4vw,2.35rem)}
+  .sh-dk,.ab{width:min(44vw,480px)}
+  .cli-lbl{font-size:.52rem;padding:.38rem .65rem;letter-spacing:.18em}
+  #partner-logos{padding:24px 0}
+  #partner-logos .logo-track{gap:.9rem;animation-duration:30s}
+  #partner-logos .logo-item{min-height:40px;padding:.44rem .84rem .44rem .44rem}
+  #partner-logos .logo-mark{width:1.8rem;height:1.8rem;font-size:.52rem}
+  #partner-logos .logo-text{font-size:.58rem}
 }
 @media(max-width:480px){
   .w{padding:0 1.2rem}
   h1.hh{font-size:1.75rem}
   .cta-h{font-size:2.3rem}
   .proc-steps{grid-template-columns:1fr}
+  #about{padding:4rem 0}
+  .sh-dk h2{font-size:1.55rem}
+  .sh-dk,.ab{width:100%}
+  .ab-desc{font-size:.82rem;line-height:1.75}
+  .ab-bullets{gap:.55rem}
+  .ab-bullet{font-size:.74rem;padding:.82rem .9rem;border-radius:14px}
+  #about::before{opacity:.13;background-size:cover}
+  #partner-logos{padding:14px 0}
+  #partner-logos .logo-track{gap:.75rem;animation-duration:34s}
+  #partner-logos .logo-item{min-height:38px;padding:.38rem .72rem .38rem .38rem}
+  #partner-logos .logo-mark{width:1.6rem;height:1.6rem;font-size:.48rem}
+  #partner-logos .logo-text{font-size:.53rem}
 }
 </style>
 </head>
@@ -316,7 +352,7 @@ footer .fi{display:flex;justify-content:space-between;font-size:.66rem;color:rgb
   <div class="w">
     <div class="sh sh-dk rv">
       <span class="lbl">Бидний тухай</span>
-      <h2>Ruslan.K — Managing Partner</h2>
+      <h2><span class="about-name">Ruslan.K</span><span class="about-role">Managing Partner</span></h2>
     </div>
     <div class="ab">
       <div class="rv">
@@ -328,14 +364,35 @@ footer .fi{display:flex;justify-content:space-between;font-size:.66rem;color:rgb
           <div class="ab-bullet">Борлуулалт, харилцааны чиглэлээр мэргэжлийн мэдлэг, контент тогтмол хүргэдэг</div>
           <div class="ab-bullet">Бодит кейс, role-play, ярианы засвар, багийн практик дадлагад суурилсан аргачлалаар ажилладаг</div>
         </div>
-        <p class="cli-lbl">Туршлагаас онцлох байгууллагууд</p>
-        <div class="cg">
-          <div class="ci">LG Group</div><div class="ci">Hanpass Korea</div>
-          <div class="ci">Mongol Shuudan</div><div class="ci">RE/MAX</div>
-          <div class="ci">Puma</div><div class="ci">Алтан Жолоо</div>
-          <div class="ci">Хүннү</div><div class="ci">News Remicon</div>
-          <div class="ci">Bulgan Mebel</div><div class="ci">Noble Clinic</div>
-        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="partner-logos" aria-label="Partner logos">
+  <div class="w">
+    <div class="logo-marquee">
+      <div class="logo-track">
+        <div class="logo-item"><span class="logo-mark">LG</span><span class="logo-text">LG Group</span></div>
+        <div class="logo-item"><span class="logo-mark">HK</span><span class="logo-text">Hanpass Korea</span></div>
+        <div class="logo-item"><span class="logo-mark">MS</span><span class="logo-text">Mongol Shuudan</span></div>
+        <div class="logo-item"><span class="logo-mark">RM</span><span class="logo-text">RE/MAX</span></div>
+        <div class="logo-item"><span class="logo-mark">PU</span><span class="logo-text">Puma</span></div>
+        <div class="logo-item"><span class="logo-mark">AJ</span><span class="logo-text">Алтан Жолоо</span></div>
+        <div class="logo-item"><span class="logo-mark">HN</span><span class="logo-text">Хүннү</span></div>
+        <div class="logo-item"><span class="logo-mark">NR</span><span class="logo-text">News Remicon</span></div>
+        <div class="logo-item"><span class="logo-mark">BM</span><span class="logo-text">Bulgan Mebel</span></div>
+        <div class="logo-item"><span class="logo-mark">NC</span><span class="logo-text">Noble Clinic</span></div>
+        <div class="logo-item"><span class="logo-mark">LG</span><span class="logo-text">LG Group</span></div>
+        <div class="logo-item"><span class="logo-mark">HK</span><span class="logo-text">Hanpass Korea</span></div>
+        <div class="logo-item"><span class="logo-mark">MS</span><span class="logo-text">Mongol Shuudan</span></div>
+        <div class="logo-item"><span class="logo-mark">RM</span><span class="logo-text">RE/MAX</span></div>
+        <div class="logo-item"><span class="logo-mark">PU</span><span class="logo-text">Puma</span></div>
+        <div class="logo-item"><span class="logo-mark">AJ</span><span class="logo-text">Алтан Жолоо</span></div>
+        <div class="logo-item"><span class="logo-mark">HN</span><span class="logo-text">Хүннү</span></div>
+        <div class="logo-item"><span class="logo-mark">NR</span><span class="logo-text">News Remicon</span></div>
+        <div class="logo-item"><span class="logo-mark">BM</span><span class="logo-text">Bulgan Mebel</span></div>
+        <div class="logo-item"><span class="logo-mark">NC</span><span class="logo-text">Noble Clinic</span></div>
       </div>
     </div>
   </div>

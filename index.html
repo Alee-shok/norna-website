@@ -30,6 +30,20 @@ body{font-family:var(--font);background:var(--navy);color:var(--white);overflow-
 .btn-l{background:var(--navy);color:var(--white);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.65rem 1.7rem;text-decoration:none;display:inline-block;transition:opacity .2s,transform .15s;border:none;cursor:pointer;border-radius:999px}
 .btn-l:hover{opacity:.8;transform:translateY(-1px)}
 .hero-cta{font-size:.8rem;padding:.9rem 2.15rem;box-shadow:0 12px 28px rgba(201,168,76,.18)}
+.auth-lock{position:fixed;inset:0;background:rgba(6,12,22,.58);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;z-index:200}
+.auth-lock.o{display:flex}
+.auth-card{width:min(92vw,430px);background:linear-gradient(180deg,rgba(20,28,40,.98),rgba(13,27,46,.98));border:1px solid rgba(255,255,255,.09);border-radius:28px;box-shadow:0 24px 60px rgba(0,0,0,.45);padding:1.35rem 1.3rem 1.2rem;color:var(--white)}
+.auth-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.95rem}
+.auth-kicker{font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.auth-x{appearance:none;border:none;background:rgba(255,255,255,.06);color:rgba(255,255,255,.8);width:2.1rem;height:2.1rem;border-radius:999px;cursor:pointer;transition:transform .15s,background .2s}
+.auth-x:hover{background:rgba(255,255,255,.1);transform:scale(1.03)}
+.auth-title{font-size:1.2rem;font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-bottom:.35rem}
+.auth-desc{font-size:.84rem;line-height:1.65;color:rgba(255,255,255,.62);margin-bottom:1rem}
+.auth-field{width:100%;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:var(--white);border-radius:16px;padding:.95rem 1rem;font-size:.95rem;outline:none;transition:border-color .2s,box-shadow .2s,background .2s}
+.auth-field:focus{border-color:rgba(201,168,76,.55);box-shadow:0 0 0 4px rgba(201,168,76,.14);background:rgba(255,255,255,.06)}
+.auth-actions{display:flex;gap:.8rem;justify-content:flex-end;margin-top:1rem;flex-wrap:wrap}
+.auth-note{margin-top:.8rem;font-size:.74rem;color:rgba(255,255,255,.35)}
+.auth-error{margin-top:.75rem;font-size:.8rem;color:#ffb4b4;min-height:1.1em}
 .rv{opacity:0;transform:translateY(16px);transition:opacity .55s,transform .55s}
 .rv.in{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.25s}.d4{transition-delay:.35s}
@@ -185,6 +199,24 @@ footer .fi{display:flex;justify-content:space-between;font-size:.66rem;color:rgb
 </div>
 
 <!-- 01 HERO — dark -->
+<div class="auth-lock" id="authLock" aria-hidden="true">
+  <div class="auth-card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <div class="auth-top">
+      <div class="auth-kicker">Private access</div>
+      <button class="auth-x" type="button" id="authClose" aria-label="Хаах">×</button>
+    </div>
+    <div class="auth-title" id="authTitle">Код оруулна уу</div>
+    <div class="auth-desc">Энэ хэсэгт орохын тулд баталгаажуулах код шаардлагатай.</div>
+    <input class="auth-field" id="authInput" type="password" placeholder="Код" autocomplete="off" />
+    <div class="auth-error" id="authError"></div>
+    <div class="auth-actions">
+      <button class="btn-l" type="button" id="authCancel">Болих</button>
+      <button class="btn-d" type="button" id="authSubmit">Нэвтрэх</button>
+    </div>
+    <div class="auth-note">Код зөв бол шинэ tab дээр site нээгдэнэ.</div>
+  </div>
+</div>
+
 <section id="hero">
   <div class="w" style="position:relative;z-index:1">
     <div class="htag rv"><span class="htag-d"></span><span>High-Value Sales Advisory</span></div>
@@ -390,17 +422,58 @@ const ob=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.targe
 rv.forEach(el=>ob.observe(el));
 setTimeout(()=>document.querySelectorAll('#hero .rv').forEach(el=>el.classList.add('in')),80);
 
+const authLock=document.getElementById('authLock');
+const authInput=document.getElementById('authInput');
+const authError=document.getElementById('authError');
+const authClose=document.getElementById('authClose');
+const authCancel=document.getElementById('authCancel');
+const authSubmit=document.getElementById('authSubmit');
+let authTargetUrl='';
+
+function openAuth(url){
+  authTargetUrl=url;
+  authError.textContent='';
+  authInput.value='';
+  authLock.classList.add('o');
+  authLock.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>authInput.focus(),50);
+}
+
+function closeAuth(){
+  authLock.classList.remove('o');
+  authLock.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+  authTargetUrl='';
+}
+
+function submitAuth(){
+  if(authInput.value.trim()==='admin976'){
+    const win=window.open(authTargetUrl || 'https://automartdeploy2.vercel.app/','_blank','noopener,noreferrer');
+    if(!win)window.location.href=authTargetUrl || 'https://automartdeploy2.vercel.app/';
+    closeAuth();
+    return;
+  }
+  authError.textContent='Код буруу байна.';
+  authInput.select();
+}
+
 function gateExternal(e){
   e.preventDefault();
-  const code=prompt('Код оруулна уу');
-  if(code===null)return false;
-  if(code==='admin976'){
-    window.location.href='https://automartdeploy2.vercel.app/';
-  }else{
-    alert('Код буруу байна.');
-  }
+  openAuth('https://automartdeploy2.vercel.app/');
   return false;
 }
+
+authClose.addEventListener('click',closeAuth);
+authCancel.addEventListener('click',closeAuth);
+authSubmit.addEventListener('click',submitAuth);
+authInput.addEventListener('keydown',e=>{
+  if(e.key==='Enter')submitAuth();
+  if(e.key==='Escape')closeAuth();
+});
+authLock.addEventListener('click',e=>{
+  if(e.target===authLock)closeAuth();
+});
 </script>
 </body>
 </html>

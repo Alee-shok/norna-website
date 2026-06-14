@@ -62,7 +62,8 @@ nav.sc-lt{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);padding:.8
 .le{font-size:.5rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;transition:color .3s}
 .ld{color:var(--gold)}
 .nl{display:flex;align-items:center;gap:1.5rem}
-.nl a{font-size:.68rem;font-weight:500;text-decoration:none;transition:color .2s}
+.nl a{font-size:.68rem;font-weight:500;text-decoration:none;transition:color .2s;display:inline-flex;align-items:center;gap:.35rem}
+.nav-soon{font-size:.48rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding:.22rem .38rem;border:1px solid rgba(201,168,76,.22);border-radius:999px;line-height:1;opacity:.82}
 .hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.3rem;margin-left:auto}
 .hbg span{display:block;width:21px;height:1.5px;transition:.3s}
 .hbg.o span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
@@ -75,7 +76,11 @@ nav.sc-lt{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);padding:.8
 
 /* ── HERO — dark ── */
 #hero{min-height:100vh;display:flex;align-items:center;padding:7rem 0 5rem;background:var(--navy);position:relative;overflow:hidden}
-#hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 70% 35%,rgba(201,168,76,.055),transparent 65%);pointer-events:none}
+#hero::before{content:'';position:absolute;inset:0;background:url('hero-bg.png') center center/cover no-repeat;pointer-events:none}
+#hero::after{content:'';position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(4,18,45,.46),rgba(4,18,45,.46)),
+  radial-gradient(ellipse 65% 55% at 70% 35%,rgba(201,168,76,.055),transparent 65%);
+  pointer-events:none}
 .htag{display:inline-flex;align-items:center;gap:.45rem;border:1px solid var(--gb);padding:.33rem .85rem;margin-bottom:1.4rem;border-radius:999px;background:rgba(255,255,255,.02)}
 .htag-d{width:5px;height:5px;background:var(--gold);border-radius:50%}
 .htag span{font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
@@ -132,9 +137,9 @@ h1.hh em{font-style:normal;color:var(--gold)}
 
 /* ── ABOUT — dark ── */
 #about{position:relative;background:var(--navy);padding:5.5rem 0;overflow:hidden}
-#about::before{content:'';position:absolute;inset:0;background:url('about-bg.png') center center/cover no-repeat;opacity:.09;filter:brightness(1.12) contrast(1.08) saturate(.95);transform:scale(1.02);pointer-events:none}
+#about::before{content:'';position:absolute;inset:0;background:url('about-bg.png') center center/cover no-repeat;opacity:.11;filter:brightness(1.15) contrast(1.1) saturate(.96);transform:scale(1.02);pointer-events:none}
 #about::after{content:'';position:absolute;inset:0;background:
-  linear-gradient(180deg,rgba(4,18,45,.50),rgba(4,18,45,.56)),
+  linear-gradient(180deg,rgba(4,18,45,.42),rgba(4,18,45,.48)),
   radial-gradient(ellipse 70% 55% at 50% 28%,rgba(255,255,255,.02),transparent 60%);
   pointer-events:none}
 #about .w{position:relative;z-index:1}
@@ -180,7 +185,7 @@ footer .fi{display:flex;justify-content:space-between;font-size:.66rem;color:rgb
   .proc-steps{grid-template-columns:1fr 1fr;gap:2rem}
   .proc-steps::before{display:none}
   #about{padding:4.5rem 0}
-  #about::before{opacity:.14;background-position:center top}
+  #about::before{opacity:.16;background-position:center top}
   .sh-dk h2{font-size:clamp(1.6rem,4vw,2.35rem)}
   .sh-dk,.ab{width:min(44vw,480px)}
   .cli-lbl{font-size:.52rem;padding:.38rem .65rem;letter-spacing:.18em}
@@ -201,7 +206,7 @@ footer .fi{display:flex;justify-content:space-between;font-size:.66rem;color:rgb
   .ab-desc{font-size:.82rem;line-height:1.75}
   .ab-bullets{gap:.55rem}
   .ab-bullet{font-size:.74rem;padding:.82rem .9rem;border-radius:14px}
-  #about::before{opacity:.13;background-size:cover}
+  #about::before{opacity:.15;background-size:cover}
   #partner-logos{padding:14px 0}
   #partner-logos .logo-track{gap:.75rem;animation-duration:34s}
   #partner-logos .logo-item{min-height:38px;padding:.38rem .72rem .38rem .38rem}
@@ -224,6 +229,8 @@ footer .fi{display:flex;justify-content:space-between;font-size:.66rem;color:rgb
       <a href="#services">Шийдэл</a>
       <a href="#process">Хамтрал</a>
       <a href="#about">Бидний тухай</a>
+      <a href="#news">Мэдээ мэдээлэл</a>
+      <a href="#soon">Тун удахгүй <span class="nav-soon">Soon</span></a>
     </div>
     <a href="https://automartdeploy2.vercel.app/" class="btn-d" id="nb" onclick="return gateExternal(event)">Оношилгоо →</a>
     <button class="hbg" id="hb"><span></span><span></span><span></span></button>
@@ -235,6 +242,8 @@ footer .fi{display:flex;justify-content:space-between;font-size:.66rem;color:rgb
   <a href="#services" onclick="cm()">Шийдэл</a>
   <a href="#process" onclick="cm()">Хамтрал</a>
   <a href="#about" onclick="cm()">Бидний тухай</a>
+  <a href="#news" onclick="cm()">Мэдээ мэдээлэл</a>
+  <a href="#soon" onclick="cm()">Тун удахгүй <span class="nav-soon">Soon</span></a>
   <a href="#cta" class="btn-d" onclick="cm()">Ярилцъя →</a>
 </div>
 

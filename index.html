@@ -48,6 +48,19 @@ body{font-family:var(--font);background:var(--navy);color:var(--white);overflow-
 .auth-actions{display:flex;gap:.8rem;justify-content:flex-end;margin-top:1rem;flex-wrap:wrap}
 .auth-note{margin-top:.8rem;font-size:.74rem;color:rgba(255,255,255,.35)}
 .auth-error{margin-top:.75rem;font-size:.8rem;color:#ffb4b4;min-height:1.1em}
+.choice-lock{position:fixed;inset:0;background:rgba(6,12,22,.58);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;z-index:201}
+.choice-lock.o{display:flex}
+.choice-card{width:min(92vw,380px);background:linear-gradient(180deg,rgba(20,28,40,.98),rgba(13,27,46,.98));border:1px solid rgba(255,255,255,.09);border-radius:26px;box-shadow:0 24px 60px rgba(0,0,0,.45);padding:1.25rem 1.2rem 1.15rem;color:var(--white)}
+.choice-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.9rem}
+.choice-title{font-size:1.05rem;font-weight:800;letter-spacing:-.02em;line-height:1.2;color:var(--white)}
+.choice-x{appearance:none;border:none;background:rgba(255,255,255,.06);color:rgba(255,255,255,.8);width:2.1rem;height:2.1rem;border-radius:999px;cursor:pointer;transition:transform .15s,background .2s}
+.choice-x:hover{background:rgba(255,255,255,.1);transform:scale(1.03)}
+.choice-list{display:flex;flex-direction:column;gap:.75rem;margin-top:.4rem}
+.choice-btn{display:flex;align-items:center;justify-content:space-between;gap:1rem;width:100%;border:1px solid rgba(201,168,76,.18);background:rgba(255,255,255,.04);color:var(--white);text-decoration:none;border-radius:18px;padding:.95rem 1rem;font-size:.86rem;font-weight:700;line-height:1.35;transition:transform .15s,background .2s,border-color .2s,box-shadow .2s}
+.choice-btn:hover{background:rgba(201,168,76,.08);border-color:rgba(201,168,76,.36);transform:translateY(-1px);box-shadow:0 10px 20px rgba(0,0,0,.18)}
+.choice-btn .choice-sub{font-size:.55rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);white-space:nowrap;flex:0 0 auto}
+.choice-btn.secondary{background:rgba(255,255,255,.03)}
+.choice-btn.secondary:hover{background:rgba(201,168,76,.08)}
 .rv{opacity:0;transform:translateY(16px);transition:opacity .55s,transform .55s}
 .rv.in{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.25s}.d4{transition-delay:.35s}
@@ -263,6 +276,25 @@ footer .fi{display:flex;justify-content:space-between;font-size:.66rem;color:rgb
       <button class="btn-d" type="button" id="authSubmit">Нэвтрэх</button>
     </div>
     <div class="auth-note">Код зөв бол шинэ tab дээр site нээгдэнэ.</div>
+  </div>
+</div>
+
+<div class="choice-lock" id="choiceLock" aria-hidden="true">
+  <div class="choice-card" role="dialog" aria-modal="true" aria-labelledby="choiceTitle">
+    <div class="choice-top">
+      <div class="choice-title" id="choiceTitle">AutoMart</div>
+      <button class="choice-x" type="button" id="choiceClose" aria-label="Хаах">×</button>
+    </div>
+    <div class="choice-list">
+      <a class="choice-btn" href="https://automartdeploy-cv2fbbz6x-rs-projects6.vercel.app/" target="_blank" rel="noopener noreferrer" id="choiceOne">
+        <span>Борлуулагчийн 3 түвшин</span>
+        <span class="choice-sub">Open</span>
+      </a>
+      <a class="choice-btn secondary" href="https://automart360system-20.vercel.app/" target="_blank" rel="noopener noreferrer" id="choiceTwo">
+        <span>Удирдлагын 4 шатлалт үнэлгээ</span>
+        <span class="choice-sub">Open</span>
+      </a>
+    </div>
   </div>
 </div>
 
@@ -498,6 +530,10 @@ const authError=document.getElementById('authError');
 const authClose=document.getElementById('authClose');
 const authCancel=document.getElementById('authCancel');
 const authSubmit=document.getElementById('authSubmit');
+const choiceLock=document.getElementById('choiceLock');
+const choiceClose=document.getElementById('choiceClose');
+const choiceOne=document.getElementById('choiceOne');
+const choiceTwo=document.getElementById('choiceTwo');
 let authTargetUrl='';
 
 function openAuth(url){
@@ -517,11 +553,29 @@ function closeAuth(){
   authTargetUrl='';
 }
 
+function openChoice(){
+  choiceLock.classList.add('o');
+  choiceLock.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>choiceClose.focus(),50);
+}
+
+function closeChoice(){
+  choiceLock.classList.remove('o');
+  choiceLock.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+
+function openChoiceUrl(url){
+  const win=window.open(url,'_blank','noopener,noreferrer');
+  if(!win)window.location.href=url;
+  closeChoice();
+}
+
 function submitAuth(){
   if(authInput.value.trim()==='admin976'){
-    const win=window.open(authTargetUrl || 'https://automartdeploy2.vercel.app/','_blank','noopener,noreferrer');
-    if(!win)window.location.href=authTargetUrl || 'https://automartdeploy2.vercel.app/';
     closeAuth();
+    openChoice();
     return;
   }
   authError.textContent='Код буруу байна.';
@@ -537,12 +591,18 @@ function gateExternal(e){
 authClose.addEventListener('click',closeAuth);
 authCancel.addEventListener('click',closeAuth);
 authSubmit.addEventListener('click',submitAuth);
+choiceClose.addEventListener('click',closeChoice);
+choiceOne.addEventListener('click',e=>{e.preventDefault();openChoiceUrl(choiceOne.href)});
+choiceTwo.addEventListener('click',e=>{e.preventDefault();openChoiceUrl(choiceTwo.href)});
 authInput.addEventListener('keydown',e=>{
   if(e.key==='Enter')submitAuth();
   if(e.key==='Escape')closeAuth();
 });
 authLock.addEventListener('click',e=>{
   if(e.target===authLock)closeAuth();
+});
+choiceLock.addEventListener('click',e=>{
+  if(e.target===choiceLock)closeChoice();
 });
 </script>
 </body>

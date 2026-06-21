@@ -34,7 +34,7 @@ body{font-family:var(--font);background:var(--navy);color:var(--white);overflow-
 .btn-l{background:var(--navy);color:var(--white);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.65rem 1.7rem;text-decoration:none;display:inline-block;transition:opacity .2s,transform .15s;border:none;cursor:pointer;border-radius:999px}
 .btn-l:hover{opacity:.8;transform:translateY(-1px)}
 .hero-cta{font-size:.8rem;padding:.9rem 2.15rem;box-shadow:0 12px 28px rgba(201,168,76,.18)}
-.auth-lock{position:fixed;inset:0;background:rgba(6,12,22,.58);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;z-index:200}
+.auth-lock{position:fixed;inset:0;background:rgba(6,12,22,.58);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;z-index:99998}
 .auth-lock.o{display:flex}
 .auth-card{width:min(92vw,430px);background:linear-gradient(180deg,rgba(20,28,40,.98),rgba(13,27,46,.98));border:1px solid rgba(255,255,255,.09);border-radius:28px;box-shadow:0 24px 60px rgba(0,0,0,.45);padding:1.35rem 1.3rem 1.2rem;color:var(--white)}
 .auth-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.95rem}
@@ -43,12 +43,30 @@ body{font-family:var(--font);background:var(--navy);color:var(--white);overflow-
 .auth-x:hover{background:rgba(255,255,255,.1);transform:scale(1.03)}
 .auth-title{font-size:1.2rem;font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-bottom:.35rem}
 .auth-desc{font-size:.84rem;line-height:1.65;color:rgba(255,255,255,.62);margin-bottom:1rem}
-.auth-field{width:100%;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:var(--white);border-radius:16px;padding:.95rem 1rem;font-size:.95rem;outline:none;transition:border-color .2s,box-shadow .2s,background .2s}
+.auth-field-wrap{position:relative}
+.auth-field{width:100%;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:var(--white);border-radius:16px;padding:.95rem 3rem .95rem 1rem;font-size:.95rem;outline:none;transition:border-color .2s,box-shadow .2s,background .2s}
 .auth-field:focus{border-color:rgba(201,168,76,.55);box-shadow:0 0 0 4px rgba(201,168,76,.14);background:rgba(255,255,255,.06)}
+.auth-visibility{position:absolute;top:50%;right:.45rem;transform:translateY(-50%);width:2rem;height:2rem;border:none;border-radius:999px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.78);display:grid;place-items:center;cursor:pointer;transition:background .2s,transform .15s,color .2s}
+.auth-visibility:hover{background:rgba(255,255,255,.1);transform:translateY(-50%) scale(1.04);color:var(--gold)}
+.auth-visibility .eye-off{display:none}
+.auth-visibility.on .eye-on{display:none}
+.auth-visibility.on .eye-off{display:inline}
 .auth-actions{display:flex;gap:.8rem;justify-content:flex-end;margin-top:1rem;flex-wrap:wrap}
 .auth-note{margin-top:.8rem;font-size:.74rem;color:rgba(255,255,255,.35)}
 .auth-error{margin-top:.75rem;font-size:.8rem;color:#ffb4b4;min-height:1.1em}
-.choice-lock{position:fixed;inset:0;background:rgba(6,12,22,.58);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;z-index:201}
+.diag-nav{position:relative;display:flex;align-items:center;flex:0 0 auto}
+.diag-trigger{display:inline-flex;align-items:center;gap:.45rem;white-space:nowrap}
+.diag-trigger::after{content:'▾';font-size:.78em;line-height:1;opacity:.8;transform:translateY(-1px)}
+.diag-menu{position:absolute;top:calc(100% + .2rem);right:0;width:min(92vw,360px);padding:.6rem;background:linear-gradient(180deg,rgba(15,26,44,.98),rgba(10,18,32,.98));border:1px solid rgba(255,255,255,.1);border-radius:24px;box-shadow:0 26px 60px rgba(0,0,0,.34);backdrop-filter:blur(18px);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-8px) scale(.985);transition:opacity .18s ease,transform .18s ease,visibility .18s ease;z-index:160}
+.diag-menu::before{content:'';position:absolute;top:-14px;left:0;right:0;height:14px;background:transparent}
+.diag-nav.o .diag-menu,.diag-nav:hover .diag-menu,.diag-nav:focus-within .diag-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0) scale(1)}
+.diag-item{display:flex;align-items:center;justify-content:space-between;gap:1rem;width:100%;padding:.86rem .92rem;border:none;border-radius:18px;background:transparent;color:var(--white);font-size:.84rem;font-weight:600;text-align:left;cursor:pointer;transition:background .2s,transform .15s,color .2s}
+.diag-item + .diag-item{margin-top:.25rem}
+.diag-item:hover{background:rgba(201,168,76,.08);transform:translateX(2px)}
+.diag-tag{font-size:.48rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);padding:.18rem .34rem;border:1px solid rgba(201,168,76,.16);border-radius:999px;white-space:nowrap;flex:0 0 auto;opacity:.9}
+.diag-item.soon .diag-tag{opacity:.68}
+.choice-soon{display:grid;place-items:center;min-height:126px;border-radius:18px;border:1px solid rgba(201,168,76,.16);background:rgba(255,255,255,.04);color:var(--gold);font-size:.9rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.choice-lock{position:fixed;inset:0;background:rgba(6,12,22,.58);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;z-index:99999}
 .choice-lock.o{display:flex}
 .choice-card{width:min(92vw,380px);background:linear-gradient(180deg,rgba(20,28,40,.98),rgba(13,27,46,.98));border:1px solid rgba(255,255,255,.09);border-radius:26px;box-shadow:0 24px 60px rgba(0,0,0,.45);padding:1.25rem 1.2rem 1.15rem;color:var(--white)}
 .choice-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.9rem}
@@ -245,7 +263,10 @@ footer .fi{display:flex;justify-content:space-between;font-size:.66rem;color:rgb
       <a href="#news">Мэдээ мэдээлэл</a>
       <a href="#soon">Тун удахгүй <span class="nav-soon">Soon</span></a>
     </div>
-    <a href="https://automartdeploy2.vercel.app/" class="btn-d" id="nb" onclick="return gateExternal(event)">Оношилгоо →</a>
+    <div class="diag-nav" id="diagNav">
+      <button class="btn-d diag-trigger" id="nb" type="button" aria-haspopup="menu" aria-expanded="false">Оношилгоо</button>
+      <div class="diag-menu" id="diagMenu" aria-hidden="true"></div>
+    </div>
     <button class="hbg" id="hb"><span></span><span></span><span></span></button>
   </div>
 </nav>
@@ -264,18 +285,24 @@ footer .fi{display:flex;justify-content:space-between;font-size:.66rem;color:rgb
 <div class="auth-lock" id="authLock" aria-hidden="true">
   <div class="auth-card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
     <div class="auth-top">
-      <div class="auth-kicker">Private access</div>
+      <div class="auth-kicker">Нэвтрэх код</div>
       <button class="auth-x" type="button" id="authClose" aria-label="Хаах">×</button>
     </div>
-    <div class="auth-title" id="authTitle">Код оруулна уу</div>
-    <div class="auth-desc">Энэ хэсэгт орохын тулд баталгаажуулах код шаардлагатай.</div>
-    <input class="auth-field" id="authInput" type="password" placeholder="Код" autocomplete="off" />
+    <div class="auth-title" id="authTitle">Нэвтрэх код</div>
+    <div class="auth-desc">Энэ үнэлгээ зөвхөн эрхтэй хэрэглэгчдэд зориулагдсан.</div>
+    <div class="auth-field-wrap">
+      <input class="auth-field" id="authInput" type="password" placeholder="Код" autocomplete="off" />
+      <button class="auth-visibility" type="button" id="authToggle" aria-label="Show code" aria-pressed="false">
+        <span class="eye-on">👁</span>
+        <span class="eye-off">◐</span>
+      </button>
+    </div>
     <div class="auth-error" id="authError"></div>
     <div class="auth-actions">
       <button class="btn-l" type="button" id="authCancel">Болих</button>
-      <button class="btn-d" type="button" id="authSubmit">Нэвтрэх</button>
+      <button class="btn-d" type="button" id="authSubmit">Үргэлжлүүлэх</button>
     </div>
-    <div class="auth-note">Код зөв бол шинэ tab дээр site нээгдэнэ.</div>
+    <div class="auth-note">Зөв код оруулсны дараа дараагийн сонголт гарч ирнэ.</div>
   </div>
 </div>
 
@@ -285,16 +312,7 @@ footer .fi{display:flex;justify-content:space-between;font-size:.66rem;color:rgb
       <div class="choice-title" id="choiceTitle">AutoMart</div>
       <button class="choice-x" type="button" id="choiceClose" aria-label="Хаах">×</button>
     </div>
-    <div class="choice-list">
-      <a class="choice-btn" href="https://automartdeploy-cv2fbbz6x-rs-projects6.vercel.app/" target="_blank" rel="noopener noreferrer" id="choiceOne">
-        <span>Борлуулагчийн 3 түвшин</span>
-        <span class="choice-sub">Open</span>
-      </a>
-      <a class="choice-btn secondary" href="https://automart360system-20.vercel.app/" target="_blank" rel="noopener noreferrer" id="choiceTwo">
-        <span>Удирдлагын 4 шатлалт үнэлгээ</span>
-        <span class="choice-sub">Open</span>
-      </a>
-    </div>
+    <div class="choice-list" id="choiceList"></div>
   </div>
 </div>
 
@@ -507,7 +525,7 @@ function updateNav(){
   ln.style.color=dk?'#fff':'#0D1B2E';
   le.style.color=dk?'rgba(255,255,255,.38)':'#8A9AAB';
   nl.querySelectorAll('a').forEach(a=>{a.style.color=dk?'rgba(255,255,255,.48)':'#4B5C6E'});
-  nb.className=dk?'btn-d':'btn-l';
+  nb.className=dk?'btn-d diag-trigger':'btn-l diag-trigger';
   nb.style.marginLeft='0';
   hbEl.querySelectorAll('span').forEach(sp=>sp.style.background=dk?'#fff':'#0D1B2E');
 }
@@ -526,77 +544,223 @@ setTimeout(()=>document.querySelectorAll('#hero .rv').forEach(el=>el.classList.a
 
 const authLock=document.getElementById('authLock');
 const authInput=document.getElementById('authInput');
+const authToggle=document.getElementById('authToggle');
 const authError=document.getElementById('authError');
 const authClose=document.getElementById('authClose');
 const authCancel=document.getElementById('authCancel');
 const authSubmit=document.getElementById('authSubmit');
 const choiceLock=document.getElementById('choiceLock');
 const choiceClose=document.getElementById('choiceClose');
-const choiceOne=document.getElementById('choiceOne');
-const choiceTwo=document.getElementById('choiceTwo');
-let authTargetUrl='';
+const choiceList=document.getElementById('choiceList');
+const diagNav=document.getElementById('diagNav');
+const diagTrigger=document.getElementById('nb');
+const diagMenu=document.getElementById('diagMenu');
 
-function openAuth(url){
-  authTargetUrl=url;
+const diagCategories=[
+  {key:'real-estate',label:'Үл хөдлөх хөрөнгө',code:'estate976',outcome:{type:'soon'}},
+  {key:'kitchen',label:'Тавилга, интерьер',code:'kitchen976',outcome:{type:'links',title:'KitchenAll',items:[
+    {label:'Борлуулагч, дизайнер тест',href:'https://kitchenalltest-10.vercel.app/'},
+    {label:'Удирдлагын үнэлгээ',href:'https://kitchenall360-6.vercel.app/'}
+  ]}},
+  {key:'automart',label:'Автомашин',code:'automart976',outcome:{type:'links',title:'AutoMart',items:[
+    {label:'Борлуулагчийн 3 түвшин',href:'https://automartdeploy-cv2fbbz6x-rs-projects6.vercel.app/'},
+    {label:'Удирдлагын 4 шатлалт үнэлгээ',href:'https://automart360system-20.vercel.app/'}
+  ]}},
+  {key:'beauty',label:'Гоо сайхан, эмнэлэг',code:'beauty976',outcome:{type:'soon'}},
+  {key:'b2b-equipment',label:'B2B тоног төхөөрөмж',code:'equipment976',outcome:{type:'soon'}},
+  {key:'technology',label:'Технологийн шийдэл',code:'tech976',outcome:{type:'soon'}},
+  {key:'education',label:'Боловсрол, сургалт',code:'edu976',outcome:{type:'soon'}},
+  {key:'consulting',label:'Зөвлөх үйлчилгээ',code:'consult976',outcome:{type:'soon'}},
+  {key:'other-premium',label:'Бусад өндөр үнэ цэнтэй бүтээгдэхүүн үйлчилгээ',code:'premium976',outcome:{type:'soon'}},
+];
+
+let activeCategory=null;
+
+function getCategory(key){
+  return diagCategories.find(item=>item.key===key) || null;
+}
+
+function renderDiagMenu(){
+  diagMenu.innerHTML=diagCategories.map(cat=>`
+    <button class="diag-item${cat.outcome.type==='soon'?' soon':''}" type="button" data-diagnosis-category="${cat.key}">
+      <span>${cat.label}</span>
+      <span class="diag-tag">${cat.outcome.type==='soon'?'Soon':'Open'}</span>
+    </button>
+  `).join('');
+}
+
+function openDiagMenu(){
+  diagNav.classList.add('o');
+  diagTrigger.setAttribute('aria-expanded','true');
+  diagMenu.setAttribute('aria-hidden','false');
+}
+
+function closeDiagMenu(){
+  diagNav.classList.remove('o');
+  diagTrigger.setAttribute('aria-expanded','false');
+  diagMenu.setAttribute('aria-hidden','true');
+}
+
+function toggleDiagMenu(){
+  if(diagNav.classList.contains('o')) closeDiagMenu();
+  else openDiagMenu();
+}
+
+function openDiagnosisSelection(key){
+  const cat=getCategory(key);
+  if(!cat){
+    console.warn(`[Norna] Missing diagnosis category config for "${key}"`);
+    return;
+  }
+  activeCategory=cat;
+  closeDiagMenu();
+  openChoice();
+}
+
+function openAccessCodeModal(key){
+  const cat=getCategory(key);
+  if(!cat){
+    console.warn(`[Norna] Missing diagnosis category config for "${key}"`);
+    return;
+  }
+  activeCategory=cat;
   authError.textContent='';
   authInput.value='';
+  authInput.type='password';
+  authToggle.classList.remove('on');
+  authToggle.setAttribute('aria-label','Show code');
+  authToggle.setAttribute('aria-pressed','false');
+  closeChoice();
+  closeDiagMenu();
   authLock.classList.add('o');
   authLock.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';
   setTimeout(()=>authInput.focus(),50);
 }
 
-function closeAuth(){
+function openDiagnosisCodeModal(key){
+  openAccessCodeModal(key);
+}
+
+function closeAuth(keepCategory=false){
   authLock.classList.remove('o');
   authLock.setAttribute('aria-hidden','true');
   document.body.style.overflow='';
-  authTargetUrl='';
-}
-
-function openChoice(){
-  choiceLock.classList.add('o');
-  choiceLock.setAttribute('aria-hidden','false');
-  document.body.style.overflow='hidden';
-  setTimeout(()=>choiceClose.focus(),50);
+  if(!keepCategory) activeCategory=null;
 }
 
 function closeChoice(){
   choiceLock.classList.remove('o');
   choiceLock.setAttribute('aria-hidden','true');
   document.body.style.overflow='';
+  choiceList.innerHTML='';
 }
 
-function openChoiceUrl(url){
-  const win=window.open(url,'_blank','noopener,noreferrer');
-  if(!win)window.location.href=url;
-  closeChoice();
+function openChoice(){
+  if(!activeCategory) return;
+  const outcome=activeCategory.outcome || {type:'soon'};
+  choiceList.innerHTML='';
+  if(outcome.type==='links'){
+    choiceLock.setAttribute('aria-labelledby','choiceTitle');
+    document.getElementById('choiceTitle').textContent=outcome.title || 'AutoMart';
+    choiceList.innerHTML=outcome.items.map((item,idx)=>`
+      <a class="choice-btn${idx===1?' secondary':''}" href="${item.href}">
+        <span>${item.label}</span>
+        <span class="choice-sub">Open</span>
+      </a>
+    `).join('');
+    choiceList.querySelectorAll('a').forEach(link=>{
+      link.addEventListener('click',e=>{
+        e.preventDefault();
+        const href=link.getAttribute('href');
+        window.open(href,'_blank','noopener,noreferrer');
+        closeChoice();
+      });
+    });
+  }else{
+    document.getElementById('choiceTitle').textContent='Тун удахгүй';
+    choiceList.innerHTML='<div class="choice-soon">Тун удахгүй</div>';
+  }
+  choiceLock.classList.add('o');
+  choiceLock.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>choiceClose.focus(),50);
 }
 
 function submitAuth(){
-  if(authInput.value.trim()==='admin976'){
-    closeAuth();
-    openChoice();
+  if(!activeCategory) return;
+  if(authInput.value.trim()===activeCategory.code){
+    const selectedKey=activeCategory.key;
+    closeAuth(true);
+    openDiagnosisSelection(selectedKey);
     return;
   }
   authError.textContent='Код буруу байна.';
   authInput.select();
 }
 
-function gateExternal(e){
-  e.preventDefault();
-  openAuth('https://automartdeploy2.vercel.app/');
-  return false;
+function toggleAuthVisibility(){
+  const isHidden=authInput.type==='password';
+  authInput.type=isHidden?'text':'password';
+  authToggle.classList.toggle('on',isHidden);
+  authToggle.setAttribute('aria-label',isHidden?'Hide code':'Show code');
+  authToggle.setAttribute('aria-pressed',String(isHidden));
+  authInput.focus({preventScroll:true});
 }
+
+function closeAllOverlays(){
+  closeAuth();
+  closeChoice();
+  closeDiagMenu();
+}
+
+diagTrigger.addEventListener('click',e=>{
+  e.preventDefault();
+  toggleDiagMenu();
+});
+
+diagNav.addEventListener('mouseenter',()=>{
+  if(window.matchMedia('(hover:hover)').matches) openDiagMenu();
+});
+
+diagNav.addEventListener('mouseleave',()=>{
+  if(window.matchMedia('(hover:hover)').matches) {
+    const hovered=diagNav.matches(':hover');
+    if(!hovered) closeDiagMenu();
+  }
+});
+
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.diag-nav')) closeDiagMenu();
+});
+
+diagMenu.addEventListener('mouseenter',()=>{
+  if(window.matchMedia('(hover:hover)').matches) openDiagMenu();
+});
+
+document.addEventListener('click',function(event){
+  const item=event.target.closest('[data-diagnosis-category]');
+  if(!item) return;
+  event.preventDefault();
+  const categoryKey=item.dataset.diagnosisCategory;
+  console.log("Diagnosis item clicked:", categoryKey);
+  openAccessCodeModal(categoryKey);
+});
 
 authClose.addEventListener('click',closeAuth);
 authCancel.addEventListener('click',closeAuth);
 authSubmit.addEventListener('click',submitAuth);
+authToggle.addEventListener('click',toggleAuthVisibility);
 choiceClose.addEventListener('click',closeChoice);
-choiceOne.addEventListener('click',e=>{e.preventDefault();openChoiceUrl(choiceOne.href)});
-choiceTwo.addEventListener('click',e=>{e.preventDefault();openChoiceUrl(choiceTwo.href)});
 authInput.addEventListener('keydown',e=>{
   if(e.key==='Enter')submitAuth();
-  if(e.key==='Escape')closeAuth();
+  if(e.key==='Escape')closeAllOverlays();
+});
+authToggle.addEventListener('keydown',e=>{
+  if(e.key==='Enter' || e.key===' ') {
+    e.preventDefault();
+    toggleAuthVisibility();
+  }
 });
 authLock.addEventListener('click',e=>{
   if(e.target===authLock)closeAuth();
@@ -604,6 +768,14 @@ authLock.addEventListener('click',e=>{
 choiceLock.addEventListener('click',e=>{
   if(e.target===choiceLock)closeChoice();
 });
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Escape') return;
+  if(choiceLock.classList.contains('o')) closeChoice();
+  else if(authLock.classList.contains('o')) closeAuth();
+  closeDiagMenu();
+});
+
+renderDiagMenu();
 </script>
 </body>
 </html>

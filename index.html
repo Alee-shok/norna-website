@@ -196,9 +196,9 @@ h1.hh em{font-style:normal;color:var(--gold)}
 #partner-logos{background:#fff;padding:24px 0;border-top:1px solid #E5E7EB;border-bottom:1px solid #E5E7EB;overflow:hidden}
 #partner-logos .logo-marquee{overflow:hidden}
 #partner-logos .logo-track{display:flex;align-items:center;gap:1.15rem;width:max-content;animation:logo-marquee 26s linear infinite}
-#partner-logos .logo-item{display:inline-flex;align-items:center;gap:.7rem;min-height:44px;padding:.48rem .95rem .48rem .48rem;border-radius:999px;background:#fff;border:1px solid #E5E7EB;white-space:nowrap}
-#partner-logos .logo-mark{width:1.95rem;height:1.95rem;border-radius:50%;display:grid;place-items:center;background:linear-gradient(180deg,rgba(201,168,76,.95),rgba(201,168,76,.75));color:var(--navy);font-size:.56rem;font-weight:800;letter-spacing:.04em;flex:0 0 auto}
-#partner-logos .logo-text{font-size:.62rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--navy)}
+#partner-logos .logo-item{display:inline-flex;align-items:center;gap:.7rem;min-height:44px;padding:.48rem .95rem .48rem .6rem;border-radius:999px;background:#fff;border:1px solid #E5E7EB;white-space:nowrap}
+#partner-logos .company-logo{height:30px;width:auto;max-width:120px;object-fit:contain;display:block;flex:0 0 auto}
+#partner-logos .logo-text{font-size:.62rem;font-weight:700;letter-spacing:.04em;color:var(--navy)}
 #partner-logos .logo-item:hover{border-color:rgba(201,168,76,.36)}
 
 #cta{background:var(--white);padding:6rem 0;text-align:center}
@@ -227,8 +227,8 @@ footer .fi{display:flex;justify-content:space-between;font-size:.66rem;color:rgb
   .cli-lbl{font-size:.52rem;padding:.38rem .65rem;letter-spacing:.18em}
   #partner-logos{padding:24px 0}
   #partner-logos .logo-track{gap:.9rem;animation-duration:30s}
-  #partner-logos .logo-item{min-height:40px;padding:.44rem .84rem .44rem .44rem}
-  #partner-logos .logo-mark{width:1.8rem;height:1.8rem;font-size:.52rem}
+  #partner-logos .logo-item{min-height:40px;padding:.44rem .84rem .44rem .54rem}
+  #partner-logos .company-logo{height:28px}
   #partner-logos .logo-text{font-size:.58rem}
 }
 @media(max-width:480px){
@@ -245,8 +245,8 @@ footer .fi{display:flex;justify-content:space-between;font-size:.66rem;color:rgb
   #about::before{opacity:.15;background-size:cover}
   #partner-logos{padding:14px 0}
   #partner-logos .logo-track{gap:.75rem;animation-duration:34s}
-  #partner-logos .logo-item{min-height:38px;padding:.38rem .72rem .38rem .38rem}
-  #partner-logos .logo-mark{width:1.6rem;height:1.6rem;font-size:.48rem}
+  #partner-logos .logo-item{min-height:38px;padding:.38rem .72rem .38rem .46rem}
+  #partner-logos .company-logo{height:26px}
   #partner-logos .logo-text{font-size:.53rem}
 }
 </style>
@@ -454,26 +454,26 @@ footer .fi{display:flex;justify-content:space-between;font-size:.66rem;color:rgb
   <div class="w">
     <div class="logo-marquee">
       <div class="logo-track">
-        <div class="logo-item"><span class="logo-mark">LG</span><span class="logo-text">LG Group</span></div>
-        <div class="logo-item"><span class="logo-mark">HK</span><span class="logo-text">Hanpass Korea</span></div>
-        <div class="logo-item"><span class="logo-mark">MS</span><span class="logo-text">Mongol Shuudan</span></div>
-        <div class="logo-item"><span class="logo-mark">RM</span><span class="logo-text">RE/MAX</span></div>
-        <div class="logo-item"><span class="logo-mark">PU</span><span class="logo-text">Puma</span></div>
-        <div class="logo-item"><span class="logo-mark">AJ</span><span class="logo-text">Алтан Жолоо</span></div>
-        <div class="logo-item"><span class="logo-mark">HN</span><span class="logo-text">Хүннү</span></div>
-        <div class="logo-item"><span class="logo-mark">NR</span><span class="logo-text">News Remicon</span></div>
-        <div class="logo-item"><span class="logo-mark">BM</span><span class="logo-text">Bulgan Mebel</span></div>
-        <div class="logo-item"><span class="logo-mark">NC</span><span class="logo-text">Noble Clinic</span></div>
-        <div class="logo-item"><span class="logo-mark">LG</span><span class="logo-text">LG Group</span></div>
-        <div class="logo-item"><span class="logo-mark">HK</span><span class="logo-text">Hanpass Korea</span></div>
-        <div class="logo-item"><span class="logo-mark">MS</span><span class="logo-text">Mongol Shuudan</span></div>
-        <div class="logo-item"><span class="logo-mark">RM</span><span class="logo-text">RE/MAX</span></div>
-        <div class="logo-item"><span class="logo-mark">PU</span><span class="logo-text">Puma</span></div>
-        <div class="logo-item"><span class="logo-mark">AJ</span><span class="logo-text">Алтан Жолоо</span></div>
-        <div class="logo-item"><span class="logo-mark">HN</span><span class="logo-text">Хүннү</span></div>
-        <div class="logo-item"><span class="logo-mark">NR</span><span class="logo-text">News Remicon</span></div>
-        <div class="logo-item"><span class="logo-mark">BM</span><span class="logo-text">Bulgan Mebel</span></div>
-        <div class="logo-item"><span class="logo-mark">NC</span><span class="logo-text">Noble Clinic</span></div>
+        <div class="logo-item"><img class="company-logo" src="assets/logos/lg-group.png" alt="LG Group" onerror="this.style.visibility='hidden'"><span class="logo-text">LG Group</span></div>
+        <div class="logo-item"><img class="company-logo" src="assets/logos/hanpass-korea.png" alt="Hanpass Korea" onerror="this.style.visibility='hidden'"><span class="logo-text">Hanpass Korea</span></div>
+        <div class="logo-item"><img class="company-logo" src="assets/logos/mongol-shuudan.png" alt="Монгол Шуудан" onerror="this.style.visibility='hidden'"><span class="logo-text">Монгол Шуудан</span></div>
+        <div class="logo-item"><img class="company-logo" src="assets/logos/remax-mongolia.png" alt="RE/MAX Mongolia" onerror="this.style.visibility='hidden'"><span class="logo-text">RE/MAX Mongolia</span></div>
+        <div class="logo-item"><img class="company-logo" src="assets/logos/puma-construction.png" alt="PUMA Construction" onerror="this.style.visibility='hidden'"><span class="logo-text">PUMA Construction</span></div>
+        <div class="logo-item"><img class="company-logo" src="assets/logos/altan-joloo.png" alt="Алтан Жолоо ХХК" onerror="this.style.visibility='hidden'"><span class="logo-text">Алтан Жолоо ХХК</span></div>
+        <div class="logo-item"><img class="company-logo" src="assets/logos/hunnu-mall.png" alt="Хүннү Молл" onerror="this.style.visibility='hidden'"><span class="logo-text">Хүннү Молл</span></div>
+        <div class="logo-item"><img class="company-logo" src="assets/logos/news-remicon.png" alt="N.E.W.S Remicon" onerror="this.style.visibility='hidden'"><span class="logo-text">N.E.W.S Remicon</span></div>
+        <div class="logo-item"><img class="company-logo" src="assets/logos/bulgan-mebel.png" alt="Bulgan Mebel" onerror="this.style.visibility='hidden'"><span class="logo-text">Bulgan Mebel</span></div>
+        <div class="logo-item"><img class="company-logo" src="assets/logos/noble-clinic.png" alt="Noble Clinic" onerror="this.style.visibility='hidden'"><span class="logo-text">Noble Clinic</span></div>
+        <div class="logo-item"><img class="company-logo" src="assets/logos/lg-group.png" alt="LG Group" onerror="this.style.visibility='hidden'"><span class="logo-text">LG Group</span></div>
+        <div class="logo-item"><img class="company-logo" src="assets/logos/hanpass-korea.png" alt="Hanpass Korea" onerror="this.style.visibility='hidden'"><span class="logo-text">Hanpass Korea</span></div>
+        <div class="logo-item"><img class="company-logo" src="assets/logos/mongol-shuudan.png" alt="Монгол Шуудан" onerror="this.style.visibility='hidden'"><span class="logo-text">Монгол Шуудан</span></div>
+        <div class="logo-item"><img class="company-logo" src="assets/logos/remax-mongolia.png" alt="RE/MAX Mongolia" onerror="this.style.visibility='hidden'"><span class="logo-text">RE/MAX Mongolia</span></div>
+        <div class="logo-item"><img class="company-logo" src="assets/logos/puma-construction.png" alt="PUMA Construction" onerror="this.style.visibility='hidden'"><span class="logo-text">PUMA Construction</span></div>
+        <div class="logo-item"><img class="company-logo" src="assets/logos/altan-joloo.png" alt="Алтан Жолоо ХХК" onerror="this.style.visibility='hidden'"><span class="logo-text">Алтан Жолоо ХХК</span></div>
+        <div class="logo-item"><img class="company-logo" src="assets/logos/hunnu-mall.png" alt="Хүннү Молл" onerror="this.style.visibility='hidden'"><span class="logo-text">Хүннү Молл</span></div>
+        <div class="logo-item"><img class="company-logo" src="assets/logos/news-remicon.png" alt="N.E.W.S Remicon" onerror="this.style.visibility='hidden'"><span class="logo-text">N.E.W.S Remicon</span></div>
+        <div class="logo-item"><img class="company-logo" src="assets/logos/bulgan-mebel.png" alt="Bulgan Mebel" onerror="this.style.visibility='hidden'"><span class="logo-text">Bulgan Mebel</span></div>
+        <div class="logo-item"><img class="company-logo" src="assets/logos/noble-clinic.png" alt="Noble Clinic" onerror="this.style.visibility='hidden'"><span class="logo-text">Noble Clinic</span></div>
       </div>
     </div>
   </div>

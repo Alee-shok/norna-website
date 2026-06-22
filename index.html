@@ -64,8 +64,6 @@ body{font-family:var(--font);background:var(--navy);color:var(--white);overflow-
 .diag-item + .diag-item{margin-top:.25rem}
 .diag-item:hover{background:rgba(201,168,76,.08);transform:translateX(2px)}
 .diag-tag{font-size:.48rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);padding:.18rem .34rem;border:1px solid rgba(201,168,76,.16);border-radius:999px;white-space:nowrap;flex:0 0 auto;opacity:.9}
-.diag-item.soon .diag-tag{opacity:.68}
-.choice-soon{display:grid;place-items:center;min-height:126px;border-radius:18px;border:1px solid rgba(201,168,76,.16);background:rgba(255,255,255,.04);color:var(--gold);font-size:.9rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 .choice-lock{position:fixed;inset:0;background:rgba(6,12,22,.58);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;z-index:99999}
 .choice-lock.o{display:flex}
 .choice-card{width:min(92vw,380px);background:linear-gradient(180deg,rgba(20,28,40,.98),rgba(13,27,46,.98));border:1px solid rgba(255,255,255,.09);border-radius:26px;box-shadow:0 24px 60px rgba(0,0,0,.45);padding:1.25rem 1.2rem 1.15rem;color:var(--white)}
@@ -557,7 +555,6 @@ const diagTrigger=document.getElementById('nb');
 const diagMenu=document.getElementById('diagMenu');
 
 const diagCategories=[
-  {key:'real-estate',label:'Үл хөдлөх хөрөнгө',code:'estate976',outcome:{type:'soon'}},
   {key:'kitchen',label:'Тавилга, интерьер',code:'kitchen976',outcome:{type:'links',title:'KitchenAll',items:[
     {label:'Борлуулагч, дизайнер тест',href:'https://kitchenalltest-10.vercel.app/'},
     {label:'Удирдлагын үнэлгээ',href:'https://kitchenall360-6.vercel.app/'}
@@ -566,12 +563,6 @@ const diagCategories=[
     {label:'Борлуулагчийн 3 түвшин',href:'https://automartdeploy-cv2fbbz6x-rs-projects6.vercel.app/'},
     {label:'Удирдлагын 4 шатлалт үнэлгээ',href:'https://automart360system-20.vercel.app/'}
   ]}},
-  {key:'beauty',label:'Гоо сайхан, эмнэлэг',code:'beauty976',outcome:{type:'soon'}},
-  {key:'b2b-equipment',label:'B2B тоног төхөөрөмж',code:'equipment976',outcome:{type:'soon'}},
-  {key:'technology',label:'Технологийн шийдэл',code:'tech976',outcome:{type:'soon'}},
-  {key:'education',label:'Боловсрол, сургалт',code:'edu976',outcome:{type:'soon'}},
-  {key:'consulting',label:'Зөвлөх үйлчилгээ',code:'consult976',outcome:{type:'soon'}},
-  {key:'other-premium',label:'Бусад өндөр үнэ цэнтэй бүтээгдэхүүн үйлчилгээ',code:'premium976',outcome:{type:'soon'}},
 ];
 
 let activeCategory=null;
@@ -582,9 +573,9 @@ function getCategory(key){
 
 function renderDiagMenu(){
   diagMenu.innerHTML=diagCategories.map(cat=>`
-    <button class="diag-item${cat.outcome.type==='soon'?' soon':''}" type="button" data-diagnosis-category="${cat.key}">
+    <button class="diag-item" type="button" data-diagnosis-category="${cat.key}">
       <span>${cat.label}</span>
-      <span class="diag-tag">${cat.outcome.type==='soon'?'Soon':'Open'}</span>
+      <span class="diag-tag">Open</span>
     </button>
   `).join('');
 }
@@ -658,29 +649,24 @@ function closeChoice(){
 
 function openChoice(){
   if(!activeCategory) return;
-  const outcome=activeCategory.outcome || {type:'soon'};
+  const outcome=activeCategory.outcome || {type:'links',title:'AutoMart',items:[]};
   choiceList.innerHTML='';
-  if(outcome.type==='links'){
-    choiceLock.setAttribute('aria-labelledby','choiceTitle');
-    document.getElementById('choiceTitle').textContent=outcome.title || 'AutoMart';
-    choiceList.innerHTML=outcome.items.map((item,idx)=>`
-      <a class="choice-btn${idx===1?' secondary':''}" href="${item.href}">
-        <span>${item.label}</span>
-        <span class="choice-sub">Open</span>
-      </a>
-    `).join('');
-    choiceList.querySelectorAll('a').forEach(link=>{
-      link.addEventListener('click',e=>{
-        e.preventDefault();
-        const href=link.getAttribute('href');
-        window.open(href,'_blank','noopener,noreferrer');
-        closeChoice();
-      });
+  choiceLock.setAttribute('aria-labelledby','choiceTitle');
+  document.getElementById('choiceTitle').textContent=outcome.title || 'AutoMart';
+  choiceList.innerHTML=outcome.items.map((item,idx)=>`
+    <a class="choice-btn${idx===1?' secondary':''}" href="${item.href}">
+      <span>${item.label}</span>
+      <span class="choice-sub">Open</span>
+    </a>
+  `).join('');
+  choiceList.querySelectorAll('a').forEach(link=>{
+    link.addEventListener('click',e=>{
+      e.preventDefault();
+      const href=link.getAttribute('href');
+      window.open(href,'_blank','noopener,noreferrer');
+      closeChoice();
     });
-  }else{
-    document.getElementById('choiceTitle').textContent='Тун удахгүй';
-    choiceList.innerHTML='<div class="choice-soon">Тун удахгүй</div>';
-  }
+  });
   choiceLock.classList.add('o');
   choiceLock.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';

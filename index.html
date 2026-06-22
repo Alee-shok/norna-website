@@ -77,6 +77,13 @@ body{font-family:var(--font);background:var(--navy);color:var(--white);overflow-
 .choice-btn .choice-sub{font-size:.55rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);white-space:nowrap;flex:0 0 auto}
 .choice-btn.secondary{background:rgba(255,255,255,.03)}
 .choice-btn.secondary:hover{background:rgba(201,168,76,.08)}
+.soon-lock{position:fixed;inset:0;background:rgba(6,12,22,.58);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;z-index:99999}
+.soon-lock.o{display:flex}
+.soon-card{width:min(92vw,430px);background:linear-gradient(180deg,rgba(20,28,40,.98),rgba(13,27,46,.98));border:1px solid rgba(255,255,255,.09);border-radius:28px;box-shadow:0 24px 60px rgba(0,0,0,.45);padding:1.35rem 1.3rem 1.2rem;color:var(--white)}
+.soon-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.9rem}
+.soon-title{font-size:1.18rem;font-weight:800;letter-spacing:-.02em;line-height:1.2;color:var(--white)}
+.soon-msg{font-size:.88rem;line-height:1.7;color:rgba(255,255,255,.66)}
+.soon-actions{display:flex;justify-content:flex-end;margin-top:1.2rem}
 .rv{opacity:0;transform:translateY(16px);transition:opacity .55s,transform .55s}
 .rv.in{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.25s}.d4{transition-delay:.35s}
@@ -311,6 +318,19 @@ footer .fi{display:flex;justify-content:space-between;font-size:.66rem;color:rgb
       <button class="choice-x" type="button" id="choiceClose" aria-label="Хаах">×</button>
     </div>
     <div class="choice-list" id="choiceList"></div>
+  </div>
+</div>
+
+<div class="soon-lock" id="soonLock" aria-hidden="true">
+  <div class="soon-card" role="dialog" aria-modal="true" aria-labelledby="soonTitle">
+    <div class="soon-head">
+      <div class="soon-title" id="soonTitle">Тун удахгүй</div>
+      <button class="choice-x" type="button" id="soonClose" aria-label="Хаах">×</button>
+    </div>
+    <div class="soon-msg">Энэ салбарын үнэлгээ одоогоор боловсруулагдаж байна. Удахгүй ашиглах боломжтой болно.</div>
+    <div class="soon-actions">
+      <button class="btn-d" type="button" id="soonDismiss">Хаах</button>
+    </div>
   </div>
 </div>
 
@@ -550,19 +570,29 @@ const authSubmit=document.getElementById('authSubmit');
 const choiceLock=document.getElementById('choiceLock');
 const choiceClose=document.getElementById('choiceClose');
 const choiceList=document.getElementById('choiceList');
+const soonLock=document.getElementById('soonLock');
+const soonClose=document.getElementById('soonClose');
+const soonDismiss=document.getElementById('soonDismiss');
 const diagNav=document.getElementById('diagNav');
 const diagTrigger=document.getElementById('nb');
 const diagMenu=document.getElementById('diagMenu');
 
 const diagCategories=[
-  {key:'kitchen',label:'Тавилга, интерьер',code:'14200',outcome:{type:'links',title:'KitchenAll',items:[
-    {label:'Борлуулагч, дизайнер тест',href:'https://kitchenalltest-11.vercel.app/'},
-    {label:'Удирдлагын үнэлгээ',href:'https://kitchenall360-11.vercel.app/'}
+  {key:'estate',label:'Үл хөдлөх хөрөнгө',code:'976',outcome:{type:'soon'}},
+  {key:'kitchen',label:'Тавилга, интерьер',code:'12400',outcome:{type:'links',title:'KitchenAll',items:[
+    {label:'Борлуулагч, дизайнер тест',href:'https://kitchenalltest-10.vercel.app/'},
+    {label:'Удирдлагын үнэлгээ',href:'https://kitchenall360-6.vercel.app/'}
   ]}},
-  {key:'automart',label:'Автомашин',code:'14200',outcome:{type:'links',title:'AutoMart',items:[
+  {key:'automart',label:'Автомашин',code:'12400',outcome:{type:'links',title:'AutoMart',items:[
     {label:'Борлуулагчийн 3 түвшин',href:'https://automartdeploy-cv2fbbz6x-rs-projects6.vercel.app/'},
     {label:'Удирдлагын 4 шатлалт үнэлгээ',href:'https://automart360system-20.vercel.app/'}
   ]}},
+  {key:'beauty',label:'Гоо сайхан, эмнэлэг',code:'976',outcome:{type:'soon'}},
+  {key:'b2b-equipment',label:'B2B тоног төхөөрөмж',code:'976',outcome:{type:'soon'}},
+  {key:'technology',label:'Технологийн шийдэл',code:'976',outcome:{type:'soon'}},
+  {key:'education',label:'Боловсрол, сургалт',code:'976',outcome:{type:'soon'}},
+  {key:'consulting',label:'Зөвлөх үйлчилгээ',code:'976',outcome:{type:'soon'}},
+  {key:'other-premium',label:'Бусад өндөр үнэ цэнтэй бүтээгдэхүүн үйлчилгээ',code:'976',outcome:{type:'soon'}},
 ];
 
 let activeCategory=null;
@@ -604,8 +634,11 @@ function openDiagnosisSelection(key){
     return;
   }
   activeCategory=cat;
+  closeSoon();
   closeDiagMenu();
-  openChoice();
+  const outcome=cat.outcome || {type:'soon'};
+  if(outcome.type==='links') openChoice();
+  else openSoonModal();
 }
 
 function openAccessCodeModal(key){
@@ -622,6 +655,7 @@ function openAccessCodeModal(key){
   authToggle.setAttribute('aria-label','Show code');
   authToggle.setAttribute('aria-pressed','false');
   closeChoice();
+  closeSoon();
   closeDiagMenu();
   authLock.classList.add('o');
   authLock.setAttribute('aria-hidden','false');
@@ -645,6 +679,12 @@ function closeChoice(){
   choiceLock.setAttribute('aria-hidden','true');
   document.body.style.overflow='';
   choiceList.innerHTML='';
+}
+
+function closeSoon(){
+  soonLock.classList.remove('o');
+  soonLock.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
 }
 
 function openChoice(){
@@ -673,6 +713,14 @@ function openChoice(){
   setTimeout(()=>choiceClose.focus(),50);
 }
 
+function openSoonModal(){
+  closeChoice();
+  soonLock.classList.add('o');
+  soonLock.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>soonDismiss.focus(),50);
+}
+
 function submitAuth(){
   if(!activeCategory) return;
   if(authInput.value.trim()===activeCategory.code){
@@ -697,6 +745,7 @@ function toggleAuthVisibility(){
 function closeAllOverlays(){
   closeAuth();
   closeChoice();
+  closeSoon();
   closeDiagMenu();
 }
 
@@ -738,6 +787,8 @@ authCancel.addEventListener('click',closeAuth);
 authSubmit.addEventListener('click',submitAuth);
 authToggle.addEventListener('click',toggleAuthVisibility);
 choiceClose.addEventListener('click',closeChoice);
+soonClose.addEventListener('click',closeSoon);
+soonDismiss.addEventListener('click',closeSoon);
 authInput.addEventListener('keydown',e=>{
   if(e.key==='Enter')submitAuth();
   if(e.key==='Escape')closeAllOverlays();
@@ -754,9 +805,13 @@ authLock.addEventListener('click',e=>{
 choiceLock.addEventListener('click',e=>{
   if(e.target===choiceLock)closeChoice();
 });
+soonLock.addEventListener('click',e=>{
+  if(e.target===soonLock)closeSoon();
+});
 document.addEventListener('keydown',e=>{
   if(e.key!=='Escape') return;
   if(choiceLock.classList.contains('o')) closeChoice();
+  else if(soonLock.classList.contains('o')) closeSoon();
   else if(authLock.classList.contains('o')) closeAuth();
   closeDiagMenu();
 });

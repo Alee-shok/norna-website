@@ -460,7 +460,7 @@ footer .footer-signature{font-size:.6rem;letter-spacing:.14em;text-transform:upp
   <div class="auth-card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
     <div class="auth-top">
       <div class="auth-kicker" data-i18n="authKicker">Нэвтрэх код</div>
-      <button class="auth-x" type="button" id="authClose" aria-label="Хаах">×</button>
+      <button class="auth-x" type="button" id="authClose" aria-label="Хаах" data-i18n-aria-label="closeLabel">×</button>
     </div>
     <div class="auth-title" id="authTitle" data-i18n="authTitle">Нэвтрэх код</div>
     <div class="auth-desc" data-i18n="authDesc">Энэ үнэлгээ зөвхөн эрхтэй хэрэглэгчдэд зориулагдсан.</div>
@@ -484,7 +484,7 @@ footer .footer-signature{font-size:.6rem;letter-spacing:.14em;text-transform:upp
   <div class="choice-card" role="dialog" aria-modal="true" aria-labelledby="choiceTitle">
     <div class="choice-top">
       <div class="choice-title" id="choiceTitle">AutoMart</div>
-      <button class="choice-x" type="button" id="choiceClose" aria-label="Хаах">×</button>
+      <button class="choice-x" type="button" id="choiceClose" aria-label="Хаах" data-i18n-aria-label="closeLabel">×</button>
     </div>
     <div class="choice-list" id="choiceList"></div>
   </div>
@@ -494,7 +494,7 @@ footer .footer-signature{font-size:.6rem;letter-spacing:.14em;text-transform:upp
   <div class="soon-card" role="dialog" aria-modal="true" aria-labelledby="soonTitle">
     <div class="soon-head">
       <div class="soon-title" id="soonTitle" data-i18n="soonTitle">Тун удахгүй</div>
-      <button class="choice-x" type="button" id="soonClose" aria-label="Хаах">×</button>
+      <button class="choice-x" type="button" id="soonClose" aria-label="Хаах" data-i18n-aria-label="closeLabel">×</button>
     </div>
     <div class="soon-msg" data-i18n="soonMsg">Энэ салбарын үнэлгээ одоогоор боловсруулагдаж байна. Удахгүй ашиглах боломжтой болно.</div>
     <div class="soon-actions">
@@ -865,37 +865,37 @@ const translations = {
     navNews: "Мэдээ мэдээлэл",
     navSoon: "Тун удахгүй",
     diagnosis: "ОНОШИЛГОО",
-    heroSubtitle: "High-Value Sales Advisory",
+    heroSubtitle: "Өндөр үнэ цэнтэй борлуулалтын зөвлөх",
     heroTitleLine1: "БОРЛУУЛАЛТ",
     heroTitleLine2: "ЯТГАХ БИШ ШИЙДВЭР",
     heroTitleLine3: "УДИРДАХ СИСТЕМ",
-    heroMeta: "Sales Advisory · Sales System · Team Enablement",
+    heroMeta: "Борлуулалтын зөвлөх · Борлуулалтын систем · Багийн дэмжлэг",
     heroDescription: "Өндөр үнэ цэнтэй бүтээгдэхүүн, үйлчилгээ борлуулдаг байгууллагуудад зориулсан стратегийн борлуулалтын зөвлөх үйлчилгээ.",
     heroCta: "ЯРИЛЦЪЯ",
     statYearsTitle: "8+ жил",
     statYearsText: "Борлуулалт, харилцаа, хэлэлцээрийн чиглэлээр",
     statCompaniesTitle: "100+ байгууллагад",
     statCompaniesText: "Сургалт, зөвлөгөө, хэрэгжүүлэлтийн ажил",
-    statSectorsTitle: "B2B · Luxury",
-    statSectorsText: "Industrial · Service салбарууд",
+    statSectorsTitle: "B2B · Тансаг",
+    statSectorsText: "Аж үйлдвэр · Үйлчилгээ салбарууд",
     problemLabel: "Асуудал",
-    problemTitle: "Lead ирдэг. Борлуулалт хаагдахгүй үлддэг.",
+    problemTitle: "Лид ирдэг. Борлуулалт хаагдахгүй үлддэг.",
     problemBody: "Өндөр үнэ цэнтэй бүтээгдэхүүн сонирхсон хэрэглэгч шууд худалдан авалт хийдэггүй. Тэр эхлээд харьцуулна, эргэлзэнэ, асууна, хойшлуулна. Ихэнх байгууллага энэ үед илүү их сурталчилгаа хийхийг боддог. Гэвч асуудал үргэлж сурталчилгаанд биш, сонирхсон хэрэглэгчийг шийдвэрт хүргэх дараагийн алхам дээр байдаг.",
     problemCard1: "Яриа мэдээлэл өгдөг ч итгэл төрүүлж чаддаггүй.",
     problemCard2: "Үнэ цэнийг ойлгуулахаас өмнө үнэ хэлдэг.",
-    problemCard3: "Follow-up итгэл нэмэх биш, сануулах төдий болдог.",
+    problemCard3: "Дараах холбоо барилт итгэл нэмэх биш, сануулах төдий болдог.",
     problemCard4: "Хэрэглэгч дотроо \"үнэдээ хүрэх үү, хариуцлага хүлээх үү, итгэж болох уу\" гэж асуудаг.",
     problemClose: "Эдгээр асуултад хариулж чадаагүй үед боломжит худалдан авагч чимээгүй алга болдог.",
     servicesLabel: "Үйлчилгээ",
     servicesTitle: "Бидний ажиллах 3 түвшин",
     servicesBody: "Оношилгооны дараа бид зөвлөгөө өгөөд орхихгүй. Борлуулалтын чиглэл, ажиллах дараалал, багийн хэрэгжилт гэсэн гурван түвшинд шийдэл гаргадаг.",
-    servicesTag1: "Sales Advisory",
+    servicesTag1: "Борлуулалтын зөвлөх",
     servicesName1: "Зөв чиглэл гаргана",
     servicesBody1: "Борлуулалт яагаад хаагдаж байгааг тодорхойлж, эхлэх цэгийг тогтооно.",
-    servicesTag2: "Sales System",
+    servicesTag2: "Борлуулалтын систем",
     servicesName2: "Ажиллах дараалал бий болгоно",
     servicesBody2: "Сонирхсон хэрэглэгч шийдвэр гаргагч болох алхмуудыг өдөр тутам ашиглах бүтэцтэй болгоно.",
-    servicesTag3: "Team Enablement",
+    servicesTag3: "Багийн дэмжлэг",
     servicesName3: "Багт суулгана",
     servicesBody3: "Борлуулалтын арга барилыг role-play, бодит кейс, ярианы засвараар багийн стандарт руу ойртуулна.",
     processLabel: "Хамтралын явц",
@@ -910,11 +910,11 @@ const translations = {
     stepName4: "Явцын сайжруулалт",
     stepBody4: "Хэрэгжилтийн явцад багийн оролцоо, уулзалтын чанар, follow-up-ийн үр дүнг харж дараагийн сайжруулалтыг шат дараатай хийнэ.",
     aboutLabel: "Бидний тухай",
-    aboutRole: "Managing Partner",
+    aboutRole: "Удирдах түнш",
     aboutDesc: "Norna Excong нь өндөр үнэ цэнтэй бүтээгдэхүүн, үйлчилгээ борлуулдаг байгууллагуудтай ажилладаг Sales Advisory баг. Монгол байгууллагуудтай ажилласан бодит туршлага дээр үндэслэн хэрэглэгчийн шийдвэр гаргах хэв маяг болон итгэлцэл үүсэх нөхцөлд тохируулж ажилладаг.",
     aboutBullet1: "2017 оноос хойш борлуулалт, харилцаа, хэлэлцээрийн чиглэлээр ажилласан туршлагатай",
     aboutBullet2: "8 жилийн хугацаанд 100+ байгууллагад сургалт, зөвлөгөө хүргэсэн",
-    aboutBullet3: "High-value sales, хэрэглэгчийн шийдвэр, борлуулалтын ярианы арга барил дээр төвлөрдөг",
+    aboutBullet3: "Өндөр үнэ цэнтэй борлуулалт, хэрэглэгчийн шийдвэр, борлуулалтын ярианы арга барил дээр төвлөрдөг",
     aboutBullet4: "Борлуулалт, харилцааны чиглэлээр мэргэжлийн мэдлэг, контент тогтмол хүргэдэг",
     aboutBullet5: "Бодит кейс, role-play, ярианы засвар, багийн практик дадлагад суурилсан аргачлалаар ажилладаг",
     contactLabel: "Холбогдох",
@@ -922,7 +922,7 @@ const translations = {
     contactSub: "Танай борлуулалтын дараагийн өсөлт хаанаас эхлэхийг хамт тодорхойлъё.",
     contactCta: "Холбоо барих",
     footerCopyright: "© 2026 Norna Excong. Бүх эрх хуулиар хамгаалагдсан.",
-    footerTagline: "High-Value Sales Advisory",
+    footerTagline: "Өндөр үнэ цэнтэй борлуулалтын зөвлөх үйлчилгээ",
     footerSignature: "Designed and developed for Norna Excong.",
     authKicker: "Нэвтрэх код",
     authTitle: "Нэвтрэх код",
@@ -944,7 +944,7 @@ const translations = {
   en: {
     navIssues: "Problems",
     navSolution: "Solutions",
-    navPartner: "Partnership",
+    navPartner: "Partners",
     navAbout: "About Us",
     navNews: "News",
     navSoon: "Coming Soon",
@@ -1028,7 +1028,7 @@ const translations = {
   zh: {
     navIssues: "问题",
     navSolution: "解决方案",
-    navPartner: "合作关系",
+    navPartner: "合作伙伴",
     navAbout: "关于我们",
     navNews: "新闻资讯",
     navSoon: "即将推出",
@@ -1112,16 +1112,6 @@ const translations = {
 };
 
 const diagCategories=[
-<<<<<<< HEAD
-  {key:'estate',label:'Үл хөдлөх хөрөнгө',code:'976',outcome:{type:'soon'}},
-  {key:'kitchen',label:'Тавилга, интерьер',code:'12400',outcome:{type:'links',title:'KitchenAll',items:[
-    {label:'Борлуулагч, дизайнер тест',href:'https://kitchenalltest-17.vercel.app/'},
-    {label:'Удирдлагын үнэлгээ',href:'https://kitchenall360-17.vercel.app/'}
-  ]}},
-  {key:'automart',label:'Автомашин',code:'12400',outcome:{type:'links',title:'AutoMart',items:[
-    {label:'Борлуулагчийн 3 түвшин',href:'https://automartdeploy2.vercel.app/'},
-    {label:'Удирдлагын 4 шатлалт үнэлгээ',href:'https://automart360system-26.vercel.app/'}
-=======
   {key:'estate',label:{mn:'Үл хөдлөх хөрөнгө',en:'Real Estate',zh:'房地产'},code:'976',outcome:{type:'soon'}},
   {key:'kitchen',label:{mn:'Тавилга, интерьер',en:'Furniture & Interior',zh:'家具与室内'},code:'12400',outcome:{type:'links',title:'KitchenAll',items:[
     {label:{mn:'Борлуулагч, дизайнер тест',en:'Seller & Designer Test',zh:'销售与设计师测试'},href:'https://kitchenalltest-10.vercel.app/'},
@@ -1130,7 +1120,6 @@ const diagCategories=[
   {key:'automart',label:{mn:'Автомашин',en:'Automotive',zh:'汽车'},code:'12400',outcome:{type:'links',title:'AutoMart',items:[
     {label:{mn:'Борлуулагчийн 3 түвшин',en:'Seller 3 Levels',zh:'销售者三级'},href:'https://automartdeploy-cv2fbbz6x-rs-projects6.vercel.app/'},
     {label:{mn:'Удирдлагын 4 шатлалт үнэлгээ',en:'Management 4-Step Evaluation',zh:'管理四步评估'},href:'https://automart360system-20.vercel.app/'}
->>>>>>> cf24a0b (Language insert)
   ]}},
   {key:'beauty',label:{mn:'Гоо сайхан, эмнэлэг',en:'Beauty & Clinics',zh:'美容与医疗'},code:'976',outcome:{type:'soon'}},
   {key:'b2b-equipment',label:{mn:'B2B тоног төхөөрөмж',en:'B2B Equipment',zh:'B2B 设备'},code:'976',outcome:{type:'soon'}},
@@ -1232,53 +1221,42 @@ function openDiagnosisCodeModal(key){
 
 function setLanguage(lang){
   currentLang = translations[lang] ? lang : 'mn';
-  const dictionary = translations[currentLang] || translations.mn;
-  const chosen = currentLang;
-  document.querySelectorAll("[data-i18n]").forEach((element) => {
-    const key = element.getAttribute("data-i18n");
-    if (dictionary[key]) {
-      element.textContent = dictionary[key];
+  document.documentElement.lang = currentLang;
+  document.documentElement.setAttribute('lang', currentLang);
+  localStorage.setItem('siteLanguage', currentLang);
+  langLabel.textContent = langNames[currentLang] || langNames.mn;
+  langMenu.querySelectorAll('.lang-item').forEach(btn=>{
+    btn.classList.toggle('active', btn.dataset.lang===currentLang);
+  });
+  document.querySelectorAll('[data-i18n]').forEach((element) => {
+    const key = element.getAttribute('data-i18n');
+    if (translations[currentLang] && translations[currentLang][key]) {
+      element.textContent = translations[currentLang][key];
     }
   });
-  document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
-    const key = element.getAttribute("data-i18n-placeholder");
-    if (dictionary[key]) element.setAttribute('placeholder', dictionary[key]);
+  document.querySelectorAll('[data-i18n-placeholder]').forEach((element) => {
+    const key = element.getAttribute('data-i18n-placeholder');
+    if (translations[currentLang] && translations[currentLang][key]) {
+      element.setAttribute('placeholder', translations[currentLang][key]);
+    }
   });
-  document.querySelectorAll("[data-i18n-aria-label]").forEach((element) => {
-    const key = element.getAttribute("data-i18n-aria-label");
-    if (dictionary[key]) element.setAttribute('aria-label', dictionary[key]);
+  document.querySelectorAll('[data-i18n-aria-label]').forEach((element) => {
+    const key = element.getAttribute('data-i18n-aria-label');
+    if (translations[currentLang] && translations[currentLang][key]) {
+      element.setAttribute('aria-label', translations[currentLang][key]);
+    }
   });
-  langLabel.textContent=langNames[chosen];
-  langMenu.querySelectorAll('.lang-item').forEach(btn=>{
-    btn.classList.toggle('active', btn.dataset.lang===chosen);
-  });
-  document.documentElement.lang = chosen;
-  document.documentElement.setAttribute('lang', chosen);
-  localStorage.setItem('siteLanguage', chosen);
-  renderDiagMenu();
+  authToggle.setAttribute(
+    'aria-label',
+    authInput.type === 'password'
+      ? (translate('authShowCode') || 'Show code')
+      : (translate('authHideCode') || 'Hide code')
+  );
+  if (authErrorKey) authError.textContent = translate(authErrorKey);
   document.querySelectorAll('.nav-soon').forEach(el=>{
-    el.style.display = chosen === 'mn' ? 'inline-flex' : 'none';
+    el.style.display = currentLang === 'mn' ? 'inline-flex' : 'none';
   });
-  authInput.placeholder = dictionary.authPlaceholder || 'Код';
-  authToggle.setAttribute('aria-label', authInput.type === 'password' ? (dictionary.authShowCode || 'Show code') : (dictionary.authHideCode || 'Hide code'));
-  authClose.setAttribute('aria-label', dictionary.closeLabel || 'Хаах');
-  choiceClose.setAttribute('aria-label', dictionary.closeLabel || 'Хаах');
-  soonClose.setAttribute('aria-label', dictionary.closeLabel || 'Хаах');
-  if(authErrorKey) authError.textContent = dictionary[authErrorKey] || '';
-  if(authLock.classList.contains('o')) {
-    authLock.querySelector('.auth-kicker').textContent = dictionary.authKicker || 'Нэвтрэх код';
-    authLock.querySelector('.auth-title').textContent = dictionary.authTitle || 'Нэвтрэх код';
-    authLock.querySelector('.auth-desc').textContent = dictionary.authDesc || '';
-    authLock.querySelector('.auth-note').textContent = dictionary.authNote || '';
-    authCancel.querySelector('[data-i18n]').textContent = dictionary.authBack || 'Болих';
-    authSubmit.querySelector('[data-i18n]').textContent = dictionary.authContinue || 'Үргэлжлүүлэх';
-  }
-  if(soonLock.classList.contains('o')) {
-    soonLock.querySelector('.soon-title').textContent = dictionary.soonTitle || 'Тун удахгүй';
-    soonLock.querySelector('.soon-msg').textContent = dictionary.soonMsg || '';
-    soonDismiss.querySelector('[data-i18n]').textContent = dictionary.soonButton || 'Хаах';
-  }
-  if(choiceLock.classList.contains('o')) openChoice();
+  renderDiagMenu();
 }
 
 function closeAuth(keepCategory=false){
@@ -1310,7 +1288,7 @@ function openChoice(){
   choiceList.innerHTML=outcome.items.map((item,idx)=>`
     <a class="choice-btn tilt-card motion-soft${idx===1?' secondary':''}" href="${item.href}">
       <span>${textFrom(item.label)}</span>
-      <span class="choice-sub">${translate('choiceOpen')}</span>
+      <span class="choice-sub" data-i18n="choiceOpen">${translate('choiceOpen')}</span>
     </a>
   `).join('');
   initTilt(choiceList);
@@ -1440,7 +1418,6 @@ document.addEventListener('click',function(event){
   if(!item) return;
   event.preventDefault();
   const categoryKey=item.dataset.diagnosisCategory;
-  console.log("Diagnosis item clicked:", categoryKey);
   openAccessCodeModal(categoryKey);
 });
 

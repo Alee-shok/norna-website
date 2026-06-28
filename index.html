@@ -4,10 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Norna Excong</title>
+<meta name="author" content="Norna Excong">
+<meta name="copyright" content="Norna Excong">
+<meta name="website" content="norna.mn">
 <meta property="og:title" content="Norna Excong">
+<meta property="og:site_name" content="Norna Excong">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://norna.mn">
 <meta name="twitter:title" content="Norna Excong">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
+<!-- Norna Excong original website design. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -34,6 +41,21 @@ body{font-family:var(--font);background:var(--navy);color:var(--white);overflow-
 .btn-l{background:var(--navy);color:var(--white);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.65rem 1.7rem;text-decoration:none;display:inline-block;transition:opacity .2s,transform .15s;border:none;cursor:pointer;border-radius:999px}
 .btn-l:hover{opacity:.8;transform:translateY(-1px)}
 .hero-cta{font-size:.8rem;padding:.9rem 2.15rem;box-shadow:0 12px 28px rgba(201,168,76,.18)}
+.lang-nav{position:relative;display:flex;align-items:center;flex:0 0 auto}
+.lang-trigger{appearance:none;border:1px solid rgba(16,33,61,.12);background:rgba(255,255,255,.76);color:var(--navy);font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.68rem 1rem;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;transition:background .2s,border-color .2s,transform .15s,box-shadow .2s}
+.lang-trigger:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(16,33,61,.08)}
+.lang-caret{font-size:.7em;opacity:.72;line-height:1}
+.lang-menu{position:absolute;top:calc(100% + .35rem);right:0;min-width:140px;padding:.45rem;background:rgba(255,255,255,.96);border:1px solid rgba(16,33,61,.1);border-radius:18px;box-shadow:0 22px 44px rgba(16,33,61,.12);backdrop-filter:blur(18px);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-8px) scale(.985);transition:opacity .18s ease,transform .18s ease,visibility .18s ease;z-index:165}
+.lang-menu::before{content:'';position:absolute;top:-12px;left:0;right:0;height:12px;background:transparent}
+.lang-nav.o .lang-menu,.lang-nav:hover .lang-menu,.lang-nav:focus-within .lang-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0) scale(1)}
+.lang-item{width:100%;border:none;background:transparent;color:var(--navy);font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-align:left;padding:.72rem .78rem;border-radius:12px;cursor:pointer;transition:background .2s,color .2s}
+.lang-item:hover{background:rgba(201,168,76,.08)}
+.lang-item.active{background:rgba(201,168,76,.12);color:var(--gold)}
+nav.sc-dk .lang-trigger{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:#fff}
+nav.sc-dk .lang-menu{background:rgba(15,26,44,.98);border-color:rgba(255,255,255,.08)}
+nav.sc-dk .lang-item{color:#fff}
+nav.sc-dk .lang-item:hover{background:rgba(201,168,76,.1)}
+nav.sc-dk .lang-item.active{background:rgba(201,168,76,.16);color:var(--gold)}
 .auth-lock{position:fixed;inset:0;background:rgba(6,12,22,.58);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;z-index:99998}
 .auth-lock.o{display:flex}
 .auth-card{width:min(92vw,430px);background:linear-gradient(180deg,rgba(20,28,40,.98),rgba(13,27,46,.98));border:1px solid rgba(255,255,255,.09);border-radius:28px;box-shadow:0 24px 60px rgba(0,0,0,.45);padding:1.35rem 1.3rem 1.2rem;color:var(--white)}
@@ -54,6 +76,7 @@ body{font-family:var(--font);background:var(--navy);color:var(--white);overflow-
 .auth-actions{display:flex;gap:.8rem;justify-content:flex-end;margin-top:1rem;flex-wrap:wrap}
 .auth-note{margin-top:.8rem;font-size:.74rem;color:rgba(255,255,255,.35)}
 .auth-error{margin-top:.75rem;font-size:.8rem;color:#ffb4b4;min-height:1.1em}
+/* Norna Excong original website design. */
 .diag-nav{position:relative;display:flex;align-items:center;flex:0 0 auto}
 .diag-trigger{display:inline-flex;align-items:center;gap:.45rem;white-space:nowrap}
 .diag-trigger::after{content:'▾';font-size:.78em;line-height:1;opacity:.8;transform:translateY(-1px)}
@@ -66,7 +89,8 @@ body{font-family:var(--font);background:var(--navy);color:var(--white);overflow-
 .diag-tag{font-size:.48rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);padding:.18rem .34rem;border:1px solid rgba(201,168,76,.16);border-radius:999px;white-space:nowrap;flex:0 0 auto;opacity:.9}
 .choice-lock{position:fixed;inset:0;background:rgba(6,12,22,.58);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;z-index:99999}
 .choice-lock.o{display:flex}
-.choice-card{width:min(92vw,380px);background:linear-gradient(180deg,rgba(20,28,40,.98),rgba(13,27,46,.98));border:1px solid rgba(255,255,255,.09);border-radius:26px;box-shadow:0 24px 60px rgba(0,0,0,.45);padding:1.25rem 1.2rem 1.15rem;color:var(--white)}
+.choice-card{width:min(92vw,380px);background:linear-gradient(180deg,rgba(20,28,40,.98),rgba(13,27,46,.98));border:1px solid rgba(255,255,255,.09);border-radius:26px;box-shadow:0 24px 60px rgba(0,0,0,.45);padding:1.25rem 1.2rem 1.15rem;color:var(--white);opacity:0;transform:scale(.96);transition:opacity .25s ease,transform .25s ease}
+.choice-lock.o .choice-card{opacity:1;transform:scale(1)}
 .choice-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.9rem}
 .choice-title{font-size:1.05rem;font-weight:800;letter-spacing:-.02em;line-height:1.2;color:var(--white)}
 .choice-x{appearance:none;border:none;background:rgba(255,255,255,.06);color:rgba(255,255,255,.8);width:2.1rem;height:2.1rem;border-radius:999px;cursor:pointer;transition:transform .15s,background .2s}
@@ -79,7 +103,8 @@ body{font-family:var(--font);background:var(--navy);color:var(--white);overflow-
 .choice-btn.secondary:hover{background:rgba(201,168,76,.08)}
 .soon-lock{position:fixed;inset:0;background:rgba(6,12,22,.58);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;z-index:99999}
 .soon-lock.o{display:flex}
-.soon-card{width:min(92vw,430px);background:linear-gradient(180deg,rgba(20,28,40,.98),rgba(13,27,46,.98));border:1px solid rgba(255,255,255,.09);border-radius:28px;box-shadow:0 24px 60px rgba(0,0,0,.45);padding:1.35rem 1.3rem 1.2rem;color:var(--white)}
+.soon-card{width:min(92vw,430px);background:linear-gradient(180deg,rgba(20,28,40,.98),rgba(13,27,46,.98));border:1px solid rgba(255,255,255,.09);border-radius:28px;box-shadow:0 24px 60px rgba(0,0,0,.45);padding:1.35rem 1.3rem 1.2rem;color:var(--white);opacity:0;transform:scale(.96);transition:opacity .25s ease,transform .25s ease}
+.soon-lock.o .soon-card{opacity:1;transform:scale(1)}
 .soon-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.9rem}
 .soon-title{font-size:1.18rem;font-weight:800;letter-spacing:-.02em;line-height:1.2;color:var(--white)}
 .soon-msg{font-size:.88rem;line-height:1.7;color:rgba(255,255,255,.66)}
@@ -100,6 +125,7 @@ nav.sc-lt{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);padding:.8
 .nl{display:flex;align-items:center;gap:1.5rem}
 .nl a{font-size:.68rem;font-weight:500;text-decoration:none;transition:color .2s;display:inline-flex;align-items:center;gap:.35rem}
 .nav-soon{font-size:.48rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding:.22rem .38rem;border:1px solid rgba(201,168,76,.22);border-radius:999px;line-height:1;opacity:.82}
+html:not([lang="mn"]) .nav-soon{display:none}
 .hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.3rem;margin-left:auto}
 .hbg span{display:block;width:21px;height:1.5px;transition:.3s}
 .hbg.o span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
@@ -111,23 +137,71 @@ nav.sc-lt{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);padding:.8
 .mob a:hover{color:var(--gold)}
 
 /* ── HERO — dark ── */
-#hero{min-height:100vh;display:flex;align-items:center;padding:7rem 0 5rem;background:var(--navy);position:relative;overflow:hidden}
-#hero::before{content:'';position:absolute;inset:0;background:url('hero-bg.png') center center/cover no-repeat;pointer-events:none}
+#hero{--hero-parallax:0px;min-height:100vh;display:flex;align-items:center;padding:8.25rem 0 4.5rem;background:
+  linear-gradient(90deg,rgba(247,242,235,.98) 0%,rgba(247,242,235,.95) 38%,rgba(247,242,235,.82) 62%,rgba(247,242,235,.58) 100%),
+  #f7f2eb;position:relative;overflow:hidden;color:var(--navy)}
+#hero::before{content:'';position:absolute;inset:-3% 0 -3% 0;background:url('assets/images/hero-background.jpg') center right/cover no-repeat;pointer-events:none;opacity:.95;transform:translate3d(0,var(--hero-parallax,0px),0) scale(1.04);will-change:transform}
 #hero::after{content:'';position:absolute;inset:0;background:
-  linear-gradient(180deg,rgba(4,18,45,.46),rgba(4,18,45,.46)),
-  radial-gradient(ellipse 65% 55% at 70% 35%,rgba(201,168,76,.055),transparent 65%);
+  radial-gradient(ellipse 55% 42% at 68% 36%,rgba(201,168,76,.12),transparent 66%),
+  radial-gradient(ellipse 45% 38% at 18% 80%,rgba(16,33,61,.04),transparent 68%);
   pointer-events:none}
-.htag{display:inline-flex;align-items:center;gap:.45rem;border:1px solid var(--gb);padding:.33rem .85rem;margin-bottom:1.4rem;border-radius:999px;background:rgba(255,255,255,.02)}
+.hero-motion{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.82}
+.hero-motion svg{width:100%;height:100%;display:block}
+.hero-line{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:10 18;animation:line-flow 18s linear infinite}
+.hero-line.g1{stroke:rgba(201,168,76,.45);stroke-width:1.2}
+.hero-line.g2{stroke:rgba(13,27,46,.18);stroke-width:1.05;animation-duration:26s;animation-direction:reverse}
+.hero-line.g3{stroke:rgba(255,255,255,.28);stroke-width:.9;animation-duration:30s}
+.hero-node{fill:rgba(201,168,76,.62);filter:drop-shadow(0 0 8px rgba(201,168,76,.18))}
+.hero-motion .glow{fill:rgba(201,168,76,.12);filter:blur(10px)}
+@keyframes line-flow{
+  from{stroke-dashoffset:0}
+  to{stroke-dashoffset:-280}
+}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,680px);gap:1.4rem;align-items:start;min-height:calc(100vh - 12.75rem);justify-content:start}
+.hero-copy{max-width:680px;display:flex;flex-direction:column;align-items:flex-start;gap:1.1rem}
+.hero-panel{width:min(100%,640px);padding:clamp(1.35rem,2vw,1.9rem) clamp(1.35rem,2vw,1.8rem) clamp(1.2rem,1.8vw,1.55rem);background:rgba(255,255,255,.68);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.55);border-radius:28px;box-shadow:0 24px 70px rgba(16,33,61,.12)}
+.hero-visual{display:none}
+.htag{display:inline-flex;align-items:center;gap:.45rem;border:1px solid rgba(201,168,76,.18);padding:.34rem .9rem;margin-bottom:1.35rem;border-radius:999px;background:rgba(255,255,255,.6);box-shadow:0 10px 30px rgba(16,33,61,.05)}
 .htag-d{width:5px;height:5px;background:var(--gold);border-radius:50%}
 .htag span{font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
-h1.hh{font-size:clamp(1.9rem,4vw,3.5rem);font-weight:800;line-height:1.1;letter-spacing:-.025em;max-width:720px;margin-bottom:1.1rem;color:var(--white)}
+h1.hh{font-size:clamp(2rem,3.8vw,3.55rem);font-weight:800;line-height:1.08;letter-spacing:-.05em;max-width:560px;margin-bottom:1rem;color:#0B1D3A}
+h1.hh span{display:block}
 h1.hh em{font-style:normal;color:var(--gold)}
-.svc-line{font-size:.7rem;font-weight:600;letter-spacing:.08em;color:rgba(255,255,255,.35);margin-bottom:1.3rem}
-.svc-line span{color:var(--gold);opacity:.7}
-.hero-sub{font-size:.875rem;color:rgba(255,255,255,.42);line-height:1.8;max-width:460px;margin-bottom:2rem}
-.hero-stats{display:flex;gap:2.8rem;margin-top:4.5rem;flex-wrap:wrap}
-.sn{display:block;font-size:1.75rem;font-weight:800;color:var(--gold);letter-spacing:-.04em;line-height:1}
-.sl{font-size:.65rem;color:rgba(255,255,255,.32);margin-top:.15rem}
+.svc-line{font-size:.72rem;font-weight:600;letter-spacing:.04em;color:#10213D;margin-bottom:1rem}
+.svc-line span{color:#8A6A22;opacity:.95}
+.hero-sub{font-size:.92rem;font-weight:500;color:#26344D;line-height:1.7;max-width:520px;margin-bottom:0}
+.hero-cta{margin-top:.35rem}
+.hero-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:min(100%,680px);margin-top:1.2rem;max-width:680px;background:rgba(255,255,255,.8);border:1px solid rgba(16,33,61,.08);border-radius:28px;overflow:hidden;box-shadow:0 24px 52px rgba(16,33,61,.06);backdrop-filter:blur(16px)}
+.hero-stats > div{padding:1.05rem .95rem;min-height:118px;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:.2rem;border-right:1px solid rgba(16,33,61,.08)}
+.hero-stats > div:last-child{border-right:none}
+.sn{display:block;font-size:clamp(1.02rem,1.45vw,1.38rem);font-weight:800;color:var(--gold);letter-spacing:-.04em;line-height:1.12;white-space:pre-line;overflow-wrap:anywhere;word-break:break-word}
+.sl{font-size:clamp(.62rem,.82vw,.7rem);color:var(--body-c);line-height:1.45;overflow-wrap:anywhere;word-break:break-word}
+.reveal,.reveal-up,.reveal-left,.reveal-right{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1),filter .9s ease;will-change:transform,opacity}
+.reveal-left{transform:translateX(-28px)}
+.reveal-right{transform:translateX(28px)}
+.reveal.is-visible,.reveal-up.is-visible,.reveal-left.is-visible,.reveal-right.is-visible{opacity:1;transform:none}
+.motion-soft{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease,background-color .25s ease,border-color .25s ease,opacity .25s ease}
+.tilt-card{transform-style:preserve-3d;will-change:transform}
+.tilt-card.motion-soft{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease,background-color .25s ease,border-color .25s ease,opacity .25s ease}
+.tilt-card:hover{box-shadow:0 18px 36px rgba(13,27,46,.12)}
+.hero-cta:hover{transform:translateY(-2px) scale(1.01);box-shadow:0 16px 34px rgba(201,168,76,.24)}
+.hero-cta:active{transform:translateY(-1px) scale(.995)}
+@keyframes riseFade{
+  from{opacity:0;transform:translateY(22px)}
+  to{opacity:1;transform:none}
+}
+#hero .rv.in{animation:riseFade .82s cubic-bezier(.2,.8,.2,1) both}
+#hero .rv.d1.in{animation-delay:.08s}
+#hero .rv.d2.in{animation-delay:.18s}
+#hero .rv.d3.in{animation-delay:.28s}
+.reveal.is-visible .prob-grid .pc,
+.reveal.is-visible .sg .sv,
+.reveal.is-visible .proc-steps .step,
+.reveal.is-visible .logo-item,
+.reveal.is-visible .cons .con,
+.reveal.is-visible .ab-bullet{
+  animation:riseFade .75s cubic-bezier(.2,.8,.2,1) both;
+}
 
 /* ── SHARED SECTION HEADS ── */
 .sh{margin-bottom:2rem}
@@ -142,6 +216,49 @@ h1.hh em{font-style:normal;color:var(--gold)}
 .pc-d{width:6px;height:6px;min-width:6px;background:#b03030;border-radius:50%;margin-top:.42rem;flex-shrink:0}
 .pc p{font-size:.82rem;color:var(--body-c);line-height:1.6}
 .prob-close{font-size:.9rem;font-weight:700;color:var(--navy);text-align:center;padding:1.2rem 2rem;background:var(--ga);border-left:3px solid var(--gold);text-align:left;border-radius:18px}
+.reveal .prob-grid .pc,
+.reveal .sg .sv,
+.reveal .proc-steps .step,
+.reveal .logo-item,
+.reveal .cons .con,
+.reveal .ab-bullet{
+  opacity:0;
+  transform:translateY(26px);
+  transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease;
+}
+.reveal.is-visible .prob-grid .pc,
+.reveal.is-visible .sg .sv,
+.reveal.is-visible .proc-steps .step,
+.reveal.is-visible .logo-item,
+.reveal.is-visible .cons .con,
+.reveal.is-visible .ab-bullet{
+  opacity:1;
+  transform:none;
+}
+.reveal.is-visible .prob-grid .pc:nth-child(1),
+.reveal.is-visible .sg .sv:nth-child(1),
+.reveal.is-visible .proc-steps .step:nth-child(1),
+.reveal.is-visible .logo-item:nth-child(1),
+.reveal.is-visible .cons .con:nth-child(1),
+.reveal.is-visible .ab-bullet:nth-child(1){transition-delay:.06s}
+.reveal.is-visible .prob-grid .pc:nth-child(2),
+.reveal.is-visible .sg .sv:nth-child(2),
+.reveal.is-visible .proc-steps .step:nth-child(2),
+.reveal.is-visible .logo-item:nth-child(2),
+.reveal.is-visible .cons .con:nth-child(2),
+.reveal.is-visible .ab-bullet:nth-child(2){transition-delay:.12s}
+.reveal.is-visible .prob-grid .pc:nth-child(3),
+.reveal.is-visible .sg .sv:nth-child(3),
+.reveal.is-visible .proc-steps .step:nth-child(3),
+.reveal.is-visible .logo-item:nth-child(3),
+.reveal.is-visible .cons .con:nth-child(3),
+.reveal.is-visible .ab-bullet:nth-child(3){transition-delay:.18s}
+.reveal.is-visible .prob-grid .pc:nth-child(4),
+.reveal.is-visible .sg .sv:nth-child(4),
+.reveal.is-visible .proc-steps .step:nth-child(4),
+.reveal.is-visible .logo-item:nth-child(4),
+.reveal.is-visible .cons .con:nth-child(4),
+.reveal.is-visible .ab-bullet:nth-child(4){transition-delay:.24s}
 
 /* ── SERVICES — light ── */
 #services{background:var(--light);padding:5.5rem 0}
@@ -195,11 +312,12 @@ h1.hh em{font-style:normal;color:var(--gold)}
 
 #partner-logos{background:#fff;padding:24px 0;border-top:1px solid #E5E7EB;border-bottom:1px solid #E5E7EB;overflow:hidden}
 #partner-logos .logo-marquee{overflow:hidden}
-#partner-logos .logo-track{display:flex;align-items:center;gap:1.15rem;width:max-content;animation:logo-marquee 26s linear infinite}
-#partner-logos .logo-item{display:inline-flex;align-items:center;gap:.7rem;min-height:44px;padding:.48rem .95rem .48rem .6rem;border-radius:999px;background:#fff;border:1px solid #E5E7EB;white-space:nowrap}
+#partner-logos .logo-track{display:flex;align-items:center;gap:1.15rem;width:max-content;animation:logo-marquee 26s linear infinite;will-change:transform}
+#partner-logos:hover .logo-track{animation-play-state:paused}
+#partner-logos .logo-item{display:inline-flex;align-items:center;gap:.7rem;min-height:44px;padding:.48rem .95rem .48rem .6rem;border-radius:999px;background:#fff;border:1px solid #E5E7EB;white-space:nowrap;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
 #partner-logos .company-logo{height:30px;width:auto;max-width:120px;object-fit:contain;display:block;flex:0 0 auto}
 #partner-logos .logo-text{font-size:.62rem;font-weight:700;letter-spacing:.04em;color:var(--navy)}
-#partner-logos .logo-item:hover{border-color:rgba(201,168,76,.36)}
+#partner-logos .logo-item:hover{border-color:rgba(201,168,76,.36);transform:translateY(-2px) scale(1.01);box-shadow:0 10px 22px rgba(13,27,46,.08)}
 
 #cta{background:var(--white);padding:6rem 0;text-align:center}
 /* ── CTA — white ── */
@@ -211,15 +329,30 @@ h1.hh em{font-style:normal;color:var(--gold)}
 .con a:hover{color:var(--navy)}
 
 footer{background:var(--navy);padding:1.3rem 0}
-footer .fi{display:flex;justify-content:space-between;font-size:.66rem;color:rgba(255,255,255,.15)}
+footer .fi{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.66rem;color:rgba(255,255,255,.15)}
+footer .footer-copy{display:flex;flex-direction:column;gap:.35rem}
+footer .footer-signature{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.42)}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+  #hero::before{transform:none !important}
+  .tilt-card{transform:none !important}
+}
 
 /* ── RESPONSIVE ── */
 @media(max-width:820px){
   .nl{display:none}.hbg{display:flex}
+  .ni{gap:.7rem;flex-wrap:wrap}
+  .lang-trigger,.diag-trigger{font-size:.6rem;padding:.58rem .82rem}
+  .lang-menu{min-width:126px}
   .prob-grid{grid-template-columns:1fr}
   .sg{grid-template-columns:1fr}
   .proc-steps{grid-template-columns:1fr 1fr;gap:2rem}
   .proc-steps::before{display:none}
+  .hero-grid{grid-template-columns:1fr;gap:1.6rem;min-height:auto;padding-top:.75rem}
+  .hero-copy{max-width:100%}
+  .hero-panel{width:100%;padding:1.1rem 1.1rem 1rem}
+  .hero-visual{min-height:290px;order:-1}
   #about{padding:4.5rem 0}
   #about::before{opacity:.16;background-position:center top}
   .sh-dk h2{font-size:clamp(1.6rem,4vw,2.35rem)}
@@ -233,9 +366,15 @@ footer .fi{display:flex;justify-content:space-between;font-size:.66rem;color:rgb
 }
 @media(max-width:480px){
   .w{padding:0 1.2rem}
-  h1.hh{font-size:1.75rem}
+  h1.hh{font-size:2.1rem}
   .cta-h{font-size:2.3rem}
   .proc-steps{grid-template-columns:1fr}
+  .hero-grid{gap:1.2rem}
+  .hero-panel{border-radius:24px}
+  .hero-sub{font-size:.86rem;line-height:1.75}
+  .hero-stats{grid-template-columns:1fr;max-width:100%}
+  .hero-stats > div{border-right:none;border-bottom:1px solid rgba(16,33,61,.08)}
+  .hero-stats > div:last-child{border-bottom:none}
   #about{padding:4rem 0}
   .sh-dk h2{font-size:1.55rem}
   .sh-dk,.ab{width:100%}
@@ -261,42 +400,53 @@ footer .fi{display:flex;justify-content:space-between;font-size:.66rem;color:rgb
       <span class="le" id="le">Excong</span>
     </a>
     <div class="nl" id="nl">
-      <a href="#problem">Асуудал</a>
-      <a href="#services">Шийдэл</a>
-      <a href="#process">Хамтрал</a>
-      <a href="#about">Бидний тухай</a>
-      <a href="#news">Мэдээ мэдээлэл</a>
-      <a href="#soon">Тун удахгүй <span class="nav-soon">Soon</span></a>
+      <a href="#problem"><span data-i18n="navIssues">Асуудал</span></a>
+      <a href="#services"><span data-i18n="navSolution">Шийдэл</span></a>
+      <a href="#process"><span data-i18n="navPartner">Хамтрал</span></a>
+      <a href="#about"><span data-i18n="navAbout">Бидний тухай</span></a>
+      <a href="#news"><span data-i18n="navNews">Мэдээ мэдээлэл</span></a>
+      <a href="#soon"><span data-i18n="navSoon">Тун удахгүй</span> <span class="nav-soon">Soon</span></a>
     </div>
     <div class="diag-nav" id="diagNav">
-      <button class="btn-d diag-trigger" id="nb" type="button" aria-haspopup="menu" aria-expanded="false">Оношилгоо</button>
+      <button class="btn-d diag-trigger" id="nb" type="button" aria-haspopup="menu" aria-expanded="false" data-i18n="diagnosis">ОНОШИЛГОО</button>
       <div class="diag-menu" id="diagMenu" aria-hidden="true"></div>
+    </div>
+    <div class="lang-nav" id="langNav">
+      <button class="lang-trigger" id="langTrigger" type="button" aria-haspopup="menu" aria-expanded="false">
+        <span id="langLabel">Монгол</span>
+        <span class="lang-caret">▾</span>
+      </button>
+      <div class="lang-menu" id="langMenu" aria-hidden="true">
+        <button class="lang-item active" type="button" data-lang="mn">Монгол</button>
+        <button class="lang-item" type="button" data-lang="en">English</button>
+        <button class="lang-item" type="button" data-lang="zh">中文</button>
+      </div>
     </div>
     <button class="hbg" id="hb"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
 <div class="mob" id="mob">
-  <a href="#problem" onclick="cm()">Асуудал</a>
-  <a href="#services" onclick="cm()">Шийдэл</a>
-  <a href="#process" onclick="cm()">Хамтрал</a>
-  <a href="#about" onclick="cm()">Бидний тухай</a>
-  <a href="#news" onclick="cm()">Мэдээ мэдээлэл</a>
-  <a href="#soon" onclick="cm()">Тун удахгүй <span class="nav-soon">Soon</span></a>
-  <a href="#cta" class="btn-d" onclick="cm()">Ярилцъя →</a>
+  <a href="#problem" onclick="cm()"><span data-i18n="navIssues">Асуудал</span></a>
+  <a href="#services" onclick="cm()"><span data-i18n="navSolution">Шийдэл</span></a>
+  <a href="#process" onclick="cm()"><span data-i18n="navPartner">Хамтрал</span></a>
+  <a href="#about" onclick="cm()"><span data-i18n="navAbout">Бидний тухай</span></a>
+  <a href="#news" onclick="cm()"><span data-i18n="navNews">Мэдээ мэдээлэл</span></a>
+  <a href="#soon" onclick="cm()"><span data-i18n="navSoon">Тун удахгүй</span> <span class="nav-soon">Soon</span></a>
+  <a href="#cta" class="btn-d" onclick="cm()"><span data-i18n="heroCta">ЯРИЛЦЪЯ</span> →</a>
 </div>
 
 <!-- 01 HERO — dark -->
 <div class="auth-lock" id="authLock" aria-hidden="true">
   <div class="auth-card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
     <div class="auth-top">
-      <div class="auth-kicker">Нэвтрэх код</div>
+      <div class="auth-kicker" data-i18n="authKicker">Нэвтрэх код</div>
       <button class="auth-x" type="button" id="authClose" aria-label="Хаах">×</button>
     </div>
-    <div class="auth-title" id="authTitle">Нэвтрэх код</div>
-    <div class="auth-desc">Энэ үнэлгээ зөвхөн эрхтэй хэрэглэгчдэд зориулагдсан.</div>
+    <div class="auth-title" id="authTitle" data-i18n="authTitle">Нэвтрэх код</div>
+    <div class="auth-desc" data-i18n="authDesc">Энэ үнэлгээ зөвхөн эрхтэй хэрэглэгчдэд зориулагдсан.</div>
     <div class="auth-field-wrap">
-      <input class="auth-field" id="authInput" type="password" placeholder="Код" autocomplete="off" />
+      <input class="auth-field" id="authInput" type="password" placeholder="Код" autocomplete="off" data-i18n-placeholder="authPlaceholder" />
       <button class="auth-visibility" type="button" id="authToggle" aria-label="Show code" aria-pressed="false">
         <span class="eye-on">👁</span>
         <span class="eye-off">◐</span>
@@ -304,10 +454,10 @@ footer .fi{display:flex;justify-content:space-between;font-size:.66rem;color:rgb
     </div>
     <div class="auth-error" id="authError"></div>
     <div class="auth-actions">
-      <button class="btn-l" type="button" id="authCancel">Болих</button>
-      <button class="btn-d" type="button" id="authSubmit">Үргэлжлүүлэх</button>
+      <button class="btn-l" type="button" id="authCancel"><span data-i18n="authBack">Болих</span></button>
+      <button class="btn-d" type="button" id="authSubmit"><span data-i18n="authContinue">Үргэлжлүүлэх</span></button>
     </div>
-    <div class="auth-note">Зөв код оруулсны дараа дараагийн сонголт гарч ирнэ.</div>
+    <div class="auth-note" data-i18n="authNote">Зөв код оруулсны дараа дараагийн сонголт гарч ирнэ.</div>
   </div>
 </div>
 
@@ -324,168 +474,204 @@ footer .fi{display:flex;justify-content:space-between;font-size:.66rem;color:rgb
 <div class="soon-lock" id="soonLock" aria-hidden="true">
   <div class="soon-card" role="dialog" aria-modal="true" aria-labelledby="soonTitle">
     <div class="soon-head">
-      <div class="soon-title" id="soonTitle">Тун удахгүй</div>
+      <div class="soon-title" id="soonTitle" data-i18n="soonTitle">Тун удахгүй</div>
       <button class="choice-x" type="button" id="soonClose" aria-label="Хаах">×</button>
     </div>
-    <div class="soon-msg">Энэ салбарын үнэлгээ одоогоор боловсруулагдаж байна. Удахгүй ашиглах боломжтой болно.</div>
+    <div class="soon-msg" data-i18n="soonMsg">Энэ салбарын үнэлгээ одоогоор боловсруулагдаж байна. Удахгүй ашиглах боломжтой болно.</div>
     <div class="soon-actions">
-      <button class="btn-d" type="button" id="soonDismiss">Хаах</button>
+      <button class="btn-d" type="button" id="soonDismiss"><span data-i18n="soonButton">Хаах</span></button>
     </div>
   </div>
 </div>
 
-<section id="hero">
-  <div class="w" style="position:relative;z-index:1">
-    <div class="htag rv"><span class="htag-d"></span><span>High-Value Sales Advisory</span></div>
-    <h1 class="hh rv d1">Үнэтэй бүтээгдэхүүн зарахад <em>итгэл дутвал</em> илүү их сурталчилгаа нэмэх нь шийдэл биш.</h1>
-    <p class="svc-line rv d2">Sales Advisory <span>·</span> Sales System <span>·</span> Team Enablement</p>
-    <p class="hero-sub rv d2">Өндөр үнэ цэнтэй бүтээгдэхүүн, үйлчилгээ борлуулдаг байгууллагуудад зориулсан стратегийн борлуулалтын зөвлөх үйлчилгээ.</p>
-    <a href="#cta" class="btn-d hero-cta rv d3">Ярилцъя →</a>
-    <div class="hero-stats rv d3">
-      <div><span class="sn">8+</span><span class="sl">Жилийн туршлага</span></div>
-      <div><span class="sn">100+</span><span class="sl">Байгууллагад сургалт, зөвлөгөө</span></div>
-      <div><span class="sn">2017</span><span class="sl">Оноос хойш борлуулалтын чиглэлээр</span></div>
+<section id="hero" class="motion-soft">
+  <div class="w hero-grid">
+    <div class="hero-motion motion-soft" aria-hidden="true">
+      <svg viewBox="0 0 1440 900" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="heroLineGold" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#C9A84C" stop-opacity=".04"/>
+            <stop offset="30%" stop-color="#C9A84C" stop-opacity=".45"/>
+            <stop offset="70%" stop-color="#FFFFFF" stop-opacity=".22"/>
+            <stop offset="100%" stop-color="#C9A84C" stop-opacity=".08"/>
+          </linearGradient>
+          <filter id="heroGlow">
+            <feGaussianBlur stdDeviation="4" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+        <ellipse class="glow" cx="1140" cy="610" rx="240" ry="120"></ellipse>
+        <path class="hero-line g1" filter="url(#heroGlow)" stroke="url(#heroLineGold)" d="M-40 640 C 180 565, 310 720, 490 640 S 820 540, 995 615 S 1285 690, 1480 565"></path>
+        <path class="hero-line g2" stroke="#0D1B2E" stroke-opacity=".16" d="M-60 705 C 130 640, 270 785, 450 720 S 790 620, 995 700 S 1270 785, 1490 690"></path>
+        <path class="hero-line g3" stroke="#FFFFFF" stroke-opacity=".3" d="M-50 460 C 140 390, 300 510, 490 460 S 835 370, 1010 460 S 1290 540, 1490 440"></path>
+        <circle class="hero-node" cx="340" cy="650" r="4"></circle>
+        <circle class="hero-node" cx="760" cy="590" r="3.5"></circle>
+        <circle class="hero-node" cx="1070" cy="640" r="5"></circle>
+        <circle class="hero-node" cx="1210" cy="520" r="3.5"></circle>
+      </svg>
     </div>
-  </div>
+    <div class="hero-copy">
+      <div class="hero-panel">
+        <div class="htag rv"><span class="htag-d"></span><span data-i18n="heroSubtitle">High-Value Sales Advisory</span></div>
+        <h1 class="hh rv d1">
+          <span data-i18n="heroTitleLine1">БОРЛУУЛАЛТ</span>
+          <span data-i18n="heroTitleLine2">ЯТГАХ БИШ ШИЙДВЭР</span>
+          <span data-i18n="heroTitleLine3">УДИРДАХ СИСТЕМ</span>
+        </h1>
+        <p class="svc-line rv d2" data-i18n="heroMeta">Sales Advisory · Sales System · Team Enablement</p>
+        <p class="hero-sub rv d2" data-i18n="heroDescription">Өндөр үнэ цэнтэй бүтээгдэхүүн, үйлчилгээ борлуулдаг байгууллагуудад зориулсан стратегийн борлуулалтын зөвлөх үйлчилгээ.</p>
+        <a href="#cta" class="btn-d hero-cta rv d3"><span data-i18n="heroCta">ЯРИЛЦЪЯ</span> →</a>
+      </div>
+      <div class="hero-stats rv d3">
+        <div class="tilt-card motion-soft"><span class="sn" data-i18n="statYearsTitle">8+ жил</span><span class="sl" data-i18n="statYearsText">Борлуулалт, харилцаа, хэлэлцээрийн чиглэлээр</span></div>
+        <div class="tilt-card motion-soft"><span class="sn" data-i18n="statCompaniesTitle">100+ байгууллагад</span><span class="sl" data-i18n="statCompaniesText">Сургалт, зөвлөгөө, хэрэгжүүлэлтийн ажил</span></div>
+        <div class="tilt-card motion-soft"><span class="sn" data-i18n="statSectorsTitle">B2B · Luxury</span><span class="sl" data-i18n="statSectorsText">Industrial · Service салбарууд</span></div>
+      </div>
+    </div>
+    <div class="hero-visual rv d2" aria-hidden="true"></div>
+    </div>
 </section>
 
 <!-- 02 PROBLEM — white -->
-<section id="problem">
+<section id="problem" class="reveal reveal-up motion-soft">
   <div class="w">
     <div class="sh sh-lt rv">
-      <span class="lbl">Асуудал</span>
-      <h2>Lead ирдэг. Борлуулалт хаагдахгүй үлддэг.</h2>
+      <span class="lbl" data-i18n="problemLabel">Асуудал</span>
+      <h2 data-i18n="problemTitle">Lead ирдэг. Борлуулалт хаагдахгүй үлддэг.</h2>
     </div>
-    <p class="prob-body rv">Өндөр үнэ цэнтэй бүтээгдэхүүн сонирхсон хэрэглэгч шууд худалдан авалт хийдэггүй. Тэр эхлээд харьцуулна, эргэлзэнэ, асууна, хойшлуулна. Ихэнх байгууллага энэ үед илүү их сурталчилгаа хийхийг боддог. Гэвч асуудал үргэлж сурталчилгаанд биш, сонирхсон хэрэглэгчийг шийдвэрт хүргэх дараагийн алхам дээр байдаг.</p>
+    <p class="prob-body rv" data-i18n="problemBody">Өндөр үнэ цэнтэй бүтээгдэхүүн сонирхсон хэрэглэгч шууд худалдан авалт хийдэггүй. Тэр эхлээд харьцуулна, эргэлзэнэ, асууна, хойшлуулна. Ихэнх байгууллага энэ үед илүү их сурталчилгаа хийхийг боддог. Гэвч асуудал үргэлж сурталчилгаанд биш, сонирхсон хэрэглэгчийг шийдвэрт хүргэх дараагийн алхам дээр байдаг.</p>
     <div class="prob-grid rv d1">
-      <div class="pc"><div class="pc-d"></div><p>Яриа мэдээлэл өгдөг ч итгэл төрүүлж чаддаггүй.</p></div>
-      <div class="pc"><div class="pc-d"></div><p>Үнэ цэнийг ойлгуулахаас өмнө үнэ хэлдэг.</p></div>
-      <div class="pc"><div class="pc-d"></div><p>Follow-up итгэл нэмэх биш, сануулах төдий болдог.</p></div>
-      <div class="pc"><div class="pc-d"></div><p>Хэрэглэгч дотроо "үнэдээ хүрэх үү, хариуцлага хүлээх үү, итгэж болох уу" гэж асуудаг.</p></div>
+      <div class="pc tilt-card motion-soft"><div class="pc-d"></div><p data-i18n="problemCard1">Яриа мэдээлэл өгдөг ч итгэл төрүүлж чаддаггүй.</p></div>
+      <div class="pc tilt-card motion-soft"><div class="pc-d"></div><p data-i18n="problemCard2">Үнэ цэнийг ойлгуулахаас өмнө үнэ хэлдэг.</p></div>
+      <div class="pc tilt-card motion-soft"><div class="pc-d"></div><p data-i18n="problemCard3">Follow-up итгэл нэмэх биш, сануулах төдий болдог.</p></div>
+      <div class="pc tilt-card motion-soft"><div class="pc-d"></div><p data-i18n="problemCard4">Хэрэглэгч дотроо "үнэдээ хүрэх үү, хариуцлага хүлээх үү, итгэж болох уу" гэж асуудаг.</p></div>
     </div>
-    <div class="prob-close rv d2">Эдгээр асуултад хариулж чадаагүй үед боломжит худалдан авагч чимээгүй алга болдог.</div>
+    <div class="prob-close rv d2" data-i18n="problemClose">Эдгээр асуултад хариулж чадаагүй үед боломжит худалдан авагч чимээгүй алга болдог.</div>
   </div>
 </section>
 
 <!-- 03 SERVICES — light -->
-<section id="services">
+<section id="services" class="reveal reveal-up motion-soft">
   <div class="w">
     <div class="sh sh-lt rv">
-      <span class="lbl">Үйлчилгээ</span>
-      <h2>Бидний ажиллах 3 түвшин</h2>
+      <span class="lbl" data-i18n="servicesLabel">Үйлчилгээ</span>
+      <h2 data-i18n="servicesTitle">Бидний ажиллах 3 түвшин</h2>
     </div>
-    <p class="svc-body rv">Оношилгооны дараа бид зөвлөгөө өгөөд орхихгүй. Борлуулалтын чиглэл, ажиллах дараалал, багийн хэрэгжилт гэсэн гурван түвшинд шийдэл гаргадаг.</p>
+    <p class="svc-body rv" data-i18n="servicesBody">Оношилгооны дараа бид зөвлөгөө өгөөд орхихгүй. Борлуулалтын чиглэл, ажиллах дараалал, багийн хэрэгжилт гэсэн гурван түвшинд шийдэл гаргадаг.</p>
     <div class="sg rv">
-      <div class="sv sv1">
-        <span class="sv-tag">Sales Advisory</span>
-        <div class="sv-name">Зөв чиглэл гаргана</div>
-        <p class="sv-b">Борлуулалт яагаад хаагдаж байгааг тодорхойлж, эхлэх цэгийг тогтооно.</p>
+      <div class="sv sv1 tilt-card motion-soft">
+        <span class="sv-tag" data-i18n="servicesTag1">Sales Advisory</span>
+        <div class="sv-name" data-i18n="servicesName1">Зөв чиглэл гаргана</div>
+        <p class="sv-b" data-i18n="servicesBody1">Борлуулалт яагаад хаагдаж байгааг тодорхойлж, эхлэх цэгийг тогтооно.</p>
       </div>
-      <div class="sv sv2">
-        <span class="sv-tag">Sales System</span>
-        <div class="sv-name">Ажиллах дараалал бий болгоно</div>
-        <p class="sv-b">Сонирхсон хэрэглэгч шийдвэр гаргагч болох алхмуудыг өдөр тутам ашиглах бүтэцтэй болгоно.</p>
+      <div class="sv sv2 tilt-card motion-soft">
+        <span class="sv-tag" data-i18n="servicesTag2">Sales System</span>
+        <div class="sv-name" data-i18n="servicesName2">Ажиллах дараалал бий болгоно</div>
+        <p class="sv-b" data-i18n="servicesBody2">Сонирхсон хэрэглэгч шийдвэр гаргагч болох алхмуудыг өдөр тутам ашиглах бүтэцтэй болгоно.</p>
       </div>
-      <div class="sv sv3">
-        <span class="sv-tag">Team Enablement</span>
-        <div class="sv-name">Багт суулгана</div>
-        <p class="sv-b">Борлуулалтын арга барилыг role-play, бодит кейс, ярианы засвараар багийн стандарт руу ойртуулна.</p>
+      <div class="sv sv3 tilt-card motion-soft">
+        <span class="sv-tag" data-i18n="servicesTag3">Team Enablement</span>
+        <div class="sv-name" data-i18n="servicesName3">Багт суулгана</div>
+        <p class="sv-b" data-i18n="servicesBody3">Борлуулалтын арга барилыг role-play, бодит кейс, ярианы засвараар багийн стандарт руу ойртуулна.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- 04 PROCESS — white -->
-<section id="process">
+<section id="process" class="reveal reveal-up motion-soft">
   <div class="w">
     <div class="sh sh-lt rv">
-      <span class="lbl">Хамтралын явц</span>
-      <h2>Хамтын ажиллагаа бэлэн хөтөлбөрөөр эхэлдэггүй.</h2>
+      <span class="lbl" data-i18n="processLabel">Хамтралын явц</span>
+      <h2 data-i18n="processTitle">Хамтын ажиллагаа бэлэн хөтөлбөрөөр эхэлдэггүй.</h2>
     </div>
-    <p class="proc-body rv">Эхний хоёр алхам нь хамтын ажиллагааны суурийг тавьж, дараагийн хэрэгжилт болон сайжруулалтын чанарыг тодорхойлдог.</p>
+    <p class="proc-body rv" data-i18n="processBody">Эхний хоёр алхам нь хамтын ажиллагааны суурийг тавьж, дараагийн хэрэгжилт болон сайжруулалтын чанарыг тодорхойлдог.</p>
     <div class="proc-steps">
-      <div class="step rv">
+      <div class="step rv tilt-card motion-soft">
         <div class="step-c">01</div>
-        <div class="step-name">Эхний ярилцлага</div>
-        <p class="step-body">Танай байгууллагын борлуулалтын одоогийн нөхцөл, зорилго, багийн бүтэц, гол хүндрэлүүдийг ойлгоно.</p>
+        <div class="step-name" data-i18n="stepName1">Эхний ярилцлага</div>
+        <p class="step-body" data-i18n="stepBody1">Танай байгууллагын борлуулалтын одоогийн нөхцөл, зорилго, багийн бүтэц, гол хүндрэлүүдийг ойлгоно.</p>
       </div>
-      <div class="step rv d1">
+      <div class="step rv d1 tilt-card motion-soft">
         <div class="step-c">02</div>
-        <div class="step-name">Ажлын хүрээ</div>
-        <p class="step-body">Ямар чиглэлээр, ямар хүрээнд, ямар хугацаанд ажиллах нь илүү оновчтойг тодорхойлно.</p>
+        <div class="step-name" data-i18n="stepName2">Ажлын хүрээ</div>
+        <p class="step-body" data-i18n="stepBody2">Ямар чиглэлээр, ямар хүрээнд, ямар хугацаанд ажиллах нь илүү оновчтойг тодорхойлно.</p>
       </div>
-      <div class="step rv d2">
+      <div class="step rv d2 tilt-card motion-soft">
         <div class="step-c">03</div>
-        <div class="step-name">Хэрэгжүүлэлт</div>
-        <p class="step-body">Сургалт, зөвлөх уулзалт, ярианы засвар, role-play, follow-up аргачлал зэрэг ажлыг төлөвлөсөн хэлбэрээр хэрэгжүүлнэ.</p>
+        <div class="step-name" data-i18n="stepName3">Хэрэгжүүлэлт</div>
+        <p class="step-body" data-i18n="stepBody3">Сургалт, зөвлөх уулзалт, ярианы засвар, role-play, follow-up аргачлал зэрэг ажлыг төлөвлөсөн хэлбэрээр хэрэгжүүлнэ.</p>
       </div>
-      <div class="step rv d3">
+      <div class="step rv d3 tilt-card motion-soft">
         <div class="step-c">04</div>
-        <div class="step-name">Явцын сайжруулалт</div>
-        <p class="step-body">Хэрэгжилтийн явцад багийн оролцоо, уулзалтын чанар, follow-up-ийн үр дүнг харж дараагийн сайжруулалтыг шат дараатай хийнэ.</p>
+        <div class="step-name" data-i18n="stepName4">Явцын сайжруулалт</div>
+        <p class="step-body" data-i18n="stepBody4">Хэрэгжилтийн явцад багийн оролцоо, уулзалтын чанар, follow-up-ийн үр дүнг харж дараагийн сайжруулалтыг шат дараатай хийнэ.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- 05 ABOUT — dark -->
-<section id="about">
+<section id="about" class="reveal reveal-up motion-soft">
   <div class="w">
     <div class="sh sh-dk rv">
-      <span class="lbl">Бидний тухай</span>
-      <h2><span class="about-name">Ruslan.K</span><span class="about-role">Managing Partner</span></h2>
+      <span class="lbl" data-i18n="aboutLabel">Бидний тухай</span>
+      <h2><span class="about-name">Ruslan.K</span><span class="about-role" data-i18n="aboutRole">Managing Partner</span></h2>
     </div>
     <div class="ab">
       <div class="rv">
-        <p class="ab-desc">Norna Excong нь өндөр үнэ цэнтэй бүтээгдэхүүн, үйлчилгээ борлуулдаг байгууллагуудтай ажилладаг Sales Advisory баг. Монгол байгууллагуудтай ажилласан бодит туршлага дээр үндэслэн хэрэглэгчийн шийдвэр гаргах хэв маяг болон итгэлцэл үүсэх нөхцөлд тохируулж ажилладаг.</p>
+        <p class="ab-desc" data-i18n="aboutDesc">Norna Excong нь өндөр үнэ цэнтэй бүтээгдэхүүн, үйлчилгээ борлуулдаг байгууллагуудтай ажилладаг Sales Advisory баг. Монгол байгууллагуудтай ажилласан бодит туршлага дээр үндэслэн хэрэглэгчийн шийдвэр гаргах хэв маяг болон итгэлцэл үүсэх нөхцөлд тохируулж ажилладаг.</p>
         <div class="ab-bullets">
-          <div class="ab-bullet">2017 оноос хойш борлуулалт, харилцаа, хэлэлцээрийн чиглэлээр ажилласан туршлагатай</div>
-          <div class="ab-bullet">8 жилийн хугацаанд 100+ байгууллагад сургалт, зөвлөгөө хүргэсэн</div>
-          <div class="ab-bullet">High-value sales, хэрэглэгчийн шийдвэр, борлуулалтын ярианы арга барил дээр төвлөрдөг</div>
-          <div class="ab-bullet">Борлуулалт, харилцааны чиглэлээр мэргэжлийн мэдлэг, контент тогтмол хүргэдэг</div>
-          <div class="ab-bullet">Бодит кейс, role-play, ярианы засвар, багийн практик дадлагад суурилсан аргачлалаар ажилладаг</div>
+          <div class="ab-bullet" data-i18n="aboutBullet1">2017 оноос хойш борлуулалт, харилцаа, хэлэлцээрийн чиглэлээр ажилласан туршлагатай</div>
+          <div class="ab-bullet" data-i18n="aboutBullet2">8 жилийн хугацаанд 100+ байгууллагад сургалт, зөвлөгөө хүргэсэн</div>
+          <div class="ab-bullet" data-i18n="aboutBullet3">High-value sales, хэрэглэгчийн шийдвэр, борлуулалтын ярианы арга барил дээр төвлөрдөг</div>
+          <div class="ab-bullet" data-i18n="aboutBullet4">Борлуулалт, харилцааны чиглэлээр мэргэжлийн мэдлэг, контент тогтмол хүргэдэг</div>
+          <div class="ab-bullet" data-i18n="aboutBullet5">Бодит кейс, role-play, ярианы засвар, багийн практик дадлагад суурилсан аргачлалаар ажилладаг</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="partner-logos" aria-label="Partner logos">
+<section id="partner-logos" aria-label="Partner logos" class="reveal reveal-up motion-soft">
   <div class="w">
     <div class="logo-marquee">
       <div class="logo-track">
-        <div class="logo-item"><img class="company-logo" src="assets/logos/lg-group.png" alt="LG Group" onerror="this.style.visibility='hidden'"><span class="logo-text">LG Group</span></div>
-        <div class="logo-item"><img class="company-logo" src="assets/logos/hanpass-korea.png" alt="Hanpass Korea" onerror="this.style.visibility='hidden'"><span class="logo-text">Hanpass Korea</span></div>
-        <div class="logo-item"><img class="company-logo" src="assets/logos/mongol-shuudan.png" alt="Монгол Шуудан" onerror="this.style.visibility='hidden'"><span class="logo-text">Монгол Шуудан</span></div>
-        <div class="logo-item"><img class="company-logo" src="assets/logos/remax-mongolia.png" alt="RE/MAX Mongolia" onerror="this.style.visibility='hidden'"><span class="logo-text">RE/MAX Mongolia</span></div>
-        <div class="logo-item"><img class="company-logo" src="assets/logos/puma-construction.png" alt="PUMA Construction" onerror="this.style.visibility='hidden'"><span class="logo-text">PUMA Construction</span></div>
-        <div class="logo-item"><img class="company-logo" src="assets/logos/altan-joloo.png" alt="Алтан Жолоо ХХК" onerror="this.style.visibility='hidden'"><span class="logo-text">Алтан Жолоо ХХК</span></div>
-        <div class="logo-item"><img class="company-logo" src="assets/logos/hunnu-mall.png" alt="Хүннү Молл" onerror="this.style.visibility='hidden'"><span class="logo-text">Хүннү Молл</span></div>
-        <div class="logo-item"><img class="company-logo" src="assets/logos/news-remicon.png" alt="N.E.W.S Remicon" onerror="this.style.visibility='hidden'"><span class="logo-text">N.E.W.S Remicon</span></div>
-        <div class="logo-item"><img class="company-logo" src="assets/logos/bulgan-mebel.png" alt="Bulgan Mebel" onerror="this.style.visibility='hidden'"><span class="logo-text">Bulgan Mebel</span></div>
-        <div class="logo-item"><img class="company-logo" src="assets/logos/noble-clinic.png" alt="Noble Clinic" onerror="this.style.visibility='hidden'"><span class="logo-text">Noble Clinic</span></div>
-        <div class="logo-item"><img class="company-logo" src="assets/logos/lg-group.png" alt="LG Group" onerror="this.style.visibility='hidden'"><span class="logo-text">LG Group</span></div>
-        <div class="logo-item"><img class="company-logo" src="assets/logos/hanpass-korea.png" alt="Hanpass Korea" onerror="this.style.visibility='hidden'"><span class="logo-text">Hanpass Korea</span></div>
-        <div class="logo-item"><img class="company-logo" src="assets/logos/mongol-shuudan.png" alt="Монгол Шуудан" onerror="this.style.visibility='hidden'"><span class="logo-text">Монгол Шуудан</span></div>
-        <div class="logo-item"><img class="company-logo" src="assets/logos/remax-mongolia.png" alt="RE/MAX Mongolia" onerror="this.style.visibility='hidden'"><span class="logo-text">RE/MAX Mongolia</span></div>
-        <div class="logo-item"><img class="company-logo" src="assets/logos/puma-construction.png" alt="PUMA Construction" onerror="this.style.visibility='hidden'"><span class="logo-text">PUMA Construction</span></div>
-        <div class="logo-item"><img class="company-logo" src="assets/logos/altan-joloo.png" alt="Алтан Жолоо ХХК" onerror="this.style.visibility='hidden'"><span class="logo-text">Алтан Жолоо ХХК</span></div>
-        <div class="logo-item"><img class="company-logo" src="assets/logos/hunnu-mall.png" alt="Хүннү Молл" onerror="this.style.visibility='hidden'"><span class="logo-text">Хүннү Молл</span></div>
-        <div class="logo-item"><img class="company-logo" src="assets/logos/news-remicon.png" alt="N.E.W.S Remicon" onerror="this.style.visibility='hidden'"><span class="logo-text">N.E.W.S Remicon</span></div>
-        <div class="logo-item"><img class="company-logo" src="assets/logos/bulgan-mebel.png" alt="Bulgan Mebel" onerror="this.style.visibility='hidden'"><span class="logo-text">Bulgan Mebel</span></div>
-        <div class="logo-item"><img class="company-logo" src="assets/logos/noble-clinic.png" alt="Noble Clinic" onerror="this.style.visibility='hidden'"><span class="logo-text">Noble Clinic</span></div>
+        <div class="logo-item motion-soft"><img class="company-logo" src="assets/logos/lg-group.png" alt="LG Group" onerror="this.style.visibility='hidden'"><span class="logo-text">LG Group</span></div>
+        <div class="logo-item motion-soft"><img class="company-logo" src="assets/logos/hanpass-korea.png" alt="Hanpass Korea" onerror="this.style.visibility='hidden'"><span class="logo-text">Hanpass Korea</span></div>
+        <div class="logo-item motion-soft"><img class="company-logo" src="assets/logos/mongol-shuudan.png" alt="Монгол Шуудан" onerror="this.style.visibility='hidden'"><span class="logo-text">Монгол Шуудан</span></div>
+        <div class="logo-item motion-soft"><img class="company-logo" src="assets/logos/remax-mongolia.png" alt="RE/MAX Mongolia" onerror="this.style.visibility='hidden'"><span class="logo-text">RE/MAX Mongolia</span></div>
+        <div class="logo-item motion-soft"><img class="company-logo" src="assets/logos/puma-construction.png" alt="PUMA Construction" onerror="this.style.visibility='hidden'"><span class="logo-text">PUMA Construction</span></div>
+        <div class="logo-item motion-soft"><img class="company-logo" src="assets/logos/altan-joloo.png" alt="Алтан Жолоо ХХК" onerror="this.style.visibility='hidden'"><span class="logo-text">Алтан Жолоо ХХК</span></div>
+        <div class="logo-item motion-soft"><img class="company-logo" src="assets/logos/hunnu-mall.png" alt="Хүннү Молл" onerror="this.style.visibility='hidden'"><span class="logo-text">Хүннү Молл</span></div>
+        <div class="logo-item motion-soft"><img class="company-logo" src="assets/logos/news-remicon.png" alt="N.E.W.S Remicon" onerror="this.style.visibility='hidden'"><span class="logo-text">N.E.W.S Remicon</span></div>
+        <div class="logo-item motion-soft"><img class="company-logo" src="assets/logos/bulgan-mebel.png" alt="Bulgan Mebel" onerror="this.style.visibility='hidden'"><span class="logo-text">Bulgan Mebel</span></div>
+        <div class="logo-item motion-soft"><img class="company-logo" src="assets/logos/noble-clinic.png" alt="Noble Clinic" onerror="this.style.visibility='hidden'"><span class="logo-text">Noble Clinic</span></div>
+        <div class="logo-item motion-soft"><img class="company-logo" src="assets/logos/lg-group.png" alt="LG Group" onerror="this.style.visibility='hidden'"><span class="logo-text">LG Group</span></div>
+        <div class="logo-item motion-soft"><img class="company-logo" src="assets/logos/hanpass-korea.png" alt="Hanpass Korea" onerror="this.style.visibility='hidden'"><span class="logo-text">Hanpass Korea</span></div>
+        <div class="logo-item motion-soft"><img class="company-logo" src="assets/logos/mongol-shuudan.png" alt="Монгол Шуудан" onerror="this.style.visibility='hidden'"><span class="logo-text">Монгол Шуудан</span></div>
+        <div class="logo-item motion-soft"><img class="company-logo" src="assets/logos/remax-mongolia.png" alt="RE/MAX Mongolia" onerror="this.style.visibility='hidden'"><span class="logo-text">RE/MAX Mongolia</span></div>
+        <div class="logo-item motion-soft"><img class="company-logo" src="assets/logos/puma-construction.png" alt="PUMA Construction" onerror="this.style.visibility='hidden'"><span class="logo-text">PUMA Construction</span></div>
+        <div class="logo-item motion-soft"><img class="company-logo" src="assets/logos/altan-joloo.png" alt="Алтан Жолоо ХХК" onerror="this.style.visibility='hidden'"><span class="logo-text">Алтан Жолоо ХХК</span></div>
+        <div class="logo-item motion-soft"><img class="company-logo" src="assets/logos/hunnu-mall.png" alt="Хүннү Молл" onerror="this.style.visibility='hidden'"><span class="logo-text">Хүннү Молл</span></div>
+        <div class="logo-item motion-soft"><img class="company-logo" src="assets/logos/news-remicon.png" alt="N.E.W.S Remicon" onerror="this.style.visibility='hidden'"><span class="logo-text">N.E.W.S Remicon</span></div>
+        <div class="logo-item motion-soft"><img class="company-logo" src="assets/logos/bulgan-mebel.png" alt="Bulgan Mebel" onerror="this.style.visibility='hidden'"><span class="logo-text">Bulgan Mebel</span></div>
+        <div class="logo-item motion-soft"><img class="company-logo" src="assets/logos/noble-clinic.png" alt="Noble Clinic" onerror="this.style.visibility='hidden'"><span class="logo-text">Noble Clinic</span></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- 06 CTA — white -->
-<section id="cta">
+<section id="cta" class="reveal reveal-up motion-soft">
   <div class="w" style="text-align:center">
-    <span class="lbl rv" style="display:block">Холбогдох</span>
-    <h2 class="cta-h rv">ЯРИЛЦЪЯ</h2>
-    <p class="cta-sub rv">Танай борлуулалтын дараагийн өсөлт хаанаас эхлэхийг хамт тодорхойлъё.</p>
-    <div class="rv"><a href="mailto:excong@norna.mn" class="btn-l">Холбоо барих →</a></div>
+    <span class="lbl rv" style="display:block" data-i18n="contactLabel">Холбогдох</span>
+    <h2 class="cta-h rv" data-i18n="contactTitle">ЯРИЛЦЪЯ</h2>
+    <p class="cta-sub rv" data-i18n="contactSub">Танай борлуулалтын дараагийн өсөлт хаанаас эхлэхийг хамт тодорхойлъё.</p>
+    <div class="rv"><a href="mailto:excong@norna.mn" class="btn-l"><span data-i18n="contactCta">Холбоо барих</span> →</a></div>
     <div class="cons rv d1">
       <div class="con">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -507,9 +693,13 @@ footer .fi{display:flex;justify-content:space-between;font-size:.66rem;color:rgb
   </div>
 </section>
 
-<footer>
+<footer class="reveal reveal-up motion-soft">
   <div class="w fi">
-    <span>© 2026 Norna Excong · High-Value Sales Advisory</span>
+    <div class="footer-copy">
+      <span data-i18n="footerCopyright">© 2026 Norna Excong. All rights reserved.</span>
+      <span data-i18n="footerTagline">High-Value Sales Advisory</span>
+      <span class="footer-signature" data-i18n="footerSignature">Designed and developed for Norna Excong.</span>
+    </div>
     <span>norna.mn</span>
   </div>
 </footer>
@@ -520,8 +710,15 @@ const ln=document.getElementById('ln');
 const le=document.getElementById('le');
 const nl=document.getElementById('nl');
 const nb=document.getElementById('nb');
+const langNav=document.getElementById('langNav');
+const langTrigger=document.getElementById('langTrigger');
+const langLabel=document.getElementById('langLabel');
+const langMenu=document.getElementById('langMenu');
 const hbEl=document.getElementById('hb');
-const lightIds=['problem','services','process','cta'];
+const heroEl=document.getElementById('hero');
+const lightIds=['hero','problem','services','process','cta'];
+const langNames={mn:'Монгол',en:'English',zh:'中文'};
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function curSec(){
   const mid=window.innerHeight*0.45;
@@ -538,12 +735,13 @@ function updateNav(){
   const isLt=lightIds.includes(s);
   const sc=window.scrollY>50;
   nav.classList.remove('sc-dk','sc-lt');
-  if(sc)nav.classList.add(isLt?'sc-lt':'sc-dk');
-  const dk=!(isLt&&sc);
+  if(isLt) nav.classList.add('sc-lt');
+  else if(sc) nav.classList.add('sc-dk');
+  const dk=!isLt;
   ln.style.color=dk?'#fff':'#0D1B2E';
   le.style.color=dk?'rgba(255,255,255,.38)':'#8A9AAB';
   nl.querySelectorAll('a').forEach(a=>{a.style.color=dk?'rgba(255,255,255,.48)':'#4B5C6E'});
-  nb.className=dk?'btn-d diag-trigger':'btn-l diag-trigger';
+  nb.className=dk?'btn-l diag-trigger':'btn-d diag-trigger';
   nb.style.marginLeft='0';
   hbEl.querySelectorAll('span').forEach(sp=>sp.style.background=dk?'#fff':'#0D1B2E');
 }
@@ -555,10 +753,71 @@ const mob=document.getElementById('mob');
 function cm(){hbEl.classList.remove('o');mob.classList.remove('o');document.body.style.overflow=''}
 hbEl.addEventListener('click',()=>{const o=hbEl.classList.toggle('o');mob.classList.toggle('o',o);document.body.style.overflow=o?'hidden':''});
 
-const rv=document.querySelectorAll('.rv');
-const ob=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');ob.unobserve(x.target)}})},{threshold:.07,rootMargin:'0px 0px -20px 0px'});
+const rv=document.querySelectorAll('.rv,.reveal');
+const ob=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add(x.target.classList.contains('reveal')?'is-visible':'in');ob.unobserve(x.target)}})},{threshold:.08,rootMargin:'0px 0px -20px 0px'});
 rv.forEach(el=>ob.observe(el));
-setTimeout(()=>document.querySelectorAll('#hero .rv').forEach(el=>el.classList.add('in')),80);
+function kickHeroMotion(){
+  const heroItems=document.querySelectorAll('#hero .rv');
+  if(!heroItems.length) return;
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    heroItems.forEach(el=>el.classList.add('in'));
+  }));
+}
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',kickHeroMotion,{once:true});
+}else{
+  kickHeroMotion();
+}
+
+function attachTilt(el){
+  if(reduceMotion || !window.matchMedia('(hover:hover)').matches || !el) return;
+  let rafId=0;
+  const reset=()=>{
+    cancelAnimationFrame(rafId);
+    el.style.transform='';
+    el.style.boxShadow='';
+  };
+  const move=(event)=>{
+    const rect=el.getBoundingClientRect();
+    const px=(event.clientX-rect.left)/rect.width;
+    const py=(event.clientY-rect.top)/rect.height;
+    const rotY=(px-.5)*8;
+    const rotX=(.5-py)*7;
+    cancelAnimationFrame(rafId);
+    rafId=requestAnimationFrame(()=>{
+      el.style.transform=`perspective(900px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) translateY(-2px)`;
+      el.style.boxShadow='0 18px 38px rgba(13,27,46,.14)';
+    });
+  };
+  el.addEventListener('pointermove',move);
+  el.addEventListener('pointerleave',reset);
+  el.addEventListener('blur',reset);
+}
+
+function initTilt(root=document){
+  root.querySelectorAll('.tilt-card').forEach(attachTilt);
+}
+
+function setupHeroParallax(){
+  if(reduceMotion || !heroEl) return;
+  let ticking=false;
+  const update=()=>{
+    const y=Math.min(window.scrollY,900);
+    const shift=(y*0.12).toFixed(2);
+    heroEl.style.setProperty('--hero-parallax',`${shift}px`);
+    ticking=false;
+  };
+  const onScroll=()=>{
+    if(ticking) return;
+    ticking=true;
+    requestAnimationFrame(update);
+  };
+  update();
+  window.addEventListener('scroll',onScroll,{passive:true});
+}
+
+setupHeroParallax();
+initTilt();
 
 const authLock=document.getElementById('authLock');
 const authInput=document.getElementById('authInput');
@@ -577,7 +836,264 @@ const diagNav=document.getElementById('diagNav');
 const diagTrigger=document.getElementById('nb');
 const diagMenu=document.getElementById('diagMenu');
 
+// Norna Excong original website design.
+const translations = {
+  mn: {
+    navIssues: "Асуудал",
+    navSolution: "Шийдэл",
+    navPartner: "Хамтрал",
+    navAbout: "Бидний тухай",
+    navNews: "Мэдээ мэдээлэл",
+    navSoon: "Тун удахгүй",
+    diagnosis: "ОНОШИЛГОО",
+    heroSubtitle: "High-Value Sales Advisory",
+    heroTitleLine1: "БОРЛУУЛАЛТ",
+    heroTitleLine2: "ЯТГАХ БИШ ШИЙДВЭР",
+    heroTitleLine3: "УДИРДАХ СИСТЕМ",
+    heroMeta: "Sales Advisory · Sales System · Team Enablement",
+    heroDescription: "Өндөр үнэ цэнтэй бүтээгдэхүүн, үйлчилгээ борлуулдаг байгууллагуудад зориулсан стратегийн борлуулалтын зөвлөх үйлчилгээ.",
+    heroCta: "ЯРИЛЦЪЯ",
+    statYearsTitle: "8+ жил",
+    statYearsText: "Борлуулалт, харилцаа, хэлэлцээрийн чиглэлээр",
+    statCompaniesTitle: "100+ байгууллагад",
+    statCompaniesText: "Сургалт, зөвлөгөө, хэрэгжүүлэлтийн ажил",
+    statSectorsTitle: "B2B · Luxury",
+    statSectorsText: "Industrial · Service салбарууд",
+    problemLabel: "Асуудал",
+    problemTitle: "Lead ирдэг. Борлуулалт хаагдахгүй үлддэг.",
+    problemBody: "Өндөр үнэ цэнтэй бүтээгдэхүүн сонирхсон хэрэглэгч шууд худалдан авалт хийдэггүй. Тэр эхлээд харьцуулна, эргэлзэнэ, асууна, хойшлуулна. Ихэнх байгууллага энэ үед илүү их сурталчилгаа хийхийг боддог. Гэвч асуудал үргэлж сурталчилгаанд биш, сонирхсон хэрэглэгчийг шийдвэрт хүргэх дараагийн алхам дээр байдаг.",
+    problemCard1: "Яриа мэдээлэл өгдөг ч итгэл төрүүлж чаддаггүй.",
+    problemCard2: "Үнэ цэнийг ойлгуулахаас өмнө үнэ хэлдэг.",
+    problemCard3: "Follow-up итгэл нэмэх биш, сануулах төдий болдог.",
+    problemCard4: "Хэрэглэгч дотроо \"үнэдээ хүрэх үү, хариуцлага хүлээх үү, итгэж болох уу\" гэж асуудаг.",
+    problemClose: "Эдгээр асуултад хариулж чадаагүй үед боломжит худалдан авагч чимээгүй алга болдог.",
+    servicesLabel: "Үйлчилгээ",
+    servicesTitle: "Бидний ажиллах 3 түвшин",
+    servicesBody: "Оношилгооны дараа бид зөвлөгөө өгөөд орхихгүй. Борлуулалтын чиглэл, ажиллах дараалал, багийн хэрэгжилт гэсэн гурван түвшинд шийдэл гаргадаг.",
+    servicesTag1: "Sales Advisory",
+    servicesName1: "Зөв чиглэл гаргана",
+    servicesBody1: "Борлуулалт яагаад хаагдаж байгааг тодорхойлж, эхлэх цэгийг тогтооно.",
+    servicesTag2: "Sales System",
+    servicesName2: "Ажиллах дараалал бий болгоно",
+    servicesBody2: "Сонирхсон хэрэглэгч шийдвэр гаргагч болох алхмуудыг өдөр тутам ашиглах бүтэцтэй болгоно.",
+    servicesTag3: "Team Enablement",
+    servicesName3: "Багт суулгана",
+    servicesBody3: "Борлуулалтын арга барилыг role-play, бодит кейс, ярианы засвараар багийн стандарт руу ойртуулна.",
+    processLabel: "Хамтралын явц",
+    processTitle: "Хамтын ажиллагаа бэлэн хөтөлбөрөөр эхэлдэггүй.",
+    processBody: "Эхний хоёр алхам нь хамтын ажиллагааны суурийг тавьж, дараагийн хэрэгжилт болон сайжруулалтын чанарыг тодорхойлдог.",
+    stepName1: "Эхний ярилцлага",
+    stepBody1: "Танай байгууллагын борлуулалтын одоогийн нөхцөл, зорилго, багийн бүтэц, гол хүндрэлүүдийг ойлгоно.",
+    stepName2: "Ажлын хүрээ",
+    stepBody2: "Ямар чиглэлээр, ямар хүрээнд, ямар хугацаанд ажиллах нь илүү оновчтойг тодорхойлно.",
+    stepName3: "Хэрэгжүүлэлт",
+    stepBody3: "Сургалт, зөвлөх уулзалт, ярианы засвар, role-play, follow-up аргачлал зэрэг ажлыг төлөвлөсөн хэлбэрээр хэрэгжүүлнэ.",
+    stepName4: "Явцын сайжруулалт",
+    stepBody4: "Хэрэгжилтийн явцад багийн оролцоо, уулзалтын чанар, follow-up-ийн үр дүнг харж дараагийн сайжруулалтыг шат дараатай хийнэ.",
+    aboutLabel: "Бидний тухай",
+    aboutRole: "Managing Partner",
+    aboutDesc: "Norna Excong нь өндөр үнэ цэнтэй бүтээгдэхүүн, үйлчилгээ борлуулдаг байгууллагуудтай ажилладаг Sales Advisory баг. Монгол байгууллагуудтай ажилласан бодит туршлага дээр үндэслэн хэрэглэгчийн шийдвэр гаргах хэв маяг болон итгэлцэл үүсэх нөхцөлд тохируулж ажилладаг.",
+    aboutBullet1: "2017 оноос хойш борлуулалт, харилцаа, хэлэлцээрийн чиглэлээр ажилласан туршлагатай",
+    aboutBullet2: "8 жилийн хугацаанд 100+ байгууллагад сургалт, зөвлөгөө хүргэсэн",
+    aboutBullet3: "High-value sales, хэрэглэгчийн шийдвэр, борлуулалтын ярианы арга барил дээр төвлөрдөг",
+    aboutBullet4: "Борлуулалт, харилцааны чиглэлээр мэргэжлийн мэдлэг, контент тогтмол хүргэдэг",
+    aboutBullet5: "Бодит кейс, role-play, ярианы засвар, багийн практик дадлагад суурилсан аргачлалаар ажилладаг",
+    contactLabel: "Холбогдох",
+    contactTitle: "ЯРИЛЦЪЯ",
+    contactSub: "Танай борлуулалтын дараагийн өсөлт хаанаас эхлэхийг хамт тодорхойлъё.",
+    contactCta: "Холбоо барих",
+    footerCopyright: "© 2026 Norna Excong. Бүх эрх хуулиар хамгаалагдсан.",
+    footerTagline: "High-Value Sales Advisory",
+    footerSignature: "Designed and developed for Norna Excong.",
+    authKicker: "Нэвтрэх код",
+    authTitle: "Нэвтрэх код",
+    authDesc: "Энэ үнэлгээ зөвхөн эрхтэй хэрэглэгчдэд зориулагдсан.",
+    authPlaceholder: "Кодоо оруулна уу",
+    authBack: "Буцах",
+    authContinue: "Үргэлжлүүлэх",
+    authNote: "Зөв код оруулсны дараа дараагийн сонголт гарч ирнэ.",
+    authErrorWrong: "Код буруу байна.",
+    authShowCode: "Кодыг харуулах",
+    authHideCode: "Кодыг нуух",
+    closeLabel: "Хаах",
+    soonTitle: "Тун удахгүй",
+    soonMsg: "Энэ салбарын үнэлгээ одоогоор боловсруулагдаж байна. Удахгүй ашиглах боломжтой болно.",
+    soonButton: "Хаах",
+    choiceOpen: "Нээх",
+    diagOpen: "Нээх"
+  },
+  en: {
+    navIssues: "Problems",
+    navSolution: "Solutions",
+    navPartner: "Partnership",
+    navAbout: "About Us",
+    navNews: "News",
+    navSoon: "Coming Soon",
+    diagnosis: "DIAGNOSIS",
+    heroSubtitle: "High-Value Sales Advisory",
+    heroTitleLine1: "SALES",
+    heroTitleLine2: "NOT PERSUASION, BUT",
+    heroTitleLine3: "DECISION SYSTEM",
+    heroMeta: "Sales Advisory · Sales System · Team Enablement",
+    heroDescription: "Strategic sales advisory for organizations selling high-value products and services.",
+    heroCta: "LET’S TALK",
+    statYearsTitle: "8+ years",
+    statYearsText: "in sales, communication, and negotiation",
+    statCompaniesTitle: "100+ organizations",
+    statCompaniesText: "training, advisory, and implementation projects",
+    statSectorsTitle: "B2B · Luxury",
+    statSectorsText: "Industrial · Service sectors",
+    problemLabel: "Problem",
+    problemTitle: "Leads arrive. Sales do not close.",
+    problemBody: "People interested in high-value products do not buy immediately. They compare, hesitate, ask questions, and delay. Many organizations think the answer is more advertising. But the real issue is rarely the ad itself; it is the next step that turns interest into a decision.",
+    problemCard1: "It gives information, but it does not build trust.",
+    problemCard2: "Price is discussed before value is understood.",
+    problemCard3: "Follow-up becomes a reminder, not a trust builder.",
+    problemCard4: "The customer quietly asks: is it worth it, can I trust them, can I rely on this?",
+    problemClose: "When those questions are not answered, the potential buyer disappears quietly.",
+    servicesLabel: "Services",
+    servicesTitle: "Three levels we work on",
+    servicesBody: "After diagnosis, we do not simply advise and leave. We build solutions across three levels: direction, working system, and team execution.",
+    servicesTag1: "Sales Advisory",
+    servicesName1: "Find the right direction",
+    servicesBody1: "Identify why deals are not closing and set the first point of action.",
+    servicesTag2: "Sales System",
+    servicesName2: "Build the working flow",
+    servicesBody2: "Turn the steps that move a prospect into a decision-maker into a structure the team can use daily.",
+    servicesTag3: "Team Enablement",
+    servicesName3: "Embed it in the team",
+    servicesBody3: "Bring sales behavior closer to team standards through role-play, real cases, and live conversation editing.",
+    processLabel: "Process",
+    processTitle: "Partnership does not begin with a ready-made program.",
+    processBody: "The first two steps establish the foundation for collaboration and define the quality of implementation and improvement that follows.",
+    stepName1: "Initial conversation",
+    stepBody1: "We understand your current sales situation, goals, team structure, and key challenges.",
+    stepName2: "Scope",
+    stepBody2: "We define which direction, scope, and timeframe are most appropriate.",
+    stepName3: "Implementation",
+    stepBody3: "Training, advisory meetings, conversation edits, role-play, and follow-up methods are implemented in a planned way.",
+    stepName4: "Ongoing improvement",
+    stepBody4: "During implementation, we review participation, meeting quality, and follow-up results to make step-by-step improvements.",
+    aboutLabel: "About Us",
+    aboutRole: "Managing Partner",
+    aboutDesc: "Norna Excong is a sales advisory team working with organizations that sell high-value products and services. Based on real experience with Mongolian businesses, we tailor our work to the way buyers make decisions and how trust is formed.",
+    aboutBullet1: "Experienced in sales, communication, and negotiation since 2017",
+    aboutBullet2: "Delivered training and advisory support to 100+ organizations over 8 years",
+    aboutBullet3: "Focuses on high-value sales, buyer decision-making, and sales conversation patterns",
+    aboutBullet4: "Regularly shares professional knowledge and content on sales and communication",
+    aboutBullet5: "Works with practical methods based on real cases, role-play, conversation editing, and team drills",
+    contactLabel: "Contact",
+    contactTitle: "LET’S TALK",
+    contactSub: "Let’s identify where the next growth in your sales should begin.",
+    contactCta: "Contact us",
+    footerCopyright: "© 2026 Norna Excong. All rights reserved.",
+    footerTagline: "High-Value Sales Advisory",
+    footerSignature: "Designed and developed for Norna Excong.",
+    authKicker: "Access Code",
+    authTitle: "Access Code",
+    authDesc: "This evaluation is reserved for authorized users only.",
+    authPlaceholder: "Enter your code",
+    authBack: "Back",
+    authContinue: "Continue",
+    authNote: "After entering the correct code, the next selection will appear.",
+    authErrorWrong: "The code is incorrect.",
+    authShowCode: "Show code",
+    authHideCode: "Hide code",
+    closeLabel: "Close",
+    soonTitle: "Coming Soon",
+    soonMsg: "This industry evaluation is currently being prepared. It will be available soon.",
+    soonButton: "Close",
+    choiceOpen: "Open",
+    diagOpen: "Open"
+  },
+  zh: {
+    navIssues: "问题",
+    navSolution: "解决方案",
+    navPartner: "合作关系",
+    navAbout: "关于我们",
+    navNews: "新闻资讯",
+    navSoon: "即将推出",
+    diagnosis: "诊断",
+    heroSubtitle: "高价值销售顾问",
+    heroTitleLine1: "销售",
+    heroTitleLine2: "不是说服，而是",
+    heroTitleLine3: "决策系统",
+    heroMeta: "销售顾问 · 销售系统 · 团队赋能",
+    heroDescription: "为销售高价值产品和服务的企业提供战略销售顾问服务。",
+    heroCta: "联系洽谈",
+    statYearsTitle: "8+ 年",
+    statYearsText: "销售、沟通与谈判经验",
+    statCompaniesTitle: "100+ 家企业",
+    statCompaniesText: "培训、咨询与落地执行项目",
+    statSectorsTitle: "B2B · 奢侈品",
+    statSectorsText: "工业 · 服务行业",
+    problemLabel: "问题",
+    problemTitle: "线索来了，成交却没有发生。",
+    problemBody: "对高价值产品感兴趣的人不会立刻购买。他们会比较、犹豫、提问并延后决定。很多机构以为答案是更多广告，但真正的问题往往不是广告本身，而是把兴趣转化为决策的下一步。",
+    problemCard1: "提供了信息，却没有建立信任。",
+    problemCard2: "还没理解价值，就先谈价格。",
+    problemCard3: "跟进变成提醒，而不是建立信任。",
+    problemCard4: "客户心里会悄悄问：值不值得，能不能信，靠不靠谱？",
+    problemClose: "当这些问题没有被回答时，潜在客户就会悄悄离开。",
+    servicesLabel: "服务",
+    servicesTitle: "我们工作的三个层级",
+    servicesBody: "诊断之后，我们不会只是给建议然后结束。我们会在方向、工作系统和团队执行三个层面构建方案。",
+    servicesTag1: "销售顾问",
+    servicesName1: "找准方向",
+    servicesBody1: "找出成交未发生的原因，并确定第一个行动点。",
+    servicesTag2: "销售系统",
+    servicesName2: "建立工作流程",
+    servicesBody2: "把推动潜在客户成为决策者的步骤，变成团队每天都能使用的结构。",
+    servicesTag3: "团队赋能",
+    servicesName3: "落地到团队",
+    servicesBody3: "通过角色扮演、真实案例和对话优化，让销售行为更接近团队标准。",
+    processLabel: "流程",
+    processTitle: "合作并不是从现成方案开始的。",
+    processBody: "前两个步骤为合作建立基础，并决定后续执行与持续优化的质量。",
+    stepName1: "初次沟通",
+    stepBody1: "了解你们当前的销售状况、目标、团队结构和核心挑战。",
+    stepName2: "范围定义",
+    stepBody2: "明确最合适的方向、范围与时间安排。",
+    stepName3: "实施",
+    stepBody3: "以计划化方式执行培训、顾问会议、对话优化、角色扮演与跟进方法。",
+    stepName4: "持续优化",
+    stepBody4: "在实施过程中，根据参与度、会议质量和跟进结果进行逐步优化。",
+    aboutLabel: "关于我们",
+    aboutRole: "管理合伙人",
+    aboutDesc: "Norna Excong 是一家为销售高价值产品和服务的企业提供顾问服务的团队。基于与蒙古企业合作的真实经验，我们会根据客户的决策方式和信任形成方式调整工作方法。",
+    aboutBullet1: "自 2017 年以来持续从事销售、沟通与谈判工作",
+    aboutBullet2: "8 年间为 100+ 家企业提供培训与顾问支持",
+    aboutBullet3: "专注于高价值销售、客户决策与销售沟通方式",
+    aboutBullet4: "持续分享销售与沟通方面的专业知识和内容",
+    aboutBullet5: "采用真实案例、角色扮演、对话优化和团队练习的实战方法",
+    contactLabel: "联系",
+    contactTitle: "联系洽谈",
+    contactSub: "让我们一起找出你们下一步增长应该从哪里开始。",
+    contactCta: "联系我们",
+    footerCopyright: "© 2026 Norna Excong. 版权所有。",
+    footerTagline: "高价值销售顾问",
+    footerSignature: "为 Norna Excong 设计与开发。",
+    authKicker: "访问代码",
+    authTitle: "访问代码",
+    authDesc: "此评估仅限授权用户使用。",
+    authPlaceholder: "请输入代码",
+    authBack: "返回",
+    authContinue: "继续",
+    authNote: "输入正确代码后，将显示下一步选择。",
+    authErrorWrong: "代码不正确。",
+    authShowCode: "显示代码",
+    authHideCode: "隐藏代码",
+    closeLabel: "关闭",
+    soonTitle: "即将推出",
+    soonMsg: "该行业评估目前正在准备中，稍后即可使用。",
+    soonButton: "关闭",
+    choiceOpen: "打开",
+    diagOpen: "打开"
+  }
+};
+
 const diagCategories=[
+<<<<<<< HEAD
   {key:'estate',label:'Үл хөдлөх хөрөнгө',code:'976',outcome:{type:'soon'}},
   {key:'kitchen',label:'Тавилга, интерьер',code:'12400',outcome:{type:'links',title:'KitchenAll',items:[
     {label:'Борлуулагч, дизайнер тест',href:'https://kitchenalltest-17.vercel.app/'},
@@ -586,16 +1102,38 @@ const diagCategories=[
   {key:'automart',label:'Автомашин',code:'12400',outcome:{type:'links',title:'AutoMart',items:[
     {label:'Борлуулагчийн 3 түвшин',href:'https://automartdeploy2.vercel.app/'},
     {label:'Удирдлагын 4 шатлалт үнэлгээ',href:'https://automart360system-26.vercel.app/'}
+=======
+  {key:'estate',label:{mn:'Үл хөдлөх хөрөнгө',en:'Real Estate',zh:'房地产'},code:'976',outcome:{type:'soon'}},
+  {key:'kitchen',label:{mn:'Тавилга, интерьер',en:'Furniture & Interior',zh:'家具与室内'},code:'12400',outcome:{type:'links',title:'KitchenAll',items:[
+    {label:{mn:'Борлуулагч, дизайнер тест',en:'Seller & Designer Test',zh:'销售与设计师测试'},href:'https://kitchenalltest-10.vercel.app/'},
+    {label:{mn:'Удирдлагын үнэлгээ',en:'Management Evaluation',zh:'管理评估'},href:'https://kitchenall360-12.vercel.app/'}
   ]}},
-  {key:'beauty',label:'Гоо сайхан, эмнэлэг',code:'976',outcome:{type:'soon'}},
-  {key:'b2b-equipment',label:'B2B тоног төхөөрөмж',code:'976',outcome:{type:'soon'}},
-  {key:'technology',label:'Технологийн шийдэл',code:'976',outcome:{type:'soon'}},
-  {key:'education',label:'Боловсрол, сургалт',code:'976',outcome:{type:'soon'}},
-  {key:'consulting',label:'Зөвлөх үйлчилгээ',code:'976',outcome:{type:'soon'}},
-  {key:'other-premium',label:'Бусад өндөр үнэ цэнтэй бүтээгдэхүүн үйлчилгээ',code:'976',outcome:{type:'soon'}},
+  {key:'automart',label:{mn:'Автомашин',en:'Automotive',zh:'汽车'},code:'12400',outcome:{type:'links',title:'AutoMart',items:[
+    {label:{mn:'Борлуулагчийн 3 түвшин',en:'Seller 3 Levels',zh:'销售者三级'},href:'https://automartdeploy-cv2fbbz6x-rs-projects6.vercel.app/'},
+    {label:{mn:'Удирдлагын 4 шатлалт үнэлгээ',en:'Management 4-Step Evaluation',zh:'管理四步评估'},href:'https://automart360system-20.vercel.app/'}
+>>>>>>> cf24a0b (Language insert)
+  ]}},
+  {key:'beauty',label:{mn:'Гоо сайхан, эмнэлэг',en:'Beauty & Clinics',zh:'美容与医疗'},code:'976',outcome:{type:'soon'}},
+  {key:'b2b-equipment',label:{mn:'B2B тоног төхөөрөмж',en:'B2B Equipment',zh:'B2B 设备'},code:'976',outcome:{type:'soon'}},
+  {key:'technology',label:{mn:'Технологийн шийдэл',en:'Technology Solutions',zh:'技术解决方案'},code:'976',outcome:{type:'soon'}},
+  {key:'education',label:{mn:'Боловсрол, сургалт',en:'Education & Training',zh:'教育与培训'},code:'976',outcome:{type:'soon'}},
+  {key:'consulting',label:{mn:'Зөвлөх үйлчилгээ',en:'Consulting Services',zh:'咨询服务'},code:'976',outcome:{type:'soon'}},
+  {key:'other-premium',label:{mn:'Бусад өндөр үнэ цэнтэй бүтээгдэхүүн үйлчилгээ',en:'Other High-Value Products & Services',zh:'其他高价值产品与服务'},code:'976',outcome:{type:'soon'}},
 ];
 
+let currentLang='mn';
 let activeCategory=null;
+let authErrorKey='';
+
+function translate(key){
+  return (translations[currentLang] && translations[currentLang][key]) || (translations.mn && translations.mn[key]) || key;
+}
+
+function textFrom(value){
+  if(!value) return '';
+  if(typeof value === 'string') return value;
+  return value[currentLang] || value.mn || Object.values(value)[0] || '';
+}
 
 function getCategory(key){
   return diagCategories.find(item=>item.key===key) || null;
@@ -603,11 +1141,12 @@ function getCategory(key){
 
 function renderDiagMenu(){
   diagMenu.innerHTML=diagCategories.map(cat=>`
-    <button class="diag-item" type="button" data-diagnosis-category="${cat.key}">
-      <span>${cat.label}</span>
-      <span class="diag-tag">Open</span>
+    <button class="diag-item tilt-card motion-soft" type="button" data-diagnosis-category="${cat.key}">
+      <span>${textFrom(cat.label)}</span>
+      <span class="diag-tag">${translate('diagOpen')}</span>
     </button>
   `).join('');
+  initTilt(diagMenu);
 }
 
 function openDiagMenu(){
@@ -648,12 +1187,17 @@ function openAccessCodeModal(key){
     return;
   }
   activeCategory=cat;
+  authErrorKey='';
   authError.textContent='';
   authInput.value='';
   authInput.type='password';
   authToggle.classList.remove('on');
-  authToggle.setAttribute('aria-label','Show code');
+  authToggle.setAttribute('aria-label',translate('authShowCode') || 'Show code');
   authToggle.setAttribute('aria-pressed','false');
+  authInput.placeholder = translate('authPlaceholder') || 'Код';
+  authClose.setAttribute('aria-label',translate('closeLabel') || 'Хаах');
+  choiceClose.setAttribute('aria-label',translate('closeLabel') || 'Хаах');
+  soonClose.setAttribute('aria-label',translate('closeLabel') || 'Хаах');
   closeChoice();
   closeSoon();
   closeDiagMenu();
@@ -665,6 +1209,57 @@ function openAccessCodeModal(key){
 
 function openDiagnosisCodeModal(key){
   openAccessCodeModal(key);
+}
+
+function setLanguage(lang){
+  currentLang = translations[lang] ? lang : 'mn';
+  const dictionary = translations[currentLang] || translations.mn;
+  const chosen = currentLang;
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    const key = element.getAttribute("data-i18n");
+    if (dictionary[key]) {
+      element.textContent = dictionary[key];
+    }
+  });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+    const key = element.getAttribute("data-i18n-placeholder");
+    if (dictionary[key]) element.setAttribute('placeholder', dictionary[key]);
+  });
+  document.querySelectorAll("[data-i18n-aria-label]").forEach((element) => {
+    const key = element.getAttribute("data-i18n-aria-label");
+    if (dictionary[key]) element.setAttribute('aria-label', dictionary[key]);
+  });
+  langLabel.textContent=langNames[chosen];
+  langMenu.querySelectorAll('.lang-item').forEach(btn=>{
+    btn.classList.toggle('active', btn.dataset.lang===chosen);
+  });
+  document.documentElement.lang = chosen;
+  document.documentElement.setAttribute('lang', chosen);
+  localStorage.setItem('siteLanguage', chosen);
+  renderDiagMenu();
+  document.querySelectorAll('.nav-soon').forEach(el=>{
+    el.style.display = chosen === 'mn' ? 'inline-flex' : 'none';
+  });
+  authInput.placeholder = dictionary.authPlaceholder || 'Код';
+  authToggle.setAttribute('aria-label', authInput.type === 'password' ? (dictionary.authShowCode || 'Show code') : (dictionary.authHideCode || 'Hide code'));
+  authClose.setAttribute('aria-label', dictionary.closeLabel || 'Хаах');
+  choiceClose.setAttribute('aria-label', dictionary.closeLabel || 'Хаах');
+  soonClose.setAttribute('aria-label', dictionary.closeLabel || 'Хаах');
+  if(authErrorKey) authError.textContent = dictionary[authErrorKey] || '';
+  if(authLock.classList.contains('o')) {
+    authLock.querySelector('.auth-kicker').textContent = dictionary.authKicker || 'Нэвтрэх код';
+    authLock.querySelector('.auth-title').textContent = dictionary.authTitle || 'Нэвтрэх код';
+    authLock.querySelector('.auth-desc').textContent = dictionary.authDesc || '';
+    authLock.querySelector('.auth-note').textContent = dictionary.authNote || '';
+    authCancel.querySelector('[data-i18n]').textContent = dictionary.authBack || 'Болих';
+    authSubmit.querySelector('[data-i18n]').textContent = dictionary.authContinue || 'Үргэлжлүүлэх';
+  }
+  if(soonLock.classList.contains('o')) {
+    soonLock.querySelector('.soon-title').textContent = dictionary.soonTitle || 'Тун удахгүй';
+    soonLock.querySelector('.soon-msg').textContent = dictionary.soonMsg || '';
+    soonDismiss.querySelector('[data-i18n]').textContent = dictionary.soonButton || 'Хаах';
+  }
+  if(choiceLock.classList.contains('o')) openChoice();
 }
 
 function closeAuth(keepCategory=false){
@@ -694,11 +1289,12 @@ function openChoice(){
   choiceLock.setAttribute('aria-labelledby','choiceTitle');
   document.getElementById('choiceTitle').textContent=outcome.title || 'AutoMart';
   choiceList.innerHTML=outcome.items.map((item,idx)=>`
-    <a class="choice-btn${idx===1?' secondary':''}" href="${item.href}">
-      <span>${item.label}</span>
-      <span class="choice-sub">Open</span>
+    <a class="choice-btn tilt-card motion-soft${idx===1?' secondary':''}" href="${item.href}">
+      <span>${textFrom(item.label)}</span>
+      <span class="choice-sub">${translate('choiceOpen')}</span>
     </a>
   `).join('');
+  initTilt(choiceList);
   choiceList.querySelectorAll('a').forEach(link=>{
     link.addEventListener('click',e=>{
       e.preventDefault();
@@ -715,6 +1311,10 @@ function openChoice(){
 
 function openSoonModal(){
   closeChoice();
+  const dictionary = translations[currentLang] || translations.mn;
+  soonLock.querySelector('.soon-title').textContent = dictionary.soonTitle || 'Тун удахгүй';
+  soonLock.querySelector('.soon-msg').textContent = dictionary.soonMsg || '';
+  soonDismiss.querySelector('[data-i18n]').textContent = dictionary.soonButton || 'Хаах';
   soonLock.classList.add('o');
   soonLock.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';
@@ -729,7 +1329,8 @@ function submitAuth(){
     openDiagnosisSelection(selectedKey);
     return;
   }
-  authError.textContent='Код буруу байна.';
+  authErrorKey='authErrorWrong';
+  authError.textContent=translate(authErrorKey);
   authInput.select();
 }
 
@@ -737,7 +1338,7 @@ function toggleAuthVisibility(){
   const isHidden=authInput.type==='password';
   authInput.type=isHidden?'text':'password';
   authToggle.classList.toggle('on',isHidden);
-  authToggle.setAttribute('aria-label',isHidden?'Hide code':'Show code');
+  authToggle.setAttribute('aria-label',isHidden?(translate('authHideCode') || 'Hide code'):(translate('authShowCode') || 'Show code'));
   authToggle.setAttribute('aria-pressed',String(isHidden));
   authInput.focus({preventScroll:true});
 }
@@ -747,6 +1348,7 @@ function closeAllOverlays(){
   closeChoice();
   closeSoon();
   closeDiagMenu();
+  closeLangMenu();
 }
 
 diagTrigger.addEventListener('click',e=>{
@@ -771,6 +1373,47 @@ document.addEventListener('click',e=>{
 
 diagMenu.addEventListener('mouseenter',()=>{
   if(window.matchMedia('(hover:hover)').matches) openDiagMenu();
+});
+
+function openLangMenu(){
+  langNav.classList.add('o');
+  langTrigger.setAttribute('aria-expanded','true');
+  langMenu.setAttribute('aria-hidden','false');
+}
+
+function closeLangMenu(){
+  langNav.classList.remove('o');
+  langTrigger.setAttribute('aria-expanded','false');
+  langMenu.setAttribute('aria-hidden','true');
+}
+
+function toggleLangMenu(){
+  if(langNav.classList.contains('o')) closeLangMenu();
+  else openLangMenu();
+}
+
+langTrigger.addEventListener('click',e=>{
+  e.preventDefault();
+  toggleLangMenu();
+});
+
+langNav.addEventListener('mouseenter',()=>{
+  if(window.matchMedia('(hover:hover)').matches) openLangMenu();
+});
+
+langNav.addEventListener('mouseleave',()=>{
+  if(window.matchMedia('(hover:hover)').matches && !langNav.matches(':hover')) closeLangMenu();
+});
+
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.lang-nav')) closeLangMenu();
+});
+
+langMenu.addEventListener('click',e=>{
+  const item=e.target.closest('[data-lang]');
+  if(!item) return;
+  setLanguage(item.dataset.lang);
+  closeLangMenu();
 });
 
 document.addEventListener('click',function(event){
@@ -813,10 +1456,11 @@ document.addEventListener('keydown',e=>{
   if(choiceLock.classList.contains('o')) closeChoice();
   else if(soonLock.classList.contains('o')) closeSoon();
   else if(authLock.classList.contains('o')) closeAuth();
+  else if(langNav.classList.contains('o')) closeLangMenu();
   closeDiagMenu();
 });
 
-renderDiagMenu();
+setLanguage(localStorage.getItem('siteLanguage') || 'mn');
 </script>
 </body>
 </html>

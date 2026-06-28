@@ -161,6 +161,9 @@ html:not([lang="mn"]) .nav-soon{display:none}
 .hero-copy{max-width:680px;display:flex;flex-direction:column;align-items:flex-start;gap:1.1rem}
 .hero-panel{width:min(100%,640px);padding:clamp(1.35rem,2vw,1.9rem) clamp(1.35rem,2vw,1.8rem) clamp(1.2rem,1.8vw,1.55rem);background:rgba(255,255,255,.68);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.55);border-radius:28px;box-shadow:0 24px 70px rgba(16,33,61,.12)}
 .hero-visual{display:none}
+.hero-copy,.hero-panel,.hero-stats{position:relative;z-index:5}
+#hero .rv{opacity:1;transform:none;visibility:visible}
+#hero .rv.in{animation:none}
 .htag{display:inline-flex;align-items:center;gap:.45rem;border:1px solid rgba(201,168,76,.18);padding:.34rem .9rem;margin-bottom:1.35rem;border-radius:999px;background:rgba(255,255,255,.6);box-shadow:0 10px 30px rgba(16,33,61,.05)}
 .htag-d{width:5px;height:5px;background:var(--gold);border-radius:50%}
 .htag span{font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
@@ -259,6 +262,22 @@ h1.hh em{font-style:normal;color:var(--gold)}
 .reveal.is-visible .logo-item:nth-child(4),
 .reveal.is-visible .cons .con:nth-child(4),
 .reveal.is-visible .ab-bullet:nth-child(4){transition-delay:.24s}
+
+/* Safe fallback: content must remain visible even if motion JS fails */
+.reveal,.reveal-up,.reveal-left,.reveal-right,.rv{
+  opacity:1;
+  transform:none;
+  visibility:visible;
+}
+.reveal .prob-grid .pc,
+.reveal .sg .sv,
+.reveal .proc-steps .step,
+.reveal .logo-item,
+.reveal .cons .con,
+.reveal .ab-bullet{
+  opacity:1;
+  transform:none;
+}
 
 /* ── SERVICES — light ── */
 #services{background:var(--light);padding:5.5rem 0}

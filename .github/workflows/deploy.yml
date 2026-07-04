@@ -37,9 +37,8 @@ jobs:
           mkdir -p _site
           cp index.html CNAME _site/
           cp -R assets _site/assets
-          mkdir -p _site/references
-          cp -R public/references/* _site/references/
-          test -f _site/references/norna-hero-night.mp4
+          cp -R public _site/public
+          test -f _site/public/references/norna-hero-night.mp4
           find . -maxdepth 1 -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.webp" -o -name "*.svg" -o -name "*.ico" \) -exec cp {} _site/ \;
 
       - name: Upload artifact

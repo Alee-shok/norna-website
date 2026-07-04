@@ -26,6 +26,7 @@ jobs:
           test -f index.html
           test -f CNAME
           test "$(cat CNAME)" = "norna.mn"
+          test -f public/references/norna-hero-night.mp4
           ! grep -R -n -E "^(<<<<<<<|=======|>>>>>>>)" index.html CNAME .github/workflows
 
       - name: Configure Pages
@@ -38,6 +39,7 @@ jobs:
           cp -R assets _site/assets
           mkdir -p _site/references
           cp -R public/references/* _site/references/
+          test -f _site/references/norna-hero-night.mp4
           find . -maxdepth 1 -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.webp" -o -name "*.svg" -o -name "*.ico" \) -exec cp {} _site/ \;
 
       - name: Upload artifact

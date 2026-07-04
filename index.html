@@ -958,7 +958,7 @@ const heroVideoSource=document.getElementById('heroVideoSource');
 if(heroVideo){
   const isLocal=window.location.hostname==='localhost'||window.location.hostname==='127.0.0.1';
   const videoBase=isLocal?'public/references/':'/references/';
-  const heroVideoSrc=`${videoBase}norna-hero-night.mp4?v=20250704`;
+  const heroVideoSrc=`${videoBase}norna-hero-night.mp4`;
   if(heroVideoSource) heroVideoSource.src=heroVideoSrc;
   heroVideo.src=heroVideoSrc;
   heroVideo.muted=true;

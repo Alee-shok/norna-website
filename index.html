@@ -197,13 +197,11 @@ html:not([lang="mn"]) .nav-soon{display:none}
 
 /* ── HERO — dark ── */
 #hero{--hero-parallax:0px;min-height:100vh;display:flex;align-items:center;padding:8.25rem 0 4.5rem;background:#041225;position:relative;overflow:hidden;color:var(--navy)}
-#hero::before{content:'';position:absolute;inset:0;z-index:1;background:
-  linear-gradient(90deg,rgba(3,10,22,.68) 0%,rgba(3,10,22,.5) 30%,rgba(3,10,22,.24) 55%,rgba(3,10,22,.08) 78%,rgba(3,10,22,.02) 100%);
-pointer-events:none}
+#hero::before{content:'';position:absolute;inset:0;z-index:1;background:rgba(8,15,28,.42);pointer-events:none}
 #hero::after{display:none}
 .hero-video-bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:#041225}
 .hero-video-bg video{width:100%;height:100%;display:block;object-fit:cover;object-position:center center;opacity:1;filter:brightness(1.16) contrast(1.12) saturate(1.08)}
-.hero-grid{position:relative;z-index:3;display:flex;flex-direction:column;align-items:flex-start;gap:1.15rem;min-height:calc(100vh - 12.75rem);justify-content:flex-start;width:100%;max-width:1360px;padding:1.45rem 2rem 0;margin:0 auto}
+.hero-grid{position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;gap:1.15rem;min-height:calc(100vh - 12.75rem);justify-content:flex-start;width:100%;max-width:1360px;padding:1.45rem 2rem 0;margin:0 auto}
 .hero-copy{width:100%;max-width:none;display:flex;flex-direction:column;align-items:flex-start;gap:.95rem}
 .hero-panel{width:min(100%,690px);padding:0;background:transparent;backdrop-filter:none;border:none;border-radius:0;box-shadow:none}
 .hero-visual{display:none}
@@ -278,7 +276,7 @@ html.motion-ready .reveal-right.is-visible{opacity:1;transform:none}
 #problem{background:var(--white);padding:5.5rem 0}
 .prob-body{font-size:.875rem;color:var(--body-c);line-height:1.8;max-width:680px;margin-bottom:2rem}
 .prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1.8rem}
-.pc{display:flex;gap:.85rem;padding:1.1rem 1.2rem;background:var(--light);border:1px solid rgba(176,48,48,.12);border-radius:18px;box-shadow:0 10px 24px rgba(13,27,46,.03)}
+.prob-grid .pc{display:flex;gap:.85rem;padding:1.1rem 1.2rem;background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.65);border-radius:18px;box-shadow:0 12px 35px rgba(15,23,42,.12);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
 .pc-d{width:6px;height:6px;min-width:6px;background:#b03030;border-radius:50%;margin-top:.42rem;flex-shrink:0}
 .pc p{font-size:.82rem;color:var(--body-c);line-height:1.6}
 .prob-close{font-size:.9rem;font-weight:700;color:var(--navy);text-align:center;padding:1.2rem 2rem;background:var(--ga);border-left:3px solid var(--gold);text-align:left;border-radius:18px}
@@ -1128,7 +1126,7 @@ const translations = {
     statYearsTitle: "8+ жил",
     statYearsText: "Борлуулалт, харилцаа, хэлэлцээрийн чиглэлээр",
     statCompaniesTitle: "100+ байгууллагад",
-    statCompaniesText: "Сургалт, зөвлөгөө, хэрэгжүүлэлтийн ажил",
+    statCompaniesText: "Сургалт, зөвлөгөө, Борлуулалтын систем, угсралт",
     statSectorsTitle: "B2B · Luxury · Industrial · Service",
     statSectorsText: "салбарууд",
     problemLabel: "Асуудал",
@@ -1136,7 +1134,7 @@ const translations = {
     problemBody: "Өндөр үнэ цэнтэй бүтээгдэхүүн сонирхсон хэрэглэгч шууд худалдан авалт хийдэггүй. Тэр эхлээд харьцуулна, эргэлзэнэ, асууна, хойшлуулна. Ихэнх байгууллага энэ үед илүү их сурталчилгаа хийхийг боддог. Гэвч асуудал үргэлж сурталчилгаанд биш, сонирхсон хэрэглэгчийг шийдвэрт хүргэх дараагийн алхам дээр байдаг.",
     problemCard1: "Яриа мэдээлэл өгдөг ч итгэл төрүүлж чаддаггүй.",
     problemCard2: "Үнэ цэнийг ойлгуулахаас өмнө үнэ хэлдэг.",
-    problemCard3: "Дараах холбоо барилт итгэл нэмэх биш, сануулах төдий болдог.",
+    problemCard3: "Follow-up нь хэрэглэгчийг шийдвэрт ойртуулахын оронд, зүгээр л сануулга төдий болдог.",
     problemCard4: "Хэрэглэгч дотроо \"үнэдээ хүрэх үү, хариуцлага хүлээх үү, итгэж болох уу\" гэж асуудаг.",
     problemClose: "Эдгээр асуултад хариулж чадаагүй үед боломжит худалдан авагч чимээгүй алга болдог.",
     servicesLabel: "Үйлчилгээ",
